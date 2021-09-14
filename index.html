@@ -13,13 +13,41 @@
 
 		<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
 		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+		<link href="https://fonts.googleapis.com/css?family=Rubik:400&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="index.css">
 		<title>GardieMaker - Crea tu propia Gardienne</title>
 		
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta property="og:image" content="/es/assets/meta/gm-home.png" />
 		<meta property="og:description" content="Elige las prendas y elementos que más te gusten para crear a la guardiana de tus sueños. Más de 20 mil prendas disponibles para personalizar tus propios personajes." />
 		<script>
-			window.location.href = "https://gardiemaker.github.io/es/home";
+			if (!(window.location.search).includes("stop")) {
+				window.location.href = "https://gardiemaker.github.io/es/home";
+			};
 		</script>
 	</head>
+	<body>
+		<div class = "main">
+			<div class = "wrapper">
+				<div id="content">
+					<div id="logo">
+						<img alt="GardieMaker" src="assets/img/logo.png">
+					</div>
+					<div id="flags-container">
+						<a href="br/home"><img class="" src="assets/img/flags/br.png"></a>
+						<!--<a href=""><img class="disabled" src="assets/img/flags/de.png"></a>-->
+						<a href="es/home"><img class="" src="assets/img/flags/es.png"></a>
+						<!--<a href=""><img class="disabled" src="assets/img/flags/fr.png"></a>-->
+						<!--<a href=""><img class="disabled" src="assets/img/flags/hu.png"></a>-->
+						<!--<a href=""><img class="disabled" src="assets/img/flags/it.png"></a>-->
+						<!--<a href=""><img class="disabled" src="assets/img/flags/pl.png"></a>-->
+						<!--<a href=""><img class="disabled" src="assets/img/flags/ru.png"></a>-->
+						<!--<a href=""><img class="disabled" src="assets/img/flags/us.png"></a>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
 </html>

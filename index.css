@@ -1,0 +1,73 @@
+html, body {
+    height: 100%;
+}
+.main {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+.wrapper {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+}
+
+body {
+	background-image: url(https://www.eldarya.es/static/img/home/adventure/background.jpg);
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	margin: 0;
+}
+
+#content {
+	margin: auto;
+	top: -5%;
+	position: relative;
+	/*height: 70%;*/
+	/*left: 15%;*/
+	width: 100%;
+}
+
+#flags-container {
+    position: relative;
+    font-family: Rubik, cursive;
+	text-align: center;
+	max-width: 520px;
+	margin: auto;
+}
+
+#logo img {
+	display: block;
+	margin: auto;
+	width: 100%;
+}
+
+#flags-container img {
+	width: 20%;
+	max-width: 80px;
+	margin: 10px;
+	border-radius: 5px;
+	filter: brightness(0.8);
+	transition: all 0.2s;
+}
+
+#flags-container img.disabled {
+	filter: grayscale(1);
+}
+
+#flags-container img:not(.disabled):hover {
+	box-shadow: 1px 0px 10px #fff;
+	filter: brightness(1);
+}
+
+@media screen and (min-width: 552px) {
+	#logo img {
+		width: auto;
+	}
+
+	#content {
+		width: 70%;
+	}
+}

@@ -98,14 +98,14 @@ function featured(feat, entries) {
 
         if ((window.location.href).includes("/es/")) {
             document.getElementById("index-featured-info").innerHTML = 'De: <a href="archive?u=' + entry[0].alias + '">'
-            + entry[0].alias + '</a><br><br>Abrir en: <a href="/es/wardrobe?s='
-            + entry[0].info.code + '">Vestidor</a> | <a href="/es/profile?s='
+            + entry[0].alias + '</a><br><br>Abrir en: <a href="wardrobe?s='
+            + entry[0].info.code + '">Vestidor</a> | <a href="profile?s='
             + entry[0].info.code + '">Perfil</a><br><br><a href="https://docs.zoho.com/docs/orig/'
             + entry[0].info.png + '" target="_blank">Ver en tamaño completo</a>';
         } else {
             document.getElementById("index-featured-info").innerHTML = featured_from + ': <a href="archive?u=' + entry[0].alias + '">'
-            + entry[0].alias + '</a><br><br>' + featured_open + ': <a href="/es/wardrobe?s='
-            + entry[0].info.code + '">' + featured_open_wardrobe + '</a> | <a href="/es/profile?s='
+            + entry[0].alias + '</a><br><br>' + featured_open + ': <a href="wardrobe?s='
+            + entry[0].info.code + '">' + featured_open_wardrobe + '</a> | <a href="profile?s='
             + entry[0].info.code + '">' + featured_open_profile + '</a><br><br><a href="https://docs.zoho.com/docs/orig/'
             + entry[0].info.png + '" target="_blank">' + featured_open_full + '</a>';
         };
@@ -118,8 +118,8 @@ function featured(feat, entries) {
         $("#index-featured-title").html('<a href="archive?e=' + feat[0].entry + '">' + feat[0].entryInfo.field[0] + '</a></div>');
 
         $("#index-featured-info").html('Actividad: <a href="' + feat[0].postInfo.enlace + '" target="_blank">'
-        + feat[0].postInfo.actividad + '</a><br><br>Abrir en: <a href="/es/wardrobe?s='
-        + feat[0].entryInfo.code + '">Vestidor</a> | <a href="/es/profile?s='
+        + feat[0].postInfo.actividad + '</a><br><br>Abrir en: <a href="wardrobe?s='
+        + feat[0].entryInfo.code + '">Vestidor</a> | <a href="profile?s='
         + feat[0].entryInfo.code + '">Perfil</a><br><br><a href="https://docs.zoho.com/docs/orig/'
         + feat[0].entryInfo.png + '" target="_blank">Ver en tamaño completo</a>');
         

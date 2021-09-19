@@ -1,0 +1,583 @@
+#container .page-main-container{
+	background-color: rgba(73, 79, 154, 0.87);
+	border-radius: 8px;
+	padding-bottom: 20px;
+}
+
+/* --------------------------------------------- */
+
+#change-lang {
+	right: 60px;
+	position: absolute;
+	z-index: 1;
+	text-transform: uppercase;
+	cursor: pointer;
+	font-size: 11px;
+	user-select: none;
+
+	border-radius: 0 0px 10px 10px;
+	top: 0px;
+	border: none;
+	padding: 5px 7px;
+}
+
+#change-lang.button.active {
+	background-color: #fff;
+	color: #2293fb;
+}
+
+#filter-help {
+	position: absolute;
+	right: 10px;
+	z-index: 1;
+	top: 12px;
+}
+
+.marketplace-container{
+	padding: 0 38px;
+}
+
+.marketplace-search-list{
+	height: 600px;
+	margin: 10px 10px 0;
+}
+
+#marketplace-right{
+	position: relative;
+	float: right;
+	width: 340px;
+	height: 590px;
+	box-shadow: 0 2px 3px rgba(52, 56, 111, 0.5);
+	border-radius: 5px;
+
+	background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.7) 100%);
+	background: -webkit-gradient(linear, left bottom, left bottom, color-stop(0%, rgba(255, 255, 255, 0.8)), color-stop(50%, rgba(255, 255, 255, 0.8)), color-stop(100%, rgba(255, 255, 255, 0)));
+	background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.7) 100%);
+	background: -o-linear-gradient(bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.7) 100%);
+	background: -ms-linear-gradient(bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.7) 100%);
+
+	background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.7) 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#99ffffff', endColorstr='#00ffffff', GradientType=0);
+}
+
+#marketplace-avatar-background-preview{
+	width: 340px;
+	height: 500px;
+	background-position: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+#marketplace-avatar-preview{
+	width: 420px;
+	height: 594px;
+	position: relative;
+	left: -40px;
+	top: -90px;
+	pointer-events: none;
+}
+/* start------------------------------------ */
+
+canvas {
+	position: absolute;
+}
+
+#marketplace-itemDetail {
+	position: absolute;
+	top: 500px;
+	right: 0;
+	width: 325px;
+	height: 80px;
+	text-align: center;
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select:none;
+	user-select:none;
+}
+
+.marketplace-itemDetail-cont, .marketplace-itemDetail-cont2 {
+	margin: 0 0 0 10px;
+	width: 140px;
+	font-family: Rubik, cursive;
+	font-size: 16px;
+	color: rgb(552, 56, 111);
+	float: left;
+	padding-top: 10px;
+}
+.marketplace-itemDetail-cont2 {	
+	width: 90% !important;
+}
+
+#edit-clothes {
+	padding: 6px 3px 3px 6px;
+	bottom: 4px;
+	position: absolute;
+	font-size: 18px;
+	border-radius: 5px;
+}
+
+#edit-clothes-layout {
+	background: #000000a3;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 2;
+	border-radius: 6px;
+}
+
+#edit-clothes-popup {
+	width: 800px;
+	height: 600px;
+	left: 105px;
+	position: relative;
+	top: 76px;
+
+	border-radius: 10px;
+	border: 2px solid #fff;
+	box-shadow: inset 0px 0 20px #fff;
+	background-color: #f2e9e9;
+}
+
+#edit-menu-container {
+    background-color: #fff;
+    width: 320px;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    bottom: 50px;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px #bbb;
+}
+
+#edit-menu-list {
+    height: 420px;
+    overflow: auto;
+    scrollbar-width: thin;
+    border: 1px solid #ddd;
+}
+
+#edit-menu-buttons {
+    text-align: center;
+    top: 18px;
+    position: relative;
+}
+
+.draggable-preview {
+	display: flex;
+	height: 80px;
+	border-right: 1px dashed #d5bbaf;
+    border-bottom: 1px dashed #d5bbaf;
+	border-left: 1px dashed #d5bbaf;
+	user-select: none;
+}
+
+.draggable-preview:nth-child(1) {
+    border-top: 1px dashed #d5bbaf;
+}
+
+.draggable-preview-icon {
+    width: 80px;
+    background-color: #f9f9f9;
+    border-right: 1px dashed #d5bbaf;
+    position: relative;
+}
+
+.draggable-preview-info {
+	position: relative;
+	width: 100%;
+}
+
+.draggable-preview-name {
+	margin: 10px;
+}
+
+.draggable-move-buttons {
+    position: absolute;
+    display: inline-flex;
+    bottom: 6px;
+	right: 6px;
+}
+
+.mueve-prenda.button {
+    padding: 3px;
+    margin: 2px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.mueve-prenda.quitar-prenda.button {
+    width: 12px;
+    text-align: center;
+    background-color: crimson;
+    border-color: crimson;
+}
+
+.mueve-prenda.quitar-prenda.button:hover {
+    background-color: #fff;
+    color: crimson;
+}
+
+/* end------------------------------------ */
+
+.marketplace-abstract{
+	width: 427px;
+	float: left;
+	margin: 10px 10px 0;
+
+	position: relative;
+	width: 427px;
+	float: left;
+	margin: 10px;
+	box-shadow: 0 2px 3px rgba(52, 56, 111, 0.5);
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+#marketplace-search-title {
+    width: 500px;
+    margin: 5px;
+    padding: 11px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.marketplace-search-back-arrow {
+	border-color: transparent #34386f transparent transparent;
+	border-width: 7px 14px 7px 0;
+	border-style: solid;
+	display: inline-block;
+	position: relative;
+}
+
+.marketplace-search-back {
+    font-family: Rubik;
+    font-size: 18px;
+    color: rgb(52,56,111);
+    padding: 10px;
+    margin: 5px;
+    width: 480px;
+	cursor: pointer;
+	position: relative;
+	display: flex;
+}
+
+.marketplace-search-back p {
+	position: relative;
+	margin: 0px 9px;
+}
+
+.marketplace-search-back:hover {
+    background: #b9f8fa;
+}
+
+#marketplace-search-items li{
+	width: 500px;
+	height: 75px;
+	margin: 5px;
+}
+
+.marketplace-search-item.selected {
+	background: #fff;
+}
+
+.marketplace-search-item:hover{
+	background: #b9f8fa;
+}
+
+li.marketplace-search-item, li.marketplace-sales-item, li.marketplace-auctions-item, li.marketplace-itemsForSale-item, li.marketplace-historic-item {
+	position: relative;
+}
+
+.appearance-item .guard-gem, .marketplace-itemsForSale-item .guard-gem, .marketplace-abstract .guard-gem, .marketplace-main-container .guard-gem, .inventory-item .guard-gem, .treasureHunt-result-item .guard-gem {
+    position: absolute !important;
+    right: 2px;
+    top: 2px;
+}
+
+.guard-gem {
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+    border-radius: 25px;
+}
+
+/* Marcadores de rareza */
+.rarity-marker-common, .rarity-marker-rare, .rarity-marker-epic, .rarity-marker-legendary, .rarity-marker-event, .anim-marker {
+    border-width: 18px 18px 0px 0px;
+	border-style: solid;
+	position: absolute;
+	height: 0;
+	width: 0;
+}
+
+.marketplace-abstract .guard-gem, .marketplace-main-container .guard-gem {
+    right: auto;
+    left: 50px;
+}
+
+.rarity-marker-common {
+    border-color: #aaa transparent transparent transparent;
+}
+
+.rarity-marker-rare {
+    border-color: #1f6cff transparent transparent transparent;   
+}
+
+.rarity-marker-epic {
+    border-color: #e04cff transparent transparent transparent;
+}
+
+.rarity-marker-legendary {
+    border-color: #f2b82f transparent transparent transparent;
+}
+
+.rarity-marker-event {
+    border-color: #58d700 transparent transparent transparent;
+}
+
+.guard-gem.guard-1{
+	background-image: url("https://www.eldarya.com/static/img/design/guard/marker-guard-1.png");
+}
+
+.guard-gem.guard-2{
+	background-image: url("https://www.eldarya.com/static/img/design/guard/marker-guard-2.png");
+}
+
+.guard-gem.guard-3{
+	background-image: url("https://www.eldarya.com/static/img/design/guard/marker-guard-3.png");
+}
+
+.guard-gem.guard-4{
+	background-image: url("https://www.eldarya.com/static/img/design/guard/marker-guard-4.png");
+}
+
+/* Premio del mes*/
+.anim-marker {
+    width: 20px;
+    height: 19px;
+    border-width: 0;
+    background-image: url("https://www.eldarya.com/static/img/marker_anim.png");
+}
+/* Fin marcadores de rareza */
+
+.marketplace-abstract .abstract-icon{
+	width: 75px;
+	height: 75px;
+	box-shadow: 0 0 2px black;
+	float: left;
+}
+
+.marketplace-abstract .abstract-container{
+	position: relative;
+	float: left;
+	width: 425px;
+}
+
+.marketplace-abstract .abstract-name{
+	font-family: Rubik, cursive;
+	font-weight: bold;
+	font-size: 18px;
+	color: rgb(52,56,111);
+	position: relative;
+	padding: 5px;
+}
+
+.marketplace-abstract .abstract-name.undefined, .draggable-preview-name.undefined {
+	color: #a21c1c;
+}
+.marketplace-abstract .abstract-content{
+	position: relative;
+	padding: 0 5px;
+}
+
+.marketplace-abstract .abstract-type{
+	font-family: Rubik, cursive;
+	font-weight: bold;
+	font-size: 13px;
+	color: rgb(52, 56, 111);
+}
+
+.abstract-code{
+	font-family: Rubik, cursive;
+	text-transform: uppercase;
+	color: rgb(52, 56, 111);
+	text-align: right;
+	position: absolute;
+	right: 15px;
+	top: 5px;
+}
+
+.code-info{
+	font-size: 12px;
+	font-family: Rubik, cursive;
+	font-weight: bold;
+	color: rgb(52, 56, 111);
+}
+
+.universalCode, .universal-code {
+	font-size: 20px;
+}
+
+.marketplace-abstract .abstract-note{
+	font-family: Rubik, cursive;
+	font-size: 14px;
+	color: rgb(196, 103, 188);
+	font-weight: bold;
+	position: absolute;
+	top: 55px;
+	left: 5px;
+}
+
+.pagination{
+	margin-left: 15px;
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select:none;
+	user-select:none;
+}
+
+.page{
+	display: inline-block;
+	padding: 5px 3px;
+	margin-right: 5px;
+	border-radius: 3px;
+	min-width: 28px;
+	font-size: 14px;
+	font-family: Rubik, cursive;
+	font-weight: bold;
+	color:rgb(52,56,111);
+	text-align: center;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid rgba(52,56,111,0.5);
+}
+
+.page:hover{
+	cursor:pointer;
+}
+
+.page.selected{
+	text-decoration: none;
+	background: #A7AAE6;
+	cursor:default;
+}
+
+.truncation{
+	display: inline-block;
+	padding: 2px;
+	width: 15px;
+	font-size: 14px;
+	font-family: Rubik, cursive;
+	font-weight: bold;
+	color:#fff;
+	text-align: center;
+	text-decoration: none;
+	margin-right: 3px;
+}
+
+#aux-buttons {
+	float: right;
+	width: 358px;
+}
+
+#button-img-link-container {
+	position: relative;
+	float: left;
+}
+
+#link-profile {
+	position: relative;
+	float: right;
+}
+
+.abstract-tags-container {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: auto;
+}
+
+.abstract-tags {
+    position: relative;
+	padding: 2px 5px;
+	font-size: 12px;
+	background-color: #888;
+	color: #fff;
+	border-radius: 5px;
+	margin: 0 2px 2px 0;
+	float: left;
+}
+
+.abstract-tags.incomplete {
+    background-color: #d00000;
+}
+
+#popup-bg {
+	width: 100%;
+	background: rgba(0,0,0,.8);
+	top: 0;
+	position: fixed;
+	bottom: 0;
+	z-index: 2;
+	display: none;
+	overflow: auto;
+}
+
+#popup-container {
+	position: relative;
+	padding: 20px 30px 10px;
+	width: 500px;
+	background: #fff;
+	margin: auto;
+	border-radius: 10px 0 10px 10px;
+	top: 60px;
+}
+
+#popup-container p {
+	text-align: justify;
+	line-height: 1.5;
+	margin-bottom: 20px;
+}
+
+#close-popup {
+	position: absolute;
+	right: -18px;
+	top: -14px;
+	font-size: 25px;
+	padding: 4px 12px 8px;
+	border-radius: 50%;
+
+	background: #00e4ff none;
+	border: 2px solid #00e4ff;
+}
+
+#close-popup:hover {
+	background: #fff none;
+	color: #00e4ff;
+}
+
+.popup-title {
+	font-family: Merriweather, serif;
+	font-size: 22px;
+	line-height: 30px;
+	font-weight: 400;
+	color: #34386f;
+	text-align: center;
+	border-bottom: 1px solid;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.filter-body-markup {
+	color: #4a4aee;
+	font-style: italic;
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
+
+        <meta property="og:image" content="../assets/meta/gm-home.png" />
+    	<meta property="og:description" content="Elige las prendas y elementos que más te gusten para crear a la guardiana de tus sueños. Más de 20 mil prendas disponibles para personalizar tus propios personajes." />
+
+        <link href="https://fonts.googleapis.com/css?family=Rubik:400&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="server/const.js"></script>
+        <script type="text/javascript" src="../js/wardrobe.js"></script>
+
+        <title>Vestidor - GardieMaker</title>
+        <link rel="stylesheet" type="text/css" href="../styles/base.css">
+        <link rel="stylesheet" type="text/css" href="../styles/wardrobe.css">
+    </head>
+    <body>
+        <!-- header -->
+        <div id="header">
+            <div id="header-in">
+                <a id="logo" title="GardieMaker" href="/es/home"><img src="../assets/img/logo.png"></a>
+                <!-- NOVEDADES -->
+                <div id="header-news">
+                    <div id="news-infos">
+                        <div class="news-latest">
+                            <!-- cargar status -->
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN NOVEDADES -->
+            </div>
+            <div id="header-top">
+                <div id="header-top-in">
+                    <ul id="header-menu">
+                        <li>
+                            <a href="https://gardiemaker.blogspot.com">BLOG</a>
+                        </li>
+                        <li>
+                            <a href="wardrobe">VESTIDOR</a>
+                        </li>
+                        <li>
+                            <a href="profile">PERFIL</a>
+                        </li>
+                        <li>
+                            <a href="archive">CATÁLOGO</a>
+                        </li>
+                        <li>
+                            <a href="support?wardrobe">AYUDA</a>
+                        </li>
+                    </ul>
+                    <div id="fb-icon"><a title="¡GardieMaker está en Facebook!" href="https://www.facebook.com/gardiemaker" target="_blank"><img style="height: 25px;" src="../assets/img/icon/fb-icon.png"></a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div id="content">
+            <div id="container">
+                <div id="change-lang" class="button" current-lang="es" title="Algunas prendas no están traducidas.">Nombres en inglés</div>
+                <div id="filter-help" title="Filtros manuales" class="button">?</div>
+                <div class="page-main-container marketplace-main-container">
+                    <h1>Buscar
+                        <span class="title-end"></span>
+                    </h1>
+                    <ul class="marketplace-menu">
+                        
+                    </ul>
+                    <div class ="marketplace-container">
+                        <div id="marketplace-filters">
+                            <form onsubmit="cargarLista(); return false">
+
+                                <select id="filter-bodyLocationOptions" >
+                                    <option value="">Todas las categorías</option>
+                                    <option value="Ropa interior">Ropa interior</option>
+                                    <option value="Pieles">Pieles</option>
+                                    <option value="Tatuajes">Tatuajes</option>
+                                    <option value="Bocas">Bocas</option>
+                                    <option value="Ojos">Ojos</option>
+                                    <option value="Cabello">Cabello</option>
+                                    <option value="Calcetines">Calcetines</option>
+                                    <option value="Zapatos">Zapatos</option>
+                                    <option value="Pantalones">Pantalones</option>
+                                    <option value="Accesorios manos">Accesorios manos</option>
+                                    <option value="Partes de arriba">Partes de arriba</option>
+                                    <option value="Abrigos">Abrigos</option>
+                                    <option value="Guantes">Guantes</option>
+                                    <option value="Collares">Collares</option>
+                                    <option value="Vestidos">Vestidos</option>
+                                    <option value="Sombreros">Sombreros</option>
+                                    <option value="Accesorios cara">Accesorios cara</option>
+                                    <option value="Fondos">Fondos</option>
+                                    <option value="Cinturones">Cinturones</option>
+                                    <option value="Ambientes">Ambientes</option>
+                                </select>
+
+                                <select id="filter-guardOptions" >
+                                    <option value="">Sin filtro especial</option>
+                                    <optgroup label="Guardias">
+                                        <option value="obsidiana">Obsidiana</option>
+                                        <option value="absenta">Absenta</option>
+                                        <option value="sombra">Sombra</option>
+                                    </optgroup>
+                                    <optgroup label="Desbloqueables">
+                                        <option value="episodios">Episodios</option>
+                                        <option value="spinoff">Spin-off</option>
+                                    </optgroup>
+                                    <optgroup label="Otros">
+                                        <option value="premios">Recompensas</option>
+                                        <option value="alquimia">Alquimia</option>
+                                        <option value="costales">Costales</option>
+                                        <option value="antique">Tienda Antigua</option>
+                                    </optgroup>
+                                    
+                                </select>
+
+                                <select id="filter-rarityOptions" >
+                                    <option value="">Todas las rarezas</option>
+                                    <option value="common">Común</option>
+                                    <option value="rare">Raro</option>
+                                    <option value="epic">Épico</option>
+                                    <option value="legendary">Legendario</option>
+                                    <option value="event">Evento</option>
+                                </select>
+
+                                <select id="filter-orderOptions" >
+                                    <option value="newest">Más recientes</option>
+                                    <option value="oldest">Más antiguos</option>
+                                </select>
+
+                                <input id="filter-itemName" value="" >
+                                <input id="filter" type="submit" value="Filtrar" >
+                            </form>
+                        </div>
+                        <div id="marketplace-search">
+                            <div class="marketplace-search-list">
+                                <div id="marketplace-right">
+                                    <div id="marketplace-preview"></div>
+                                    <div id="marketplace-avatar-background-preview"></div>
+                                    <div id="marketplace-avatar-preview">
+                                        <!-- canvas dinámicos -->
+                                    </div>
+
+                                    <div id="marketplace-itemDetail" style="display:none">
+                                        <div class="marketplace-itemDetail-cont">
+                                            <div class="button marketplace-itemDetail-opt" onclick="moverPrenda('prev');">RETRASAR</div>
+                                        </div>
+                                        <div class="marketplace-itemDetail-cont">
+                                            <div class="button marketplace-itemDetail-opt" onclick="moverPrenda('next');">AVANZAR</div>
+                                        </div>
+                                        <div class="marketplace-itemDetail-cont2">
+                                            <div class="button marketplace-itemDetail-set" onclick="fijarPrenda()">FIJAR</div>
+                                        </div>
+                                    </div>
+                                    <div id="edit-clothes" class="button"><span class="fa fa-pencil-square-o"></span></div>
+
+                                </div>
+                                <ul id="marketplace-search-items">
+                                    <!-- Lista con todos los artículos -->
+                                </ul>
+                            </div>
+                            <div id="marketplace-pagination-container" style="float:left">
+                                <div class="pagination">
+                                </div>
+                            </div>
+                            <div id="aux-buttons">
+                                <div id="button-img-link-container" style="display: none;">
+                                    <a id="img-s" href="" target="_blank"><div class="button">S</div></a>
+                                    <a id="img-m" href="" target="_blank"><div class="button">M</div></a>
+                                    <a id="img-l" href="" target="_blank"><div class="button">L</div></a>
+                                </div>
+                                <a href="profile" id="link-profile" ><div class="button">Generar Perfil</div></a>
+                            </div>
+                            
+                            <div style="clear:both"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer-->
+        <div id="footer" itemscope="" itemtype="https://schema.org/WPFooter">
+            <div id="footer-in">
+                <ul id="footer-links">
+                    <li>2021 | GardieMaker</li>
+                    <li><a href="https://gardiemaker.blogspot.com/p/reportar-un-problema.html" style="color: #fff;">Reportar un error</a></li>
+                  </ul>
+                <span id="footer-info">Cargando...</span>
+            </div>
+        </div>
+
+        <!-- popup -->
+        <div id="popup-bg">
+            
+            <div id="popup-container">
+                <div id="close-popup" class="button">x</div>
+                <div class="popup-title">Filtros manuales</div>
+                <p>Para más opciones de filtrado, el vestidor cuenta con filtros manuales. Para usar cualquiera de estos, basta con escribir su respectivo comando en el buscador. Los filtros disponibles son los siguientes:</p>
+                <h4>CÓDIGOS</h4>
+                <p>Las prendas pueden buscarse por sus códigos exactos.</p>
+                <h4>ARCOÍRIS</h4>
+                <p>Los cabellos arcoíris pueden filtrarse escribiendo <span class="filter-body-markup">#rainbow</span> en el buscador.</p>
+                <h4>ÓPALOS</h4>
+                <p>Escribe <span class="filter-body-markup">#shiny</span> para filtrar las prendas con estos colores.</p>
+                <h4>EVENTOS</h4>
+                <p>Puedes filtrar las prendas por eventos específicos, por año o ambos. Para utilizarlo, debes seguir la fórmula <span class="filter-body-markup">SIGLAS:AÑO</span>. Por ejemplo, para filtrar las prendas de San Valentín 2018 puedes hacerlo con <span class="filter-body-markup">SV:2018</span>. A su vez, quitando las siglas o el año, puedes filtrar por uno o por otro.</p>
+                <p><u>Siglas disponibles:</u> A = 1 de Abril, SV = San Valentín, P = Pascua, M = Música, JE = Japan Expo, PM = Pride Month, V = Verano, BF = Black Friday, H = Halloween, N = Navidad</p>
+            </div>
+        </div>
+
+    </body>
+</html>

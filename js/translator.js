@@ -7,6 +7,7 @@ $(document).ready( function () {
 	$("#header-menu").find("a").eq(3).text(nav_button_archive);
 	$("#header-menu").find("a").eq(4).text(nav_button_support);
 	$("#fb-icon").find("a").attr("title", nav_fb_title);
+	$("#change-server").attr("title", change_server);
 	$(".news-main.disabled").text(nav_notification);
 	$("#footer-links li").eq(1).find("a").text(nav_report);
 

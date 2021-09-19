@@ -372,3 +372,11 @@ body a{
     padding: 7px 7px 7px 0;
     position: relative;
 }
+
+#change-server {
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    top: 0px;
+    right: 20px;
+}

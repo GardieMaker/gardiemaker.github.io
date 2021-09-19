@@ -10,6 +10,7 @@
 	var nav_affiliates = "Páginas parceiras";
 	var load_input = "Código...";
 	var load_button = "Gerar";
+	var change_server = "Mudar servidor";
 
 
 // home variables

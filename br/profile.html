@@ -16,23 +16,28 @@
 		<link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
 
 		<meta property="og:image" content="../assets/meta/gm-home.png" />
-    	<meta property="og:description" content="Elige las prendas y elementos que más te gusten para crear a la guardiana de tus sueños. Más de 20 mil prendas disponibles para personalizar tus propios personajes." />
+    	<meta property="og:description" content="Escolha as roupas e trajes que você mais gosta para criar a guardiã dos seus sonhos. Mais de 20 mil peças disponíveis para personalizar seus próprios personagens." />
 
 		<link href="https://fonts.googleapis.com/css?family=Rubik:400&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> 
-		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet"> 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type="text/javascript" src="server/const.js"></script>
 		<script type="text/javascript" src="../js/profile.js"></script>
 
-		<title>Perfil - GardieMaker</title>
+		<title></title>
+
+		<!-- Script traductor -->
+        <script type="text/javascript" src="../lang/pt-BR.js"></script>
+        <script type="text/javascript" src="../js/translator.js"></script>
+
 		<link rel="stylesheet" type="text/css" href="../styles/base.css">
 		<link rel="stylesheet" type="text/css" href="../styles/profile.css">
 	</head>
 	<body>
 		<div id="header">
 			<div id="header-in">
-				<a id="logo" title="GardieMaker" href="/es/home"><img src="../assets/img/logo.png"></a>
+				<a id="logo" title="GardieMaker" href="/br/home"><img src="../assets/img/logo.png"></a>
 				<!-- NOVEDADES -->
 				<div id="header-news">
 					<div id="news-infos">
@@ -47,23 +52,23 @@
 				<div id="header-top-in">
 					<ul id="header-menu">
 						<li>
-							<a href="https://gardiemaker.blogspot.com">BLOG</a>
+							<a href="https://gardiemaker.blogspot.com"></a>
 						</li>
 						<li>
-							<a href="wardrobe">VESTIDOR</a>
+							<a href="wardrobe"></a>
 						</li>
 						<li>
-							<a href="profile">PERFIL</a>
+							<a href="profile"></a>
 						</li>
 						<li>
-							<a href="archive">CATÁLOGO</a>
+							<a href="archive"></a>
 						</li>
 						<li>
-							<a href="support?profile">AYUDA</a>
+							<a href="support?profile"></a>
 						</li>
 					</ul>
 					<div id="fb-icon"><a title="¡GardieMaker está en Facebook!" href="https://www.facebook.com/gardiemaker" target="_blank"><img style="height: 25px;" src="../assets/img/icon/fb-icon.png"></a></div>
-					<a href="../" id="change-server" title="Cambiar de servidor"><span class="fa fa-globe"></span></a>
+					<a href="../" id="change-server" title=""><span class="fa fa-globe"></span></a>
 				</div>
 			</div>
 		</div>
@@ -71,13 +76,10 @@
 		<div id="content">
 			<div id="container">
 				<div class="page-main-container player-main-container">
-					<h1>
-						Mi personaje
-						<span class="title-end"></span>
-					</h1>
+					<h1><span class="title-end"></span></h1>
 
 					<div id="player-display" class="isDraggable">
-						<div class="player-element background-element" style="background: url('https://www.eldarya.es/assets/img/item/player/web_full/ebe3cacec9acff9a1ae9d9554a3192c0.jpg')"></div>
+						<div class="player-element background-element" style="background: url('https://www.eldarya.com.br/assets/img/item/player/web_full/ebe3cacec9acff9a1ae9d9554a3192c0.jpg')"></div>
 						<div id="player-pet-containment" style="width: 1164.8px; height: 864px; left: -182.4px; top: -132px;"></div>
 
 						<!-- friend-pet -->
@@ -105,76 +107,72 @@
 
 					<ul id="player-actions-tab">
 						<li>
-							<a id="edit-code" class="button">Editar</a>
+							<a id="edit-code" class="button"></a>
 						</li>
 						<li>
-							<div id="reload" class="button">Volver a cargar</div>
+							<div id="reload" class="button"></div>
 						</li>
 						<li>
-							<div id="border-rad" class="button">Cambiar esquinas</div>
+							<div id="border-rad" class="button"></div>
 						</li>
 						<li>
-							<div id="get-code" class="button">Copiar código</div>
+							<div id="get-code" class="button"></div>
 						</li>
 						<li>
-							<div id="get-portrait" class="button">Guardar</div>
+							<div id="get-portrait" class="button"></div>
 						</li>
 					</ul>
 					<div id="player-left-tab">
 						<div id="left-info-tab">
-							<h3>Opciones</h3>
+							<h3></h3>
 							<br>
 
 							<div class="bonus-container">
 								<form onsubmit="return false;">
-									Familiar: 
 									<select id="select-player-pet" style="width:160px"></select>
-									<span style="display: none" id="check-player-span"><input type="checkbox" id="check-player-pet" class="chkVb" >&nbsp;Adulto</span>
+									<span style="display: none" id="check-player-span"><input type="checkbox" id="check-player-pet" class="chkVb" ></span>
 								</form>
 							</div>
 
 							<div class="bonus-container">
 								<form onsubmit="return false">
-									Compañero: 
 									<select id="select-friend" style="max-width:120px; min-width:100px;"></select>
 									<select id="select-version" style="display:none"></select>
-									<input id="button-centrar" type="submit" value="Centrar" style="display: none;padding: 1px 8px;">
+									<input id="button-centrar" type="submit" value="" style="display: none;padding: 1px 8px;">
 								</form>
 								
 								<div id="otro-container" style="display: none; text-align: center;">
 									<br>
 									<form onsubmit="return false;">
-										<input id="input-url" value="" placeholder="Enlace..." style="width: 150px">
+										<input id="input-url" value="" placeholder="" style="width: 150px">
 										<input id="input-height" value="594" style="width: 30px">
 										px&nbsp;&nbsp;
-										<input id="load-url" type="submit" value="Cargar" style="padding: 1px 8px;">
+										<input id="load-url" type="submit" value="" style="padding: 1px 8px;">
 									</form>
 								</div>
 								<br>
 								<form onsubmit="return false;">
-									Familiar: 
 									<select id="select-friend-pet" style="width:160px"></select>
-									<span style="display: none" id="check-friend-span"><input type="checkbox" id="check-friend-pet" class="chkVb">&nbsp;Adulto</span>
+									<span style="display: none" id="check-friend-span"><input type="checkbox" id="check-friend-pet" class="chkVb"></span>
 								</form>
 							</div>
 
 							<div class="bonus-container" style="display: none;">
-								<span style="text-align: center; display: block; margin-bottom: 10px;">POSICIONAMIENTO</span>
+								<span style="text-align: center; display: block; margin-bottom: 10px;"></span>
 								<form onsubmit="return false;">
-									Seleccione: 
 									<select id="position-player" style="max-width: 92px;"></select>
-									<input id="position-bajar" type="submit" value="Retrasar" style="padding: 1px 8px;">
-									<input id="position-subir" type="submit" value="Avanzar" style="padding: 1px 8px;">
+									<input id="position-bajar" type="submit" value="" style="padding: 1px 8px;">
+									<input id="position-subir" type="submit" value="" style="padding: 1px 8px;">
 								</form>
 							</div>
 
-							<h3>Cargar guardiana</h3>
+							<h3></h3>
 							<br>
 							<div class="bonus-container">
-								<div style="margin: 3px 8px; font-size: 13px; text-align: justify;"><u>Advertencia:</u> Al cargar una nueva guardiana perderá todos los cambios de la sesión actual.</div><br>
+								<div style="margin: 3px 8px; font-size: 13px; text-align: justify;"></div><br>
 								<form onsubmit="return false;" style="text-align: center;">
-									<input id="input-code" placeholder="Código..." value="" style="width: 195px">
-									<input id="load-code" type="submit" value="Generar" style="padding: 1px 8px;">
+									<input id="input-code" placeholder="" value="" style="width: 195px">
+									<input id="load-code" type="submit" value="" style="padding: 1px 8px;">
 								</form>
 							</div>
 
@@ -182,19 +180,7 @@
 					</div>
 					<div id="right-profile-tab">
 						<div id="profile" style="text-align: center;">
-							<span><b>INFORMACIÓN:</b><br><br>
-								1) Para guardar un render tu guardiana puedes hacerlo desde el popup de "Guardar" seleccionando la resolución que prefieras. Si estás desde un dispositivo móvil, aunque puedas visualizarlo es probable que no puedas guardarlo. <br><br>
-
-								2) Decora tu perfil con las opciones en el panel izquierdo: Puedes crear una escena bonita con dos familiares y un compañero. Si la imagen del compañero demora en cargarse es probable que no se centre bien. Si notas este inconveniente utiliza el botón para centrarlo.<br><br>
-
-								3) Utiliza el posicionamiento para avanzar o retrasar los elementos dentro del perfil.<br><br>
-
-								4) ¡No necesitas una guardiana! Puedes jugar con las opciones aunque no tengas una y, si no quieres el fondo default, podrás elegir uno en el vestidor.<br><br>
-
-								5) Tanto el compañero como los familiares solo son mera decoración para realizar capuras. Si compartes el link o el código de tu guardiana solo cargará ella en su posición default.<br><br>
-
-								6) Siempre puedes utilizar el "código" para volver a generar una misma guardiana. Recuerda que si tienes otra guardiana cargada, tanto ella como su "decoración" se perderá.
-								</span>
+							<span><b></b><br><br></span>
 						</div>
 					</div>
 					<div class="clearer"></div>
@@ -207,9 +193,9 @@
 			<div id="footer-in">
                 <ul id="footer-links">
                     <li>2021 | GardieMaker</li>
-                    <li><a href="https://gardiemaker.blogspot.com/p/reportar-un-problema.html" style="color: #fff;">Reportar un error</a></li>
+                    <li><a href="https://gardiemaker.blogspot.com/p/reportar-un-problema.html" style="color: #fff;"></a></li>
                   </ul>
-				<span id="footer-info">Se ha producido un error.</span>
+				<span id="footer-info"></span>
 			</div>
 		</div>
 

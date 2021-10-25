@@ -455,3 +455,46 @@ span.feat-title {
 .s-pending {
     background-image: url("../assets/img/icon/10-cross.png");
 }
+
+
+
+#buttons-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.button-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.button-container {
+    color: #a00;
+    background-color: #fff;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 10px 0;
+}
+
+.button-icon {
+    color: #a00;
+    background-color: #fff;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#guardian-config-container {
+    background-color: #fff;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 10px 0;
+    display: none;
+}
+
+.guardian-config-button {
+    margin: 10px;
+}

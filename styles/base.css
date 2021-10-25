@@ -112,8 +112,13 @@ html, body{
 #fb-icon {
     position: absolute;
     right: 70px;
-    top: 7px;
-    height: 25px;
+    top: 0px;
+    font-size: 24px;
+    color: #fff;
+}
+
+#fb-icon span {
+    color: #fff;
 }
 
 /* Novedades */

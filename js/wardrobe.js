@@ -18,7 +18,7 @@ $(document).ready(function () {
 	});
 
     var dir = "../";
-    if ((window.location.href).includes("127")) { dir = "../../"; }; // local
+    if ((window.location.href).includes("127") || (window.location.href).includes("192")) { dir = "../../"; }; // local
 
     const requestInfo = new XMLHttpRequest();requestInfo.open("GET", dir + "data/groupInfo.json");
     requestInfo.responseType = "json";requestInfo.send();requestInfo.onload = function() {
@@ -1131,19 +1131,19 @@ function obtenerListaPreview() {
             $(".draggable-preview-info").eq(e).append('<div class="draggable-move-buttons"></div>');
             if (e == 0 && arrayPreview.length != 1) {
                 // Boton bajar
-                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda bajar-prenda button" data-position="' + e +'"><span class="fa fa-chevron-down"></span></div>');
+                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda bajar-prenda button" data-position="' + e +'"><span class="fas fa-chevron-down"></span></div>');
 
             } else if (e == (arrayPreview.length - 1) && arrayPreview.length != 1) {
                 // Boton subir
-                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda subir-prenda button" data-position="' + e +'"><span class="fa fa-chevron-up"></span></div>');
+                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda subir-prenda button" data-position="' + e +'"><span class="fas fa-chevron-up"></span></div>');
 
             } else if (arrayPreview.length != 1) {
                 // Ambos botones
-                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda subir-prenda button" data-position="' + e +'"><span class="fa fa-chevron-up"></span></div>');
-                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda bajar-prenda button" data-position="' + e +'"><span class="fa fa-chevron-down"></span></div>');
+                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda subir-prenda button" data-position="' + e +'"><span class="fas fa-chevron-up"></span></div>');
+                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda bajar-prenda button" data-position="' + e +'"><span class="fas fa-chevron-down"></span></div>');
             };
 
-            $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda quitar-prenda button" data-position="' + e +'"><span class="fa fa-times"></span></div>');
+            $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda quitar-prenda button" data-position="' + e +'"><span class="fas fa-times"></span></div>');
         };
 
     } else {
@@ -1167,19 +1167,19 @@ function actualizaBotonesPreview() {
             $(".draggable-preview-info").eq(e).append('<div class="draggable-move-buttons"></div>');
             if (e == 0 && ($(".draggable-preview").length != 1)) {
                 // Boton bajar
-                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda bajar-prenda button" data-position="' + e +'"><span class="fa fa-chevron-down"></span></div>');
+                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda bajar-prenda button" data-position="' + e +'"><span class="fas fa-chevron-down"></span></div>');
 
             } else if ((e == ($(".draggable-preview").length - 1)) && ($(".draggable-preview").length != 1)) {
                 // Boton subir
-                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda subir-prenda button" data-position="' + e +'"><span class="fa fa-chevron-up"></span></div>');
+                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda subir-prenda button" data-position="' + e +'"><span class="fas fa-chevron-up"></span></div>');
 
             } else if ($(".draggable-preview").length != 1) {
                 // Ambos botones
-                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda subir-prenda button" data-position="' + e +'"><span class="fa fa-chevron-up"></span></div>');
-                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda bajar-prenda button" data-position="' + e +'"><span class="fa fa-chevron-down"></span></div>');
+                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda subir-prenda button" data-position="' + e +'"><span class="fas fa-chevron-up"></span></div>');
+                $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda bajar-prenda button" data-position="' + e +'"><span class="fas fa-chevron-down"></span></div>');
             };
 
-            $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda quitar-prenda button" data-position="' + e +'"><span class="fa fa-times"></span></div>');
+            $(".draggable-move-buttons").eq(e).append('<div class="mueve-prenda quitar-prenda button" data-position="' + e +'"><span class="fas fa-times"></span></div>');
 
         };
     } else {

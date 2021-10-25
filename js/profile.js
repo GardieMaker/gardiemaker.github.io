@@ -17,7 +17,7 @@ $(document).ready(function () {
     });
 
     var dir = "../";
-    if ((window.location.href).includes("127")) { dir = "../../"; }; // local
+    if ((window.location.href).includes("127") || (window.location.href).includes("192")) { dir = "../../"; }; // local
 
     const requestInfo = new XMLHttpRequest(); requestInfo.open("GET", dir + "data/groupInfo.json");
     requestInfo.responseType = "json"; requestInfo.send(); requestInfo.onload = function() {

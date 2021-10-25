@@ -111,7 +111,7 @@ canvas {
 }
 
 #edit-clothes {
-	padding: 6px 3px 3px 6px;
+	padding: 4px 6px;
 	bottom: 4px;
 	position: absolute;
 	font-size: 18px;
@@ -580,4 +580,31 @@ li.marketplace-search-item, li.marketplace-sales-item, li.marketplace-auctions-i
 .filter-body-markup {
 	color: #4a4aee;
 	font-style: italic;
+}
+
+#config-buttons-container {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: -38px;
+    width: 36px;
+
+    top: 20px;
+	right: -30px;
+	width: 32px;
+}
+
+#config-buttons-container .button {
+    width: 12px;
+    margin: 2px;
+    border-radius: 0;
+    text-align: center;
+
+    background-color: #ea3838;
+	border: 0;
+}
+
+#config-buttons-container .button:hover {
+    background-color: #fff;
+    color: #ea3838;
 }

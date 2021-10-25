@@ -9,7 +9,7 @@ $(document).ready(function iniciaTodo() {
     });
 
     var dir = "../";
-    if ((window.location.href).includes("127")) { dir = "../../"; }; // local
+    if ((window.location.href).includes("127") || (window.location.href).includes("192")) { dir = "../../"; }; // local
 
     const gi = new XMLHttpRequest(); gi.open("GET", dir + "data/groupInfo.json");gi.responseType = "json"; gi.send();
     gi.onload = function() { groupInfo = gi.response;

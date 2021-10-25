@@ -20,7 +20,7 @@ $(document).ready(function () {
     });
 
     var dir = "../";
-    if ((window.location.href).includes("127")) { dir = "../../"; }; // local
+    if ((window.location.href).includes("127") || (window.location.href).includes("192")) { dir = "../../"; }; // local
 
     const gi = new XMLHttpRequest(); gi.open("GET", dir + "data/groupInfo.json");gi.responseType = "json"; gi.send();
     gi.onload = function() { groupInfo = gi.response;
@@ -453,6 +453,34 @@ $(function() {
         }
     });
 
+    $("body").on("click", ".button-container.config", function () {
+        if ($("#guardian-config-container").length == 0) {
+            var g_editar = "Solicitar cambios";
+            var g_borrar = "Solicitar eliminación";
+            var g_cancel = "Cancelar";
+
+            if (!(window.location.href).includes("/es/")) {
+                g_editar = guardian_config_edit;
+                g_borrar = guardian_config_delete;
+                g_cancel = guardian_config_cancel;
+            };
+
+            var editID = $("#entry-info-container").attr("entry-dataid");
+            var deleteID = "https://docs.google.com/forms/d/e/1FAIpQLSdKbNorlvZ4NTXn0v8hqG_nkePF_0-uMkD6Lp_0HdEe435DlA/viewform?usp=pp_url&entry.805338632=" + editID;
+            editID = "https://docs.google.com/forms/d/e/1FAIpQLSeZqI2pT0W4I5_gJfNm8i85h3uZ_qDOfeRuQCLISsyAK-6__Q/viewform?usp=pp_url&entry.805338632=" + editID;
+
+
+            $("#entry-info-container").append('<div id="guardian-config-container"></div>');
+            $("#guardian-config-container").append('<div id="config-edit" class="guardian-config-button"><a href="' + editID + '" target="_blank"><div class="button">' + g_editar + '</div></a></div>');
+            $("#guardian-config-container").append('<div id="config-delete" class="guardian-config-button"><a href="' + deleteID + '" target="_blank"><div class="button">' + g_borrar + '</div></a></div>');
+            $("#guardian-config-container").append('<div id="config-cancel" class="guardian-config-button"><div class="button">' + g_cancel + '</div></div>');
+        };
+        $("#guardian-config-container").fadeIn(200);
+    });
+
+    $("body").on("click", "#config-cancel", function() {
+        $("#guardian-config-container").fadeOut(200);
+    });
 });
 
 function buscaFondo(code) {
@@ -507,7 +535,6 @@ function abrirPopup(elmnt) {
         } else {
             html += '<p>' + guardian_info_open + ' <a href="profile?s=' + entry[0].entryInfo.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">' + guardian_info_open_wardrobe + '</a></p></div>';
         }
-        
 
     } else {
         entry = entrys.filter(function(v) {return v.id == elmnt});
@@ -607,10 +634,15 @@ function abrirPopup(elmnt) {
     }
 
     var cosplayReport = "Notificar cosplay";
+    var configGuardian = "Opciones";
     if (!(window.location.href).includes("/es/")) {
         cosplayReport = cosplay_report;
+        configGuardian = config_guardian;
     }
-    
+    if (entry[0].featured != true) {
+        // Edición de aportes
+        //$("#entry-info-container").append('<div id="buttons-container"><div class="button-container config"><div title="' + configGuardian + '" class="button-icon"><span class="fas fa-bars"></span></div></div></div>');
+    };
     if (entry[0].type != "cosplay") {$("#entry-info-container").append('<span class="cosplay-report"><a href="' + enlace + '" target="_blank">' + cosplayReport + '</a></span>')};
     $("#popupBG").fadeIn(300);
 }

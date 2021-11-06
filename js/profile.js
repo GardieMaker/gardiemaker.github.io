@@ -71,24 +71,40 @@ function getCustom() {
 
         } else if (str[0].includes("?s=")) {
             // Carga normal
+            var gotoWardrobe = (window.location.href).replace("profile", "wardrobe");
+            $("#edit-code").attr("href", gotoWardrobe);
 
             str = str[0]; str = str.slice(3);
             customArray = str.split("i");
             
             if (customArray.length == 1) {
                 document.getElementById("player-display-draggable").style.display = "none";
-                $("#player-actions-tab li").eq(1).hide();
+                $("#reload").addClass("disabled");
+                $("#submit-guardian").addClass("disabled");
+                $("#get-code").addClass("disabled");
+                $("#get-portrait").addClass("disabled");
             }
             if (checkArray()) cargarCanvas();
             $("#footer-info").html(customArray.length + " items en uso.");
-            document.getElementById("edit-code").setAttribute("href","wardrobe?s=" + str);
+
+            if (customArray.length > 1) {
+                var submitLink = (window.location.search).replace("?s=", "");
+                submitLink = "https://docs.google.com/forms/d/e/1FAIpQLSfycgchQuYlHzH74toiYmGlWR-x5jP5B680ilWMHs7w7qSJrA/viewform?usp=pp_url&entry.953998871=" + submitLink;
+                $("#submit-guardian-link").attr("href", submitLink);
+            }
         };
 
     } else {
 
+        var gotoWardrobe = (window.location.href).replace("profile", "wardrobe");
+        $("#edit-code").attr("href", gotoWardrobe);
+
         $("#footer-info").html("Ningún item en uso.");
         document.getElementById("player-display-draggable").style.display = "none";
-        $("#player-actions-tab li").eq(1).hide();
+        $("#reload").addClass("disabled");
+        $("#submit-guardian").addClass("disabled");
+        $("#get-code").addClass("disabled");
+        $("#get-portrait").addClass("disabled");
     };
 
     dragGardienne('player-display-draggable');
@@ -137,7 +153,11 @@ function checkArray() {
                 } else { alert("El código introducido no es correcto o está corrupto.") };
 
                 document.getElementById("player-display-draggable").style.display = "none";
-                $("#player-actions-tab li").eq(1).hide();
+                $("#reload").addClass("disabled");
+                $("#submit-guardian").addClass("disabled");
+                $("#get-code").addClass("disabled");
+                $("#get-portrait").addClass("disabled");
+
                 return false;
 
             } else {
@@ -687,13 +707,12 @@ $(function() {
         if (checkArray()) cargarCanvas();
     });
 
-    $("#border-rad").click(function() {
-        var esquina = document.getElementById("player-display");
-
-        if (esquina.getAttribute("style") == "border-radius: 0px") {
-            esquina.setAttribute("style","border-radius: 10px");
-        } else {
-            esquina.setAttribute("style","border-radius: 0px");
+    $("#select-corner-style").change(function() {
+        var corner = $(this).val();
+        if (corner == "rounded") {
+            $("#player-display").css("border-radius", "10px");
+        } else if (corner == "straight") {
+            $("#player-display").css("border-radius", 0);
         };
     });
 

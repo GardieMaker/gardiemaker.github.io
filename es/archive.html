@@ -100,18 +100,48 @@
 		
 							</ul>
 
-							<div id="ranking" class="menu-section" title="No se tienen en cuenta los cosplays">
-								<h2>Más activos</h2>
-								<p id="top1"></p>
-								<p id="top2"></p>
-								<p id="top3"></p>
-							</div>
+	                    	<div id="form-container"><form onsubmit="return false">
+	                    		<input id="filter-search" placeholder="Buscar..." value="" >
+	                    	</form></div>
+	                    	<div id="account-menu" class="menu-section">
+	                    		<h2>Mi cuenta</h2>
+	                    		<div class="account-buttons-container">
+		                    		<a href="https://docs.google.com/forms/d/10QZJOIhp5m1suz3GUI5OZqAWBToBqNhaunBHKRkkTKg/viewform" target="_blank"><div class="button">Cambiar alias</div></a>
+		                    		<a href="https://docs.google.com/forms/d/1erz_lqXDJzMVbMEEru31SraZcDuWOM2J5qIHrkHFp1A/viewform" target="_blank"><div class="button">Cambiar email</div></a>
+	                    		</div>
+	                    	</div>
 						</div>
 
                         <div id="archive-thumbnail-content"></div>
                         
                     </div>
                     <div class="clearer"></div>
+                </div>
+                <div class="clearer"></div>
+                <div class="page-main-container ranking">
+                	<h1>Ranking de aportes<span class="title-end"></span></h1>
+                	<div id="ranking-container"> 
+	                	<div id="ranking-total" class="menu-section">
+							<h2>Totales</h2>
+							<p class="rt top1"></p>
+							<p class="rt top2"></p>
+							<p class="rt top3"></p>
+						</div>
+
+						<div id="ranking-guardian" class="menu-section">
+							<h2>Originales</h2>
+							<p class="rg top1"></p>
+							<p class="rg top2"></p>
+							<p class="rg top3"></p>
+						</div>
+
+						<div id="ranking-cosplay" class="menu-section">
+							<h2>Cosplays</h2>
+							<p class="rc top1"></p>
+							<p class="rc top2"></p>
+							<p class="rc top3"></p>
+						</div>
+					</div>
                 </div>
                 <div class="clearer"></div>
 			</div>

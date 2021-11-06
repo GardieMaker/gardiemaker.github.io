@@ -112,7 +112,7 @@
 							<div id="reload" class="button">Volver a cargar</div>
 						</li>
 						<li>
-							<div id="border-rad" class="button">Cambiar esquinas</div>
+							<a id="submit-guardian-link" target="_blank"><div id="submit-guardian" class="button">Enviar guardiana</div></a>
 						</li>
 						<li>
 							<div id="get-code" class="button">Copiar código</div>
@@ -166,6 +166,16 @@
 									<select id="position-player" style="max-width: 92px;"></select>
 									<input id="position-bajar" type="submit" value="Retrasar" style="padding: 1px 8px;">
 									<input id="position-subir" type="submit" value="Avanzar" style="padding: 1px 8px;">
+								</form>
+							</div>
+
+							<div class="bonus-container">
+								<form onsubmit="return false">
+									Cambiar esquinas: 
+									<select id="select-corner-style" style="max-width:140px; min-width:100px;">
+										<option value="rounded">Predeterminadas</option>
+										<option value="straight">Rectas</option>
+									</select>
 								</form>
 							</div>
 

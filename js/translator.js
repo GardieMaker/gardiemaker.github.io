@@ -84,6 +84,9 @@ $(document).ready( function () {
 		$(".marketplace-itemDetail-opt").eq(1).text(canvas_button_front);
 		//$(".marketplace-itemDetail-set").eq(0).text(canvas_button_set);
 
+		$("#config-load-base").attr("title", config_load_base);
+		$("#config-clean-all").attr("title", config_clean_all);
+
 		$("#link-profile .button").text(button_generate);
 		$("#footer-info").text(footer_loading);
 
@@ -108,7 +111,7 @@ $(document).ready( function () {
 
 		$("#edit-code").text(profile_button_edit);
 		$("#reload").text(profile_button_reload);
-		$("#border-rad").text(profile_button_corners);
+		$("#submit-guardian").text(profile_button_submit);
 		$("#get-code").text(profile_button_get_code);
 		$("#get-portrait").text(profile_button_save);
 
@@ -130,7 +133,11 @@ $(document).ready( function () {
 		$("#position-bajar").val(panel_left_position_button_back);
 		$("#position-subir").val(panel_left_position_button_front);
 
-		$(".bonus-container").eq(3).find("div").html(panel_left_load_info);
+		$(".bonus-container").eq(3).find("form").prepend(profile_corners_label + ": ");
+		$("#select-corner-style").find("option").eq(0).text(profile_corners_default);
+		$("#select-corner-style").find("option").eq(1).text(profile_corners_straight);
+
+		$(".bonus-container").eq(4).find("div").html(panel_left_load_info);
 		$("#input-code").attr("placeholder", load_input);
 		$("#load-code").val(load_button);
 
@@ -144,16 +151,24 @@ $(document).ready( function () {
 	// archive translations
 	if ((window.location.href).includes("/archive")) {
 		$("title").html(archive_page_title);
-		$(".page-main-container h1").prepend(archive_content_title);
+		$(".page-main-container h1").eq(0).prepend(archive_content_title);
 		$("#new-post").text(submit_button);
 
 		$("#menu-featured li").text(menu_left_featured);
 		$("#menu-all li").text(menu_left_all);
 		$("#menu-guardians li").text(menu_left_guardians);
 		$("#menu-cosplay li").text(menu_left_cosplay);
-		$("#ranking h2").text(ranking_title);
-		$("#ranking").attr("title", ranking_info);
 
+		$(".page-main-container.ranking h1").prepend(ranking_section_title);
+		$("#ranking-total h2").text(ranking_total_title);
+		$("#ranking-guardian h2").text(ranking_guardian_title);
+		$("#ranking-cosplay h2").text(ranking_cosplay_title);
+	
+		$("#filter-search").attr("placeholder", archive_searchbar);
+
+		$("#account-menu h2").text(account_menu_title);
+		$(".account-buttons-container .button").eq(0).text(account_edit_nickname);
+		$(".account-buttons-container .button").eq(1).text(account_edit_email);	
 	}
 
 	// support translations

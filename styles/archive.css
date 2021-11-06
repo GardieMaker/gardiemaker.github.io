@@ -19,7 +19,7 @@ a, a:active, a:hover, a:visited {
 }
 
 .page-main-container {
-    min-height: 410px !important;
+    min-height: 470px !important;
 }
 
 #container .page-main-container h1 {
@@ -58,8 +58,14 @@ a, a:active, a:hover, a:visited {
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     padding: 14px 12px 12px;
-    margin-top: 15px;
     position: relative;
+
+    display: inline-block;
+    text-align: left;
+}
+
+#ranking-container .menu-section {
+    width: 30%;
 }
 
 .menu-section h2 {
@@ -79,19 +85,19 @@ a, a:active, a:hover, a:visited {
     border-bottom: 1px dashed #888;
 }
 
-#top1 {
+.top1 {
     background-image: url(../assets/img/icon/first-place.png);
 }
 
-#top2 {
+.top2 {
     background-image: url(../assets/img/icon/second-place.png);
 }
 
-#top3 {
+.top3 {
     background-image: url(../assets/img/icon/third-place.png);
 }
 
-#top1, #top2, #top3 {
+.top1, .top2, .top3 {
     background-position: -4px 0;
     background-size: 23px;
     background-repeat: no-repeat;
@@ -497,4 +503,69 @@ span.feat-title {
 
 .guardian-config-button {
     margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+#entry-info-quote .edited {
+    font-size: 14px;
+    color: #888;
+    margin: 0 6px;
+}
+
+.account-buttons-container {
+    text-align: center;
+}
+
+.account-buttons-container .button {
+    margin: 5px;
+}
+
+
+#form-container {
+    width: 176px;
+    position: relative;
+    padding: 20px;
+}
+
+#form-container form {
+    text-align: center;
+}
+
+#filter-search {
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
+    min-width: 150px;
+}
+
+#ranking-container {
+    top: 80px;
+    position: absolute;
+    width: 970px;
+    text-align: center;
+}
+
+.page-main-container.ranking {
+    margin-top: 20px;
+    min-height: 200px !important;
+}
+
+.menu-section + .menu-section {
+    margin-left: 5px;
+}
+
+.null-search {
+    text-align: center;
+    display: block;
+    border: 1px solid #34386f;
+    padding: 10px;
+    border-radius: 10px;
 }

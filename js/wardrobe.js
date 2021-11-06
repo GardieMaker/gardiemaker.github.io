@@ -31,7 +31,8 @@ $(document).ready(function () {
             // Comprobar si URL valida + comprobar si hay que cargar gardi
 
             if (checkURL()) {
-                $("#link-profile").attr("href", "profile" + window.location.search);
+                var gotoProfile = (window.location.href).replace("wardrobe", "profile");
+                $("#link-profile").attr("href", gotoProfile);
                 if (window.location.search != "") {
                     cargarLista(); cargarGuardiana();
                 } else {cargarLista()};
@@ -113,7 +114,6 @@ function reloadNewCode(code = "") {
         window.location.search = "?s=" + code;
     };
 };
-
 
 function cargarGuardiana(p = 0, edit = false) {
     var img, img2; 
@@ -629,6 +629,7 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
     // TIPO = remove, replace, set
     $("#marketplace-itemDetail").show();
     $("#edit-clothes").hide();
+    $("#config-buttons-container").hide();
     var img, img2;
 
     var imageName = groupList.filter(v => {return v.itemId == prenda});
@@ -873,8 +874,8 @@ function buttonsIMG() {
     link = link.replace("web_full", "web_hd");
     $("#img-l").attr("href", link);
     $("#button-img-link-container").css("display", "block");
-
 }
+
 // Funciones de edición de guardiana (mover, fijar, reemplazar, quitar)
 function moverPrenda(place) {
     // Identificar elemento y obtenerlo
@@ -1028,8 +1029,10 @@ function fijarPrenda() {
         if ($(".marketplace-search-item.selected").length) {$(".marketplace-search-item").removeClass("selected")};
         $("#marketplace-itemDetail").hide();
         $("#edit-clothes").show();
+        $("#config-buttons-container").show();
         $("#button-img-link-container").css("display", "none");
-        $("#link-profile").attr("href", "profile" + window.location.search);
+        var gotoProfile = (window.location.href).replace("wardrobe", "profile");
+        $("#link-profile").attr("href", gotoProfile);
     };
 };
 
@@ -1066,7 +1069,6 @@ function changeLang() {
             };
         };
     };
-
 };
 
 function obtenerListaPreview() {
@@ -1154,7 +1156,6 @@ function obtenerListaPreview() {
         $("#edit-menu-list").append('<span style="text-align: center;width: calc(100% - 20px);display: inline-block;margin: 20px 10px;color: #d5bbaf;"><i>' + nullMsg + '</i></span>');
         $("#editOK").remove();
     };
-
 };
 
 function actualizaBotonesPreview() {
@@ -1293,6 +1294,7 @@ $(function() {
             } else {
                 $("#marketplace-itemDetail").hide();
                 $("#edit-clothes").show();
+                $("#config-buttons-container").show();
                 $("#button-img-link-container").css("display", "none");
                 limpiarTemporales();
                 
@@ -1400,9 +1402,42 @@ $(function() {
         hayFondo = false;
 
         if (cadena != "wardrobe") {limpiarTemporales(); cargarGuardiana()};
-        $("#link-profile").attr("href", "profile" + window.location.search);
+
+        var gotoProfile = (window.location.href).replace("wardrobe", "profile");
+        $("#link-profile").attr("href", gotoProfile);
+    });
+
+
+    $("#config-load-base").click(function() {
+        $("canvas").remove();
+        var toDelete = window.location.search;
+        var loadBase = "?s=691i692i5161i323i693";
+        if (toDelete == loadBase) {
+            loadBase = "?s=691i692i5161i323i726";
+        };
+
+        history.replaceState(null, "", loadBase);
+        cargarGuardiana();
+
+        var changelink = (window.location.href).replace("wardrobe", "profile");
+        $("#link-profile").attr("href", changelink);
+    });
+
+    $("#config-clean-all").click(function() {
+        $("canvas").remove();
+        $("#marketplace-avatar-background-preview").removeAttr("style");
+        
+        var cleanPage = window.location.href;
+        cleanPage = cleanPage.replace(window.location.search, "");
+
+        history.replaceState(null, "", cleanPage);
+
+        var changelink = (window.location.href).replace("wardrobe", "profile");
+        $("#link-profile").attr("href", changelink);
     });
 });
+
+
 
 
 // Utilidades

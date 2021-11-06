@@ -85,6 +85,9 @@
 	var error_alert_set = "Este elemento não pode ser adicionado.";
 	var error_alert_load = "O código não é válido.\nO vestiário irá reiniciar.";
 
+	var config_load_base = "Carregar base de guardiã";
+	var config_clean_all = "Deletar todos os itens";
+
 	var button_generate = "Gerar Perfil";
 	var footer_loading = "Carregando...";
 
@@ -142,7 +145,7 @@
 	var profile_content_title = "Meu Personagem";
 	var profile_button_edit = "Editar";
 	var profile_button_reload = "Recarregar";
-	var profile_button_corners = "Mudar cantos";
+	var profile_button_submit = "Enviar guardiã";
 	var profile_button_get_code = "Copiar código";
 	var profile_button_save = "Salvar";
 	var panel_left_title_one = "Opções";
@@ -163,6 +166,10 @@
 	var panel_left_position_gardienne = "Guardiã";
 	var panel_left_position_friend = "Companheiro";
 	var panel_left_position_pet = "Mascote";
+
+	var profile_corners_label = "Mudar cantos";
+	var profile_corners_default = "Arredondado";
+	var profile_corners_straight = "Reto";
 
 	var panel_left_position_button_back = "Para trás";
 	var panel_left_position_button_front = "Para frente";
@@ -203,8 +210,11 @@
 	var menu_left_all = "Todas as contribuições";
 	var menu_left_guardians = "Guardiãs e OCs";
 	var menu_left_cosplay = "Cosplays / Gijinka";
-	var ranking_title = "Mais ativos";
-	var ranking_info = "Cosplays não são considerados";
+
+	var ranking_section_title = "Ranking de contribuições";
+	var ranking_total_title = "Total";
+	var ranking_guardian_title = "Originais";
+	var ranking_cosplay_title = "Cosplays";
 
 	// dynamic archive
 	var menu_left_filter_default = "Filtrar por usuário...";
@@ -226,6 +236,19 @@
 	var featured_guardian_info_activity = "Por atividade: ";
 	var cosplay_report = "Notificar cosplay";
 	var filter_user_info = "Mostrando todas as contribuições de $NICKNAME";
+
+	var archive_searchbar = "Buscar...";
+	var search_preview_null = "Nenhuma contribuição corresponde à busca";
+
+	var account_menu_title = "Minha conta";
+	var account_edit_nickname = "Editar apelido";
+	var account_edit_email = "Editar email";
+
+	var config_guardian = "Opções";
+	var guardian_config_edit = "Solicitar mudanças";
+	var guardian_config_delete = "Solicitar exclusão";
+	var guardian_info_edited = "Última edição";
+	var guardian_config_cancel = "Cancelar";
 
 
 // support variables
@@ -282,7 +305,7 @@
 	    {'question':'Sobre a Guardiã em Destaque.',
 	    'answer':'A Guardiã em Destaque é a única atividade que sempre estará ativa e, como não há feedback suficiente para realizar votações, a guardiã será escolhida por sorteio. Não haverá prêmios em maanas ou MO, ao menos que seja avisado. A participação é completamente voluntária e você pode contribuir com quantas guardiãs você quiser. Cada guardiã permanecerá na página inicial durante uma semana e mudará todas as quartas feiras.'},
 	    {'question':'Como eu participo?',
-	    'answer':'Para participar tanto no Catálogo das Guardiãs quanto nos sorteios da Guardiã em Destaque, você só tem que preencher <a href="https://forms.gle/VUFf7V88hFkJyz7g8" target="_blank">ESSE FORMULÁRIO</a>.<br><br><h4>Sobre os campos do formulário:</h4><p>A partir de agora, será solicitado um e-mail REAL e VÁLIDO, a qual você tenha acesso. Isso não será público e será usado como uma medida de segurança.</p><ul><li><u>Alias (apelido):</u> Esse é seu nome visível, é como se fosse seu usuário. Você pode escolher seu nome de usuário no Eldarya ou você mesma pode criar um, se quiser manter sua privacidade. Contribuições anônimas não serão aceitas.</li><li><u>Código:</u> Aqui você só tem que colar o código da sua guardiã para gerá-la. Você pode obter o código indo para o perfil, clicando no botão "Copiar código", ou até mesmo na barra de endereço. O código não deve apresentar erros, mas se você copiar e colar, você não precisa se preocupar.</li><li><u>Nome da personagem:</u> Essa parte é opcional, se a sua guardiã tiver algum nome, você pode colocar nesse campo.</li></ul><br>Todas as novas guardiãs serão "arquivadas" em um novo catálogo, que você pode acessar a partir do menu do topo.<br><br>Para qualquer dúvida ou problemas que você tenha, você sempre pode me consultar <a href="https://znfaq.tumblr.com/" target="_blank">AQUI</a> ou mandando um e-mail para <a href="mailto:gardiemaker@gmail.com">gardiemaker@gmail.com</a> (espanhol ou inglês de preferência).'},
+	    'answer':'Para participar tanto no Catálogo das Guardiãs quanto nos sorteios da Guardiã em Destaque, você só tem que preencher <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycgchQuYlHzH74toiYmGlWR-x5jP5B680ilWMHs7w7qSJrA/viewform" target="_blank">ESSE FORMULÁRIO</a>.<br><br><h4>Sobre os campos do formulário:</h4><p>A partir de agora, será solicitado um e-mail REAL e VÁLIDO, a qual você tenha acesso. Isso não será público e será usado como uma medida de segurança.</p><ul><li><u>Alias (apelido):</u> Esse é seu nome visível, é como se fosse seu usuário. Você pode escolher seu nome de usuário no Eldarya ou você mesma pode criar um, se quiser manter sua privacidade. Contribuições anônimas não serão aceitas.</li><li><u>Código:</u> Aqui você só tem que colar o código da sua guardiã para gerá-la. Você pode obter o código indo para o perfil, clicando no botão "Copiar código", ou até mesmo na barra de endereço. O código não deve apresentar erros, mas se você copiar e colar, você não precisa se preocupar.</li><li><u>Nome da personagem:</u> Essa parte é opcional, se a sua guardiã tiver algum nome, você pode colocar nesse campo.</li></ul><br>Todas as novas guardiãs serão "arquivadas" em um novo catálogo, que você pode acessar a partir do menu do topo.<br><br>Para qualquer dúvida ou problemas que você tenha, você sempre pode me consultar <a href="https://znfaq.tumblr.com/" target="_blank">AQUI</a> ou mandando um e-mail para <a href="mailto:gardiemaker@gmail.com">gardiemaker@gmail.com</a> (espanhol ou inglês de preferência).'},
 	    {'question':'Tudo sobre as contas.',
 	    'answer':'<b>Como consigo uma conta?</b><br>Sua conta é criada a partir do momento que você fazer uma contribuição, enviando a guardiã que você criou.<br><br><b>O que são as contas verificadas? / Como verifico minha conta?</b><br>Uma conta pode ser verificada por dois motivos: 1- Ter um email associado ou 2- ter contribuído mais de uma vez.Todas as novas contribuições são realizadas com um novo formulário serão associadas com um email e, por tanto, essas contas são verificadas automaticamente.<br><br>Se você já tem guardiãs no catálogo, basta preencher o formulário normalmente (com o mesmo apelido) e o novo e-mail que você digitar ficará vinculado à sua "conta".<br><br><b>Como eu mudo meu apelido / email?</b><br>Se você não gosta mais do seu apelido ou simplesmente quer mudar, você pode preencher <a href="https://forms.gle/YnFtmvsZkxC9XJEz8" target="_blank">ESSE FORMULÁRIO</a> e eu irei realizar a mudança assim que possível. Depois de preencher e enviar, você já pode usar seu novo apelido para realizar novas contribuições. Para mudar o email, você pode preencher <a href="https://forms.gle/WejCW4A4UoWEtXdu6" target="_blank">ESSE FORMULÁRIO.</a><br><br><u>Nota da tradutora:</u> Você tem que colocar seu apelido no campo que diz "alias".'},
 	    {'question':'Eu não vejo minha contribuição no catálogo.',

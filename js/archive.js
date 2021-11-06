@@ -55,15 +55,20 @@ function cargarSelect(user) {
     if (!(window.location.href).includes("/es/")) {
         texto = texto.replace("Filtrar por usuario...", menu_left_filter_default);
     };
+    $("#menu-user").append(texto);
 
     for (i = 0; i < user.length; i++) {
         var p = entrys.filter(v => {return v.alias == user[i].alias});
         p = p.length;
-        texto += "<option value='" + user[i].alias + "'>" + user[i].alias + " (" + p + ")</option>";
+        $("#menu-user").append("<option value='" + user[i].alias + "'>" + user[i].alias + " (" + p + ")</option>");
     }
-    
-    $("#menu-user").html(texto);
-}
+
+    var usuario = window.location.search;
+    if ((window.location.search).includes("?u=")) {
+        usuario = usuario.slice(3);
+        $("#menu-user").val(unescape(decodeURIComponent(usuario)));
+    };
+};
 
 function normalizeURL() {
     var str = window.location.search;
@@ -96,40 +101,66 @@ function normalizeURL() {
 
 function cargarRanking() {
     var top1 = ["", 0], top2 = ["", 0], top3 = ["", 0];
+    var ranks = 3; // cantidad de rankings
+    /* 
+        rank0 = total
+        rank1 = original
+        rank2 = cosplay
+    */
 
-    for (a = 0; a < users.length; a++) {
-        if (users[a].alias != "Zunay") {
-            var p = entrys.filter(v => {return v.alias == users[a].alias});
-            p = p.filter(v => {return v.type != "cosplay"});
-            p = p.length;
-    
-            if (top1[1] < p) {
-                top3[0] = top2[0];
-                top3[1] = top2[1];
+    for (r = 0; r < ranks; r++) {
         
-                top2[0] = top1[0];
-                top2[1] = top1[1];
+        for (a = 0; a < users.length; a++) {
+            if (users[a].alias != "Zunay") {
+                var p = entrys.filter(v => {return v.alias == users[a].alias});
+                
+                if (r == 1) { p = p.filter(v => {return v.type == "guardian"});
+                } else if (r == 2) { p = p.filter(v => {return v.type == "cosplay"}); };
+                
+                p = p.length;
         
-                top1[0] = users[a].alias;
-                top1[1] = p;
-    
-            } else if (top2[1] < p) {
-                top3[0] = top2[0];
-                top3[1] = top2[1];
+                if (top1[1] < p) {
+                    top3[0] = top2[0];
+                    top3[1] = top2[1];
+            
+                    top2[0] = top1[0];
+                    top2[1] = top1[1];
+            
+                    top1[0] = users[a].alias;
+                    top1[1] = p;
         
-                top2[0] = users[a].alias;
-                top2[1] = p;
-    
-            } else if (top3[1] < p) {
-                top3[0] = users[a].alias;
-                top3[1] = p;
+                } else if (top2[1] < p) {
+                    top3[0] = top2[0];
+                    top3[1] = top2[1];
+            
+                    top2[0] = users[a].alias;
+                    top2[1] = p;
+        
+                } else if (top3[1] < p) {
+                    top3[0] = users[a].alias;
+                    top3[1] = p;
+                };
             };
         };
-    };
 
-    $("#top1").html('<a href="?u=' + top1[0] + '">' + top1[0] + '</a><span class="top-number">' + top1[1] + '</span>');
-    $("#top2").html('<a href="?u=' + top2[0] + '">' + top2[0] + '</a><span class="top-number">' + top2[1] + '</span>');
-    $("#top3").html('<a href="?u=' + top3[0] + '">' + top3[0] + '</a><span class="top-number">' + top3[1] + '</span>');
+        if (r == 0) {
+            $(".rt.top1").html('<a href="?u=' + top1[0] + '">' + top1[0] + '</a><span class="top-number">' + top1[1] + '</span>');
+            $(".rt.top2").html('<a href="?u=' + top2[0] + '">' + top2[0] + '</a><span class="top-number">' + top2[1] + '</span>');
+            $(".rt.top3").html('<a href="?u=' + top3[0] + '">' + top3[0] + '</a><span class="top-number">' + top3[1] + '</span>');
+
+        } else if (r == 1) {
+            $(".rg.top1").html('<a href="?u=' + top1[0] + '">' + top1[0] + '</a><span class="top-number">' + top1[1] + '</span>');
+            $(".rg.top2").html('<a href="?u=' + top2[0] + '">' + top2[0] + '</a><span class="top-number">' + top2[1] + '</span>');
+            $(".rg.top3").html('<a href="?u=' + top3[0] + '">' + top3[0] + '</a><span class="top-number">' + top3[1] + '</span>');
+
+        } else if (r == 2) {
+            $(".rc.top1").html('<a href="?u=' + top1[0] + '">' + top1[0] + '</a><span class="top-number">' + top1[1] + '</span>');
+            $(".rc.top2").html('<a href="?u=' + top2[0] + '">' + top2[0] + '</a><span class="top-number">' + top2[1] + '</span>');
+            $(".rc.top3").html('<a href="?u=' + top3[0] + '">' + top3[0] + '</a><span class="top-number">' + top3[1] + '</span>');
+        };
+
+        top1 = ["", 0], top2 = ["", 0], top3 = ["", 0];
+    };
 
 };
 
@@ -153,62 +184,109 @@ function selectMenu(cat, val) {
         } else { $("#menu-user").val(menu_left_filter_default); };
         if (cat == "e") document.querySelector("#menu-all > li").setAttribute("class", "on");
     };
+
+    $("#filter-search").val("");
 };
 
 // Carga de entradas
-function cargarListas(pag) {
+function cargarListas(pag, busca = null) {
 
-    var dataurl = window.location.search;
-    var uCAT = dataurl.slice(1,2);
-    var uVAL = dataurl.slice(3);
-    uVAL = unescape(uVAL);
-    uVALP = "";
+    if (busca == null) {      
+        var dataurl = window.location.search;
+        var uCAT = dataurl.slice(1,2);
+        var uVAL = dataurl.slice(3);
+        uVAL = unescape(decodeURIComponent(uVAL));
+        uVALP = "";
 
-    // Hay POPUP ?
-    var popo = [];
-    if (uCAT == "e") {
-        if (uVAL[0] != "s") {
-            popo = entrys.filter(function(v){return v.id == uVAL});
-        } else {
-            popo = feat.filter(function(v){return v.entry == uVAL});
-        };
-        
-        history.pushState(null, "", "?p=all");
-        uVALP = uVAL; uCAT = "p"; uVAL = "all";
-    };
-
-    // Cargar todas las entradas
-    var entry = [];
-
-    switch (uCAT) {
-        case "u":entry = entrys.filter(function(v){return v.alias == uVAL});break;
-        case "v":/*Pendiente*/break;
-        case "p":
-            if (uVAL == "featured") {
-                uVAL = toBoolean(uVAL);
-                //entry = entrys.filter(function(v){return v.featured === uVAL});
-                entry = feat; // Cargar post desde featuredDB
+        // Hay POPUP ?
+        var popo = [];
+        if (uCAT == "e") {
+            if (uVAL[0] != "s") {
+                popo = entrys.filter(function(v){return v.id == uVAL});
             } else {
-                if (uVAL == "guardians") {
-                    entry = entrys.filter(function(v){return v.type != "cosplay"});
-                } else if (uVAL == "cosplay") {
-                    entry = entrys.filter(function(v){return v.type == "cosplay"});
-                } else {
-                    for (i = 0; i < entrys.length; i ++) {
-                        entry.push(entrys[i]);
-                    };
-                };           
+                popo = feat.filter(function(v){return v.entry == uVAL});
             };
-            break;
+            
+            history.pushState(null, "", "?p=all");
+            uVALP = uVAL; uCAT = "p"; uVAL = "all";
+        };
+
+        // Cargar todas las entradas
+        var entry = [];
+
+        switch (uCAT) {
+            case "u":entry = entrys.filter(function(v){return v.alias == uVAL});break;
+            case "v":/*Pendiente*/break;
+            case "p":
+                if (uVAL == "featured") {
+                    uVAL = toBoolean(uVAL);
+                    //entry = entrys.filter(function(v){return v.featured === uVAL});
+                    entry = feat; // Cargar post desde featuredDB
+                } else {
+                    if (uVAL == "guardians") {
+                        entry = entrys.filter(function(v){return v.type != "cosplay"});
+                    } else if (uVAL == "cosplay") {
+                        entry = entrys.filter(function(v){return v.type == "cosplay"});
+                    } else {
+                        for (i = 0; i < entrys.length; i ++) {
+                            entry.push(entrys[i]);
+                        };
+                    };           
+                };
+                break;
+        };
+
+        // Cargar posts en tablas segun paginacion
+        dibujaTabla(entry, uVAL, pag);
+
+        // Abre popup
+        if (popo.length == 1) abrirPopup(uVALP);
+
+    } else {
+        // Buscar categoria
+        var entry = [];
+        var categ = window.location.search;
+
+        if (categ.includes("guardians")) {
+            entry = entrys.filter(v => {return v.type == "guardian"});
+
+        } else if (categ.includes("featured")) {
+            entry = entrys.filter(v => {return v.featured == true});
+
+        } else if (categ.includes("cosplay")) {
+            entry = entrys.filter(v => {return v.type == "cosplay"});
+
+        } else if (categ.includes("?u=")) {
+            var user = $("#menu-user").val();
+            entry = entrys.filter(v => {return v.alias == user});
+
+        } else if (categ.includes("all")) {
+            entry = entrys;
+        }
+
+
+        // Filtro 
+        busca = normalize(busca).toLowerCase();
+        entry = entry.filter(v => {return v.info.name != null});
+
+        entry = entry.filter(function(v){return (normalize(v.info.name).toLowerCase()).includes(busca)});
+        
+        if (entry.length > 0) {
+            dibujaTabla(entry, uVAL, pag);
+        } else {
+
+            $("#archive-thumbnail-content table").remove();
+            $(".null-search").remove();
+            $("#pagination").remove();
+
+            var null_search = "Ningún aporte coincide con la búsqueda";
+            if (!(window.location.href).includes("/es/")) {
+                null_search = search_preview_null;
+            }
+            $("#archive-thumbnail-content").append('<span class="null-search">' + null_search + '.</span>');
+        }
     };
-
-    // Cargar posts en tablas segun paginacion
-    dibujaTabla(entry, uVAL, pag);
-
-    // Abre popup
-    if (popo.length == 1) abrirPopup(uVALP);
-
-}
+};
 
 function dibujaTabla(entry, uVAL, pag) {
 
@@ -219,9 +297,9 @@ function dibujaTabla(entry, uVAL, pag) {
     if (str.includes("?u=")) {
         str = str.slice(3);
         if ((window.location.href).includes("/es/")) {
-            str = '<p>Mostrando todos los aportes de <b>' + unescape(str) + '</b>.</p>';
+            str = '<p>Mostrando todos los aportes de <b>' + unescape(decodeURIComponent(str)) + '</b>.</p>';
         } else {
-            var nick = filter_user_info.replace("$NICKNAME", '<b>' + unescape(str)) + '</b>.';
+            var nick = filter_user_info.replace("$NICKNAME", '<b>' + unescape(decodeURIComponent(str))) + '</b>.';
             str = '<p>' + nick + '</p>';
         }
         $("#archive-thumbnail-content").append(str);
@@ -231,7 +309,7 @@ function dibujaTabla(entry, uVAL, pag) {
     var filtroP = [];
     
     // Cuadros por páginas 12
-    var pages = Math.floor(entry.length / 12);
+    var pages = Math.ceil(entry.length / 12);
 
     // Elemento inicial
     var startPage = pag * 12;
@@ -251,7 +329,9 @@ function dibujaTabla(entry, uVAL, pag) {
                     var bg = buscaFondo(entry[suma].info.code);
                     bg = bg.replace("web_full", "icon");
 
-                    tabla += "<td><div id='" + entry[suma].id + "' class='abstract-thumbnail"
+                    tabla += "<td><div id='" + entry[suma].id;
+                    if (entry[suma].info.name != null) { tabla += "' title='" + entry[suma].info.name };
+                    tabla += "' class='abstract-thumbnail";
 
                     if (entry[suma].featured === true) {
                         tabla += " featured' style='background-image:url(" + bg 
@@ -283,7 +363,11 @@ function dibujaTabla(entry, uVAL, pag) {
                     bg = bg.replace("web_full", "icon");
 
                     // Mostrar lista de featured
-                    tabla += "<td><div id='" + feat[suma].entry + "' class='abstract-thumbnail feat-page'"
+                    tabla += "<td><div id='" + feat[suma].entry;
+                    if (entrada.name != null) { tabla += "' title='" + entrada.name };
+                    tabla += "' class='abstract-thumbnail";
+
+                    tabla += "' class='abstract-thumbnail feat-page'"
                     + " style='background-image:url(" + bg + ")'><span class='feat-title'>" + feat[suma].title + 
                     "</span><img src='https://docs.zoho.com/docs/orig/" + entrada.png + "'></div></td>";
                     
@@ -301,7 +385,7 @@ function dibujaTabla(entry, uVAL, pag) {
 
     // Pagination    
     //var pagesTEST = 14; // PRUEBAS TRUNCATION PAGES
-    if (pages > 0) hacerPagination(pag, pages);
+    if (pages > 1) hacerPagination(pag, pages);
 }
 
 
@@ -331,7 +415,7 @@ function hacerPagination(activa, paginas) {
     // Necesita truncation ?
     if (paginas < 14) {
         // Sin truncation
-        for (s = 0; s <=paginas; s++) {
+        for (s = 0; s < paginas; s++) {
             var num = s + 1;
             if (s == activa) {
                 truncation.push('<div class="page selected" page-number="' + num + '">' + num + '</div>');
@@ -346,7 +430,7 @@ function hacerPagination(activa, paginas) {
 
         if (activa < 9 ) {
             // Inicio
-            for (i = 0; i <= paginas; i++) {
+            for (i = 0; i < paginas; i++) {
                 var num = i + 1;
                 if (i != 11){
                     if (i == activa) {
@@ -356,7 +440,7 @@ function hacerPagination(activa, paginas) {
                     };
                 } else {
                     truncation.push('<span class="truncation">...</span>');
-                    i = (paginas - 2);
+                    i = (paginas - 3);
                 };
             };
 
@@ -383,7 +467,7 @@ function hacerPagination(activa, paginas) {
             // PENDIENTE
         } else if (activa >= paginas - 8) {
             // Fin
-            for (f = 0; f <= paginas; f++) {
+            for (f = 0; f < paginas; f++) {
                 var num = f + 1;
                 if (f == 2) {
                     truncation.push('<span class="truncation">...</span>');
@@ -398,17 +482,6 @@ function hacerPagination(activa, paginas) {
             }
         }
     }
-/*
-    !!! CATALOGO !!!
-    1  2  3  4  5  6  7  8  9 10 11 12 13 14
-    1  2  3  4  5  6  7  8  9 (10) 11 .. xx xx
-    1  2  .. 4  5  6  7 (8) 9 10 11 12 .. 14 15
-
-    1  2  .. x (x)  x  x  x  x xx xx xx xx xx
-            -10 -9 -8 -7 -6 -5 -4 -3 -2 -1  L
-    
-
-*/
 
     truncation.push("</div>");
     var code = truncation.join("");
@@ -449,7 +522,12 @@ $(function() {
     $("#archive-thumbnail-content").on("click", ".page", function() {
         if ($(this).attr("class") != "page selected") {
             var pagina = parseInt($(this).attr("page-number")) - 1;
-            cargarListas(pagina);
+            var busca = $("#filter-search").val();
+            if (busca == "") {
+                cargarListas(pagina);
+            } else {
+                cargarListas(pagina, busca);
+            };
         }
     });
 
@@ -481,6 +559,16 @@ $(function() {
     $("body").on("click", "#config-cancel", function() {
         $("#guardian-config-container").fadeOut(200);
     });
+
+
+    $("#filter-search").on("input", function() {
+        // NUEVO BUSCADOR
+        if ($(this).val() != "") {
+            cargarListas(0, $(this).val());
+        } else {
+            cargarListas(0);
+        };
+    });
 });
 
 function buscaFondo(code) {
@@ -503,8 +591,16 @@ function buscaFondo(code) {
     
     return enlace;
 };
-
+/*
 function abrirPopup(elmnt) {
+    /*
+    var edited = "", edited_title = "Ultima edición: ";
+    var buscarEdit = entrys.filter(v => {return v.id == elmnt});
+    if (buscarEdit[0].info.edited != undefined) {
+        edited = '<span title="' + edited_title + buscarEdit[0].info.edited + '" class="edited fas fa-pen-square"></span>';
+    }*/
+    /*
+
 
     $("body").css("overflow", "hidden");
 
@@ -641,7 +737,183 @@ function abrirPopup(elmnt) {
     }
     if (entry[0].featured != true) {
         // Edición de aportes
-        //$("#entry-info-container").append('<div id="buttons-container"><div class="button-container config"><div title="' + configGuardian + '" class="button-icon"><span class="fas fa-bars"></span></div></div></div>');
+        $("#entry-info-container").append('<div id="buttons-container"><div class="button-container config"><div title="' + configGuardian + '" class="button-icon"><span class="fas fa-bars"></span></div></div></div>');
+    };
+    if (entry[0].type != "cosplay") {$("#entry-info-container").append('<span class="cosplay-report"><a href="' + enlace + '" target="_blank">' + cosplayReport + '</a></span>')};
+    $("#popupBG").fadeIn(300);
+}*/
+
+
+function abrirPopup(elmnt) {
+    /*
+    var edited = "", edited_title = "Ultima edición: ";
+    var buscarEdit = entrys.filter(v => {return v.id == elmnt});
+    if (buscarEdit[0].info.edited != undefined) {
+        edited = '<span title="' + edited_title + buscarEdit[0].info.edited + '" class="edited fas fa-pen-square"></span>';
+    }*/
+
+
+    $("body").css("overflow", "hidden");
+
+    // Cargar elemento
+
+    // Contenedor de fondo > Contenedor de ventana + botón de cierre
+    $("body").append('<div id="popupBG"><a class="nav-box-prev"></a><div id="popupW"></div><a class="nav-box-next"></a></div>');
+    $("#popupW").append('<div id="button-close" onclick="cierraPopup()"></div>');
+
+
+    var entry = "";
+    if (elmnt[0] == "s") { // Siempre son destacadas
+        entry = feat.filter(v => {return v.entry == elmnt});
+        var fondo = buscaFondo(entry[0].entryInfo.code);
+
+        // Div principal
+        $("#popupW").append('<div id="entry-info-container" entry-dataid="' + entry[0].entry + '" style="background-image: url(' + fondo + ')"></div>');
+
+        // Gardienne + nombre || id
+        $("#entry-info-container").append('<img src="https://docs.zoho.com/docs/orig/' + entry[0].entryInfo.png + '">');
+        $("#entry-info-container").append('<div id="entry-info-menu"></div>');
+        $("#entry-info-menu").append('<div id="entry-info-quote"></div>');
+
+        // Cuadro blanco
+        $("#entry-info-quote").append('<h2>' + entry[0].entryInfo.field[0] + '</h2>');
+        for (a = 1; a < entry[0].entryInfo.field.length; a++) {
+            $("#entry-info-quote").append('<p>' + entry[0].entryInfo.field[a] + '</p>');
+        };
+
+        if ((window.location.href).includes("/es/")) {
+            $("#entry-info-quote").append('<p>Abrir en: <a href="profile?s=' + entry[0].entryInfo.code + '"> Perfil</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">Vestidor</a></p>');
+        } else {
+            $("#entry-info-quote").append('<p>' + guardian_info_open + ' <a href="profile?s=' + entry[0].entryInfo.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">' + guardian_info_open_wardrobe + '</a></p>');
+        }
+
+    } else {
+        entry = entrys.filter(function(v) {return v.id == elmnt});
+        var fondo = buscaFondo(entry[0].info.code);
+
+        // Div principal
+        $("#popupW").append('<div id="entry-info-container" entry-dataid="' + entry[0].id + '" style="background-image: url(' + fondo + ')"></div>');
+
+        // Gardienne + nombre || id
+        $("#entry-info-container").append('<img src="https://docs.zoho.com/docs/orig/' + entry[0].info.png + '">');
+        $("#entry-info-container").append('<div id="entry-info-menu"></div>');
+        $("#entry-info-menu").append('<div id="entry-info-quote"></div>');
+
+        if (entry[0].type == "cosplay") {
+            if ((window.location.href).includes("/es/")) {
+                $("#entry-info-quote").append('<span id="entry-info-cosplay">COSPLAY</span>');
+            } else {
+                $("#entry-info-quote").append('<span id="entry-info-cosplay">' + icon_cosplay_title.toUpperCase() + '</span>');
+            };
+        };
+
+        if (entry[0].info.name) {$("#entry-info-quote").append('<h2>' + entry[0].info.name + '</h2><p>ID: ' + entry[0].id + '</p>')} 
+        else {$("#entry-info-quote").append('<h2>ID: ' + entry[0].id + '</h2>')};
+
+        // Estado e info de cuenta
+        var user = users.filter(function(v) {return v.alias == entry[0].alias});
+
+
+
+        var edited = "";
+        var buscarEdit = entrys.filter(v => {return v.id == elmnt});
+        if (buscarEdit[0].info.edited != undefined) {
+            edited = '<span title="Última edición: ' + buscarEdit[0].info.edited + '" class="edited fas fa-pen-square"></span>';
+            if (!(window.location.href).includes("/es/")) {
+                edited = edited.replace("Última edición", guardian_info_edited);
+            };
+        };
+
+
+
+
+        if ((window.location.href).includes("/es/")) {
+            var account_status = '<span class="s-verified" title="Cuenta verificada"></span>';
+            if (!user[0].verified) account_status = '<span class="s-pending" title="Cuenta sin verificar"></span>';
+
+            $("#entry-info-quote").append('<p>Enviada por: <a href="?u=' + entry[0].alias + '">' + entry[0].alias + '</a>' + account_status + '</p>');
+            $("#entry-info-quote").append('<p>Fecha: ' + entry[0].info.date + edited +'</p><p>Abrir en: <a href="profile?s=' + entry[0].info.code + '"> Perfil</a> | <a href="wardrobe?s=' + entry[0].info.code + '">Vestidor</a></p>');
+
+        } else {
+            var account_status = '<span class="s-verified" title="' + account_status_OK + '"></span>';
+            if (!user[0].verified) account_status = '<span class="s-pending" title="' + account_status_bad + '"></span>';
+
+            $("#entry-info-quote").append('<p>' + guardian_info_author + ' <a href="?u=' + entry[0].alias + '">' + entry[0].alias + '</a>' + account_status + '</p>');
+            $("#entry-info-quote").append('<p>' + guardian_info_date + ' ' + entry[0].info.date + edited + '</p><p>' + guardian_info_open + ' <a href="profile?s=' + entry[0].info.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].info.code + '">' + guardian_info_open_wardrobe + '</a></p>');
+        };
+    };
+    
+
+    // Destacada ?
+    var checkFeat = feat.filter(v => {return v.entry == elmnt});
+
+    if (checkFeat.length == 1) {
+        $("#entry-info-menu").append('<div id="entry-info-featured"></div>');
+
+        if ((window.location.href).includes("/es/")) { $("#entry-info-featured").append('<h2>★ Guardiana Destacada ★</h2>');
+        } else { $("#entry-info-featured").append('<h2>★ ' + featured_guardian_title + ' ★</h2>') };
+        var titulo = "";
+
+        if (checkFeat[0].entry[0] == "s") {
+            if ((window.location.href).includes("/es/")) {
+                $("#entry-info-featured").append("<p><i>Por actividad: <a href='" + checkFeat[0].postInfo.enlace + "' target='_blank'>" + checkFeat[0].postInfo.actividad + "</a>.</i></p>");
+                $("#entry-info-featured").append('<p>Fecha: ' + checkFeat[0].date + '</p>');
+            } else {
+                $("#entry-info-featured").append('<p><i>' + featured_guardian_info_activity + " <a href='" + checkFeat[0].postInfo.enlace + "' target='_blank'>" + checkFeat[0].postInfo.actividad + "</a>.</i></p>");
+                $("#entry-info-featured").append('<p>' + guardian_info_date + ' ' + checkFeat[0].date + '</p>');
+            }
+            
+        } else {
+            var ft = feat.filter(function(v){return v.entry == entry[0].id});
+            var titulo = ft[0].title;
+            if ((titulo).includes("Semana")) {
+                if ((window.location.href).includes("/es/")) {
+                    titulo = "En portada durante la " + titulo.replace("Semana", "semana");
+                } else {
+                    var num = titulo.replace("Semana", "");
+                    titulo = featured_guardian_info.replace("$NUM0", num);
+                };
+
+            } else {
+                if ((window.location.href).includes("/es/")) {
+                    titulo = "Portada especial: " + titulo.replace("Semana", "semana");
+                } else {
+                    titulo = featured_guardian_info_special + ': ' + titulo;
+                };
+            }
+
+            $("#entry-info-featured").append('<p><i>' + titulo + '.</i></p>');
+
+            if ((window.location.href).includes("/es/")) {
+                $("#entry-info-featured").append('<p>Fecha: ' + ft[0].date + '</p>');
+            } else {
+                $("#entry-info-featured").append('<p>' + guardian_info_date + ' ' + ft[0].date + '</p>');
+            }
+            //"entry-info-featured"
+        }
+
+    }
+
+    // Cierre + flechas
+
+    //$("body").append(html);
+
+    var enlace = "https://docs.google.com/forms/d/e/1FAIpQLScHNJ91Bn3QSDk6IsK0J_ZB9Ja5ieWh8s1FdPIYX3HzF7Hwuw/viewform?usp=pp_url&entry.952360021=";
+    if (elmnt[0] == "s") {
+        enlace += checkFeat[0].entry;
+    } else {
+        enlace += entry[0].id;
+    }
+
+    var cosplayReport = "Notificar cosplay";
+    var configGuardian = "Opciones";
+    if (!(window.location.href).includes("/es/")) {
+        cosplayReport = cosplay_report;
+        configGuardian = config_guardian;
+    }
+    if (entry[0].featured != true) {
+        // Edición de aportes
+        $("#entry-info-container").append('<div id="buttons-container"><div class="button-container config"><div title="' + configGuardian + '" class="button-icon"><span class="fas fa-bars"></span></div></div></div>');
     };
     if (entry[0].type != "cosplay") {$("#entry-info-container").append('<span class="cosplay-report"><a href="' + enlace + '" target="_blank">' + cosplayReport + '</a></span>')};
     $("#popupBG").fadeIn(300);
@@ -659,3 +931,24 @@ function toBoolean(b) {
     if (b == "featured") return true 
     else return false;
 }
+
+var normalize = (function() {
+    var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç", 
+        to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+        mapping = {};
+   
+    for(var i = 0, j = from.length; i < j; i++ )
+        mapping[ from.charAt( i ) ] = to.charAt( i );
+   
+    return function( str ) {
+        var ret = [];
+        for( var i = 0, j = str.length; i < j; i++ ) {
+            var c = str.charAt( i );
+            if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                ret.push( mapping[ c ] );
+            else
+                ret.push( c );
+        }      
+        return ret.join( '' );
+    }
+})();

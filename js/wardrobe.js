@@ -126,14 +126,14 @@ function cargarGuardiana(p = 0, edit = false) {
     var grupo = groupInfo.filter(function(v){return v.groupId == prenda[0].groupId});
 
     switch (grupo[0].category) {
-        case "Pieles": img = URL_SRC + URL_SKIN + URL_FULL + prenda[0].itemURL; break;
-        case "Bocas": img = URL_SRC + URL_MOUTH + URL_FULL + prenda[0].itemURL; break;
-        case "Ojos": img = URL_SRC + URL_EYES + URL_FULL + prenda[0].itemURL; break;
-        case "Cabello": img = URL_SRC + URL_HAIR + URL_FULL + prenda[0].itemURL; break;
+        case "skin": img = URL_SRC + URL_SKIN + URL_FULL + prenda[0].itemURL; break;
+        case "mouth": img = URL_SRC + URL_MOUTH + URL_FULL + prenda[0].itemURL; break;
+        case "eye": img = URL_SRC + URL_EYES + URL_FULL + prenda[0].itemURL; break;
+        case "hair": img = URL_SRC + URL_HAIR + URL_FULL + prenda[0].itemURL; break;
         default: img = URL_SRC + URL_CLOTHES + URL_FULL + prenda[0].itemURL;
     };
 
-    if (grupo[0].category == "Fondos") {
+    if (grupo[0].category == "background") {
         if (edit == false) { $("#marketplace-avatar-background-preview").css("background-image", "url(" + img + ")");} 
         else { 
             $("#edit-clothes-popup").css("background-image", "url(" + img + ")"); 
@@ -361,10 +361,10 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         var img, rarity = currentGrupo[0].rarity;
         var looper = (sub == 0) ? 0 : elementoInicial;
         switch (currentGrupo[0].category) {
-            case "Pieles": img = URL_SRC + URL_SKIN + URL_ICON + currentPrenda[looper].itemURL; break;
-            case "Bocas": img = URL_SRC + URL_MOUTH + URL_ICON + currentPrenda[looper].itemURL; break;
-            case "Ojos": img = URL_SRC + URL_EYES + URL_ICON + currentPrenda[looper].itemURL; break;
-            case "Cabello": img = URL_SRC + URL_HAIR + URL_ICON + currentPrenda[looper].itemURL; break;
+            case "skin": img = URL_SRC + URL_SKIN + URL_ICON + currentPrenda[looper].itemURL; break;
+            case "mouth": img = URL_SRC + URL_MOUTH + URL_ICON + currentPrenda[looper].itemURL; break;
+            case "eye": img = URL_SRC + URL_EYES + URL_ICON + currentPrenda[looper].itemURL; break;
+            case "hair": img = URL_SRC + URL_HAIR + URL_ICON + currentPrenda[looper].itemURL; break;
             default: img = URL_SRC + URL_CLOTHES + URL_ICON + currentPrenda[looper].itemURL;
         };
 
@@ -429,11 +429,13 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         }
 
         var grupoCat = currentGrupo[0].category;
+        var catName = getCategoria(grupoCat);
+        
         if (!(window.location.href).includes("/es/")) {
-            grupoCat = esToLang(currentGrupo[0].category);
+            catName = esToLang(currentGrupo[0].category);
         };
 
-        dibuja += '</div><div class="abstract-content"><div class="abstract-type">' + grupoCat 
+        dibuja += '</div><div class="abstract-content"><div class="abstract-type ' + grupoCat + '">' + catName 
         + '</div><div class="abstract-code"><div class="code-info"> COD. <span class="universal-code">'
         + currentPrenda[looper].itemId + '</span></div></div></div><div class="abstract-note">'
         + leyenda + '</div></div><div class="abstract-tags-container">';
@@ -590,7 +592,7 @@ function checkPrenda(nuevaPrenda, nuevoGrupo) {
 
             } else if (arrayCategoria == nuevaCategoria) {
 
-                if (nuevaCategoria == "Pieles" || nuevaCategoria == "Cabello" || nuevaCategoria == "Ojos" || nuevaCategoria == "Bocas" || nuevaCategoria == "Ropa interior" || nuevaCategoria == "Fondos") {
+                if (nuevaCategoria == "skin" || nuevaCategoria == "hair" || nuevaCategoria == "eye" || nuevaCategoria == "mouth" || nuevaCategoria == "underwear" || nuevaCategoria == "background") {
                     // Comprobar si es piel, cabello, ojos, boca, ropa interior, fondo
 
                     // Solo puede haber 1 de estos grupos, si existe en array reemplazar en ubicación correspondiente (c)
@@ -636,10 +638,10 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
     imageName = imageName[0].itemURL;
 
     switch (categoria) {
-        case "Pieles": img = URL_SRC + URL_SKIN + URL_FULL + imageName; break;
-        case "Bocas": img = URL_SRC + URL_MOUTH + URL_FULL + imageName; break;
-        case "Ojos": img = URL_SRC + URL_EYES + URL_FULL + imageName; break;
-        case "Cabello": img = URL_SRC + URL_HAIR + URL_FULL + imageName; break;
+        case "skin": img = URL_SRC + URL_SKIN + URL_FULL + imageName; break;
+        case "mouth": img = URL_SRC + URL_MOUTH + URL_FULL + imageName; break;
+        case "eye": img = URL_SRC + URL_EYES + URL_FULL + imageName; break;
+        case "hair": img = URL_SRC + URL_HAIR + URL_FULL + imageName; break;
         default: img = URL_SRC + URL_CLOTHES + URL_FULL + imageName;
     }
 
@@ -655,7 +657,7 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
             } else {limpiarTemporales();};
         };
 
-        if (categoria == "Fondos") { 
+        if (categoria == "background") { 
             $("#marketplace-avatar-background-preview").attr("style", "background-image:url('" + img + "')");
             $("#marketplace-avatar-background-preview").addClass("temporal-background");
             $("#marketplace-avatar-background-preview").attr("temporal-dataid", prenda);
@@ -692,7 +694,7 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
     } else if (tipo == "remove") {
         // Marcar
         limpiarTemporales();
-        if (categoria == "Fondos") {
+        if (categoria == "background") {
             $("#marketplace-avatar-background-preview").attr("temporal-dataid", prenda);
             $("#marketplace-avatar-background-preview").attr("class", "temporal-background-remove");
         } else {
@@ -704,7 +706,7 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
 
     } else if (tipo == "replace") {
         // Marcar
-        if (categoria == "Fondos") {
+        if (categoria == "background") {
             limpiarTemporales();
             $("#marketplace-avatar-background-preview").attr("style", "background-image:url('" + img + "')");
             $("#marketplace-avatar-background-preview").attr("original-dataid", cambio);
@@ -849,10 +851,10 @@ function recuperaPrenda(elmnt) {
         categoria = categoria[0].category;
 
         switch (categoria) {
-            case "Pieles": image = URL_SRC + URL_SKIN + URL_FULL + image; break;
-            case "Bocas": image = URL_SRC + URL_MOUTH + URL_FULL + image; break;
-            case "Ojos": image = URL_SRC + URL_EYES + URL_FULL + image; break;
-            case "Cabello": image = URL_SRC + URL_HAIR + URL_FULL + image; break;
+            case "skin": image = URL_SRC + URL_SKIN + URL_FULL + image; break;
+            case "mouth": image = URL_SRC + URL_MOUTH + URL_FULL + image; break;
+            case "eye": image = URL_SRC + URL_EYES + URL_FULL + image; break;
+            case "hair": image = URL_SRC + URL_HAIR + URL_FULL + image; break;
             default: image = URL_SRC + URL_CLOTHES + URL_FULL + image;
         }
         
@@ -1093,10 +1095,10 @@ function obtenerListaPreview() {
             url = url[0].itemURL;
 
             switch (grupo[0].category) {
-                case "Pieles": url = URL_SRC + URL_SKIN + URL_ICON + url; break;
-                case "Bocas": url = URL_SRC + URL_MOUTH + URL_ICON + url; break;
-                case "Ojos": url = URL_SRC + URL_EYES + URL_ICON + url; break;
-                case "Cabello": url = URL_SRC + URL_HAIR + URL_ICON + url; break;
+                case "skin": url = URL_SRC + URL_SKIN + URL_ICON + url; break;
+                case "mouth": url = URL_SRC + URL_MOUTH + URL_ICON + url; break;
+                case "eye": url = URL_SRC + URL_EYES + URL_ICON + url; break;
+                case "hair": url = URL_SRC + URL_HAIR + URL_ICON + url; break;
                 default: url = URL_SRC + URL_CLOTHES + URL_ICON + url;
             };
 
@@ -1493,4 +1495,30 @@ function esNumero(s) {
     if (s == "") return false;
     if (!isNaN(s)) return true;
     return false;
+};
+
+function getCategoria(value) {
+    // AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    switch (value) {
+        case "underwear": return "Ropa interior";
+        case "skin": return "Pieles";
+        case "tatoo": return "Tatuajes";
+        case "mouth": return "Bocas";
+        case "eye": return "Ojos";
+        case "hair": return "Pelo";
+        case "sock": return "Calcetines";
+        case "shoe": return "Zapatos";
+        case "pants": return "Pantalones";
+        case "handAccessory": return "Accesorios manos";
+        case "top": return "Partes de arriba";
+        case "coat": return "Abrigos";
+        case "glove": return "Guantes";
+        case "necklace": return "Collares";
+        case "dress": return "Vestidos";
+        case "hat": return "Sombreros";
+        case "faceAccessory": return "Accesorios cara";
+        case "background": return "Fondos";
+        case "belt": return "Cinturones";
+        case "ambient": return "Ambientes";
+    };
 };

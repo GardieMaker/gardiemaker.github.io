@@ -179,7 +179,7 @@ async function cargarCanvas() {
         var item = groupList.filter(v => {return v.itemId == customArray[f]});
         var grupo = groupInfo.filter(v => {return v.groupId == item[0].groupId});
 
-        if (grupo[0].category == "Fondos") {
+        if (grupo[0].category == "background") {
             var fondo = document.getElementsByClassName("player-element background-element")[0];
             fondo.style.background = "url('" + URL_SRC + URL_CLOTHES + URL_FULL + item[0].itemURL + "')";
             iBG = f;
@@ -196,11 +196,11 @@ async function cargarCanvas() {
             var newimg;
 
             switch (getInfo[0].category) {
-                case "Fondos": newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL; break;
-                case "Pieles": newimg = URL_SRC + URL_SKIN + URL_FULL + getLista[0].itemURL; break;
-                case "Bocas": newimg = URL_SRC + URL_MOUTH + URL_FULL + getLista[0].itemURL; break;
-                case "Ojos": newimg = URL_SRC + URL_EYES + URL_FULL + getLista[0].itemURL; break;
-                case "Cabello": newimg = URL_SRC + URL_HAIR + URL_FULL + getLista[0].itemURL; break;
+                case "background": newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL; break;
+                case "skin": newimg = URL_SRC + URL_SKIN + URL_FULL + getLista[0].itemURL; break;
+                case "mouth": newimg = URL_SRC + URL_MOUTH + URL_FULL + getLista[0].itemURL; break;
+                case "eye": newimg = URL_SRC + URL_EYES + URL_FULL + getLista[0].itemURL; break;
+                case "hair": newimg = URL_SRC + URL_HAIR + URL_FULL + getLista[0].itemURL; break;
                 default: newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL;
             };
 
@@ -271,28 +271,28 @@ async function cargarPortrait() {
         var getLista = groupList.filter(function(v){return v.itemId == customArray[c]});
         var getInfo = groupInfo.filter(function(v){return v.groupId == getLista[0].groupId});
 
-        if (getInfo[0].category != "Fondos") {
+        if (getInfo[0].category != "background") {
             var newimg;
 
             if (portraitMin == false) {
 
                 switch (getInfo[0].category) {
-                    case "Fondos": newimg = URL_SRC + URL_CLOTHES + URL_HD + getLista[0].itemURL; break;
-                    case "Pieles": newimg = URL_SRC + URL_SKIN + URL_HD + getLista[0].itemURL; break;
-                    case "Bocas": newimg = URL_SRC + URL_MOUTH + URL_HD + getLista[0].itemURL; break;
-                    case "Ojos": newimg = URL_SRC + URL_EYES + URL_HD + getLista[0].itemURL; break;
-                    case "Cabello": newimg = URL_SRC + URL_HAIR + URL_HD + getLista[0].itemURL; break;
+                    case "background": newimg = URL_SRC + URL_CLOTHES + URL_HD + getLista[0].itemURL; break;
+                    case "skin": newimg = URL_SRC + URL_SKIN + URL_HD + getLista[0].itemURL; break;
+                    case "mouth": newimg = URL_SRC + URL_MOUTH + URL_HD + getLista[0].itemURL; break;
+                    case "eye": newimg = URL_SRC + URL_EYES + URL_HD + getLista[0].itemURL; break;
+                    case "hair": newimg = URL_SRC + URL_HAIR + URL_HD + getLista[0].itemURL; break;
                     default: newimg = URL_SRC + URL_CLOTHES + URL_HD + getLista[0].itemURL;
                 };
 
             } else {
 
                 switch (getInfo[0].category) {
-                    case "Fondos": newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL; break;
-                    case "Pieles": newimg = URL_SRC + URL_SKIN + URL_FULL + getLista[0].itemURL; break;
-                    case "Bocas": newimg = URL_SRC + URL_MOUTH + URL_FULL + getLista[0].itemURL; break;
-                    case "Ojos": newimg = URL_SRC + URL_EYES + URL_FULL + getLista[0].itemURL; break;
-                    case "Cabello": newimg = URL_SRC + URL_HAIR + URL_FULL + getLista[0].itemURL; break;
+                    case "background": newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL; break;
+                    case "skin": newimg = URL_SRC + URL_SKIN + URL_FULL + getLista[0].itemURL; break;
+                    case "mouth": newimg = URL_SRC + URL_MOUTH + URL_FULL + getLista[0].itemURL; break;
+                    case "eye": newimg = URL_SRC + URL_EYES + URL_FULL + getLista[0].itemURL; break;
+                    case "hair": newimg = URL_SRC + URL_HAIR + URL_FULL + getLista[0].itemURL; break;
                     default: newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL;
                 };
 

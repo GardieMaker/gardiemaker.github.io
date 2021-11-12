@@ -188,26 +188,26 @@ $(document).ready( function () {
 function esToLang(name) {
 	// Recibe nombre en español, devuelve traducción
 	switch(name) {
-		case "Ropa interior": return filter_category_underwear;
-		case "Pieles": return filter_category_skin;
-		case "Tatuajes": return filter_category_tatoo;
-		case "Bocas": return filter_category_mouth;
-		case "Ojos": return filter_category_eyes;
-		case "Cabello": return filter_category_hair;
-		case "Calcetines": return filter_category_socks;
-		case "Zapatos": return filter_category_shoes;
-		case "Pantalones": return filter_category_pants;
-		case "Accesorios manos": return filter_category_handAccessory;
-		case "Partes de arriba": return filter_category_top;
-		case "Abrigos": return filter_category_coat;
-		case "Guantes": return filter_category_glove;
-		case "Collares": return filter_category_necklace;
-		case "Vestidos": return filter_category_dress;
-		case "Sombreros": return filter_category_hat;
-		case "Accesorios cara": return filter_category_faceAccessory;
-		case "Fondos": return filter_category_background;
-		case "Cinturones": return filter_category_belt;
-		case "Ambientes": return filter_category_ambient;
+		case "underwear": return filter_category_underwear;
+		case "skin": return filter_category_skin;
+		case "tatoo": return filter_category_tatoo;
+		case "mouth": return filter_category_mouth;
+		case "eye": return filter_category_eyes;
+		case "hair": return filter_category_hair;
+		case "sock": return filter_category_socks;
+		case "shoe": return filter_category_shoes;
+		case "pants": return filter_category_pants;
+		case "handAccessory": return filter_category_handAccessory;
+		case "top": return filter_category_top;
+		case "coat": return filter_category_coat;
+		case "glove": return filter_category_glove;
+		case "necklace": return filter_category_necklace;
+		case "dress": return filter_category_dress;
+		case "hat": return filter_category_hat;
+		case "faceAccessory": return filter_category_faceAccessory;
+		case "background": return filter_category_background;
+		case "belt": return filter_category_belt;
+		case "ambient": return filter_category_ambient;
 
 		case "Predeterminado": return card_info_default;
 		case "Tienda": return card_info_shop;

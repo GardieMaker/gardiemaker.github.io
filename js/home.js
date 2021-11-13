@@ -138,7 +138,7 @@ function buscaFondo(code) {
     for (a = 0; a < code.length; a++) {
         var check = groupInfo.filter(v => {return v.groupId == code[a]});
         if (check.length == 1) {
-            if (check[0].category == "Fondos") {
+            if (check[0].category == "background") {
                 check = groupList.filter(v => {return v.itemId == code[a]});
                 enlace = URL_BGFULL + check[0].itemURL;
                 break;

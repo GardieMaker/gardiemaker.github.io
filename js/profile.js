@@ -214,6 +214,8 @@ async function cargarCanvas() {
 
         };
     };
+
+    if ((window.location.href).includes("127.0.0.1")) alert("Carga completa");
 };
 
 
@@ -307,6 +309,8 @@ async function cargarPortrait() {
 
         };
     };
+
+    if ((window.location.href).includes("127.0.0.1")) alert("Carga completa");
 };
 
 function cargarPopUp() {
@@ -853,4 +857,3 @@ $(function() {
         };
     });
 });
-

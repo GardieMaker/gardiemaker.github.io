@@ -2,6 +2,7 @@ var groupInfo = "", groupList = "";
 
 $(document).ready(function iniciaTodo() {
     $.get("https://raw.githubusercontent.com/GardieMaker/data/master/status/activities", function(estado, success, xhr) {
+    //$.get("../../data/status/activities", function(estado, success, xhr) {
         if (!(window.location.href).includes("/es/")) {
             estado = estado.replace("No hay nuevas actividades", nav_notification);
         }

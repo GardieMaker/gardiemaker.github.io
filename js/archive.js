@@ -201,7 +201,7 @@ function cargarListas(pag, busca = null) {
         // Hay POPUP ?
         var popo = [];
         if (uCAT == "e") {
-            if (uVAL[0] != "s") {
+            if (uVAL[0] != "s" && !uVAL.includes("deleted")) {
                 popo = entrys.filter(function(v){return v.id == uVAL});
             } else {
                 popo = feat.filter(function(v){return v.entry == uVAL});
@@ -350,7 +350,7 @@ function dibujaTabla(entry, uVAL, pag) {
 
                     var entrada = "";
                     
-                    if ((feat[suma].entry[0]) == "s") { // Entradas por actividad / especiales
+                    if ((feat[suma].entry[0]) == "s" || (feat[suma].entry[0]) == "d") { // Entradas por actividad / especiales
                         entrada = feat[suma].entryInfo;
 
                     } else { // Entradas normales
@@ -591,167 +591,8 @@ function buscaFondo(code) {
     
     return enlace;
 };
-/*
-function abrirPopup(elmnt) {
-    /*
-    var edited = "", edited_title = "Ultima edición: ";
-    var buscarEdit = entrys.filter(v => {return v.id == elmnt});
-    if (buscarEdit[0].info.edited != undefined) {
-        edited = '<span title="' + edited_title + buscarEdit[0].info.edited + '" class="edited fas fa-pen-square"></span>';
-    }*/
-    /*
-
-
-    $("body").css("overflow", "hidden");
-
-    // Cargar elemento
-
-    // Contenedor de fondo > Contenedor de ventana + botón de cierre
-    var html = '<div id="popupBG"><a class="nav-box-prev"></a><div id="popupW"><div id="button-close" onclick="cierraPopup()"></div>';
-
-    var entry = "";
-    if (elmnt[0] == "s") { // Siempre son destacadas
-        entry = feat.filter(v => {return v.entry == elmnt});
-        var fondo = buscaFondo(entry[0].entryInfo.code);
-
-        // Div principal
-        html += '<div id="entry-info-container" entry-dataid="' + entry[0].entry + '" style="background-image: url(' + fondo + ')">';
-
-        // Gardienne + nombre || id
-        html += '<img src="https://docs.zoho.com/docs/orig/' + entry[0].entryInfo.png + '"><div id="entry-info-menu"><div id="entry-info-quote">';
-
-        // Cuadro blanco
-        html += '<h2>' + entry[0].entryInfo.field[0] + '</h2>';
-        for (a = 1; a < entry[0].entryInfo.field.length; a++) {
-            html += '<p>' + entry[0].entryInfo.field[a] + '</p>';
-        };
-
-        if ((window.location.href).includes("/es/")) {
-            html += '<p>Abrir en: <a href="profile?s=' + entry[0].entryInfo.code + '"> Perfil</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">Vestidor</a></p></div>';
-        } else {
-            html += '<p>' + guardian_info_open + ' <a href="profile?s=' + entry[0].entryInfo.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">' + guardian_info_open_wardrobe + '</a></p></div>';
-        }
-
-    } else {
-        entry = entrys.filter(function(v) {return v.id == elmnt});
-        var fondo = buscaFondo(entry[0].info.code);
-
-        // Div principal
-        html += '<div id="entry-info-container" entry-dataid="' + entry[0].id + '" style="background-image: url(' + fondo + ')">';
-
-        // Gardienne + nombre || id
-        html += '<img src="https://docs.zoho.com/docs/orig/' + entry[0].info.png + '"><div id="entry-info-menu"><div id="entry-info-quote">';
-
-        if (entry[0].type == "cosplay") {
-            if ((window.location.href).includes("/es/")) {
-                html += '<span id="entry-info-cosplay">COSPLAY</span>';
-            } else {
-                html += '<span id="entry-info-cosplay">' + icon_cosplay_title.toUpperCase() + '</span>';
-            }
-        };
-
-        if (entry[0].info.name) {html += '<h2>' + entry[0].info.name + '</h2><p>ID: ' + entry[0].id + '</p>'} 
-        else {html += '<h2>ID: ' + entry[0].id + '</h2>'};
-
-        // Estado e info de cuenta
-        var user = users.filter(function(v) {return v.alias == entry[0].alias});
-        if ((window.location.href).includes("/es/")) {
-            html += '<p> Enviada por: <a href="?u=' + entry[0].alias + '">' + entry[0].alias + '</a><span class="';
-            user[0].verified ? html += 's-verified" title="Cuenta verificada"></span></p>' : html += 's-pending" title="Cuenta sin verificar"></span></p>';
-            html += '<p>Fecha: ' + entry[0].info.date + '</p><p>Abrir en: <a href="profile?s=' + entry[0].info.code + '"> Perfil</a> | <a href="wardrobe?s=' + entry[0].info.code + '">Vestidor</a></p></div>';
-        } else {
-            html += '<p> ' + guardian_info_author + ' <a href="?u=' + entry[0].alias + '">' + entry[0].alias + '</a><span class="';
-            user[0].verified ? html += 's-verified" title="' + account_status_OK + '"></span></p>' : html += 's-pending" title="' + account_status_bad + '"></span></p>';
-            html += '<p>' + guardian_info_date + ' ' + entry[0].info.date + '</p><p>' + guardian_info_open + ' <a href="profile?s=' + entry[0].info.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].info.code + '">' + guardian_info_open_wardrobe + '</a></p></div>';
-        };
-    };
-    
-
-    // Destacada ?
-    var checkFeat = feat.filter(v => {return v.entry == elmnt});
-
-    if (checkFeat.length == 1) {
-        if ((window.location.href).includes("/es/")) { html += '<div id="entry-info-featured"><h2>★ Guardiana Destacada ★</h2>';
-        } else { html += '<div id="entry-info-featured"><h2>★ ' + featured_guardian_title + ' ★</h2>' };
-        var titulo = "";
-
-        if (checkFeat[0].entry[0] == "s") {
-            if ((window.location.href).includes("/es/")) {
-                titulo = "Por actividad: <a href='" + checkFeat[0].postInfo.enlace + "' target='_blank'>" + checkFeat[0].postInfo.actividad + "</a>"
-                html += '<p><i>' + titulo + '.</i></p>'
-                + '<p>Fecha: ' + checkFeat[0].date + '</p>';
-            } else {
-                titulo = featured_guardian_info_activity + " <a href='" + checkFeat[0].postInfo.enlace + "' target='_blank'>" + checkFeat[0].postInfo.actividad + "</a>"
-                html += '<p><i>' + titulo + '.</i></p>'
-                + '<p>' + guardian_info_date + ' ' + checkFeat[0].date + '</p>';
-            }
-            
-        } else {
-            var ft = feat.filter(function(v){return v.entry == entry[0].id});
-            var titulo = ft[0].title;
-            if ((titulo).includes("Semana")) {
-                if ((window.location.href).includes("/es/")) {
-                    titulo = "En portada durante la " + titulo.replace("Semana", "semana");
-                } else {
-                    var num = titulo.replace("Semana", "");
-                    titulo = featured_guardian_info.replace("$NUM0", num);
-                };
-
-            } else {
-                if ((window.location.href).includes("/es/")) {
-                    titulo = "Portada especial: " + titulo.replace("Semana", "semana");
-                } else {
-                    titulo = featured_guardian_info_special + ': ' + titulo;
-                };
-            }
-
-            if ((window.location.href).includes("/es/")) {
-                html += '<p><i>' + titulo + '.</i></p>'
-                + '<p>Fecha: ' + ft[0].date + '</p>';
-            } else {
-                html += '<p><i>' + titulo + '.</i></p>'
-                + '<p>' + guardian_info_date + ' ' + ft[0].date + '</p>';
-            }
-            //"entry-info-featured"
-        }
-
-    }
-
-    // Cierre + flechas
-    html += '</div></div></div></div><a class="nav-box-next"></a></div>';
-
-    $("body").append(html);
-
-    var enlace = "https://docs.google.com/forms/d/e/1FAIpQLScHNJ91Bn3QSDk6IsK0J_ZB9Ja5ieWh8s1FdPIYX3HzF7Hwuw/viewform?usp=pp_url&entry.952360021=";
-    if (elmnt[0] == "s") {
-        enlace += checkFeat[0].entry;
-    } else {
-        enlace += entry[0].id;
-    }
-
-    var cosplayReport = "Notificar cosplay";
-    var configGuardian = "Opciones";
-    if (!(window.location.href).includes("/es/")) {
-        cosplayReport = cosplay_report;
-        configGuardian = config_guardian;
-    }
-    if (entry[0].featured != true) {
-        // Edición de aportes
-        $("#entry-info-container").append('<div id="buttons-container"><div class="button-container config"><div title="' + configGuardian + '" class="button-icon"><span class="fas fa-bars"></span></div></div></div>');
-    };
-    if (entry[0].type != "cosplay") {$("#entry-info-container").append('<span class="cosplay-report"><a href="' + enlace + '" target="_blank">' + cosplayReport + '</a></span>')};
-    $("#popupBG").fadeIn(300);
-}*/
-
 
 function abrirPopup(elmnt) {
-    /*
-    var edited = "", edited_title = "Ultima edición: ";
-    var buscarEdit = entrys.filter(v => {return v.id == elmnt});
-    if (buscarEdit[0].info.edited != undefined) {
-        edited = '<span title="' + edited_title + buscarEdit[0].info.edited + '" class="edited fas fa-pen-square"></span>';
-    }*/
-
 
     $("body").css("overflow", "hidden");
 
@@ -763,7 +604,7 @@ function abrirPopup(elmnt) {
 
 
     var entry = "";
-    if (elmnt[0] == "s") { // Siempre son destacadas
+    if (elmnt[0] == "s" || elmnt[0] == "d") { // Siempre son destacadas
         entry = feat.filter(v => {return v.entry == elmnt});
         var fondo = buscaFondo(entry[0].entryInfo.code);
 
@@ -776,16 +617,41 @@ function abrirPopup(elmnt) {
         $("#entry-info-menu").append('<div id="entry-info-quote"></div>');
 
         // Cuadro blanco
-        $("#entry-info-quote").append('<h2>' + entry[0].entryInfo.field[0] + '</h2>');
-        for (a = 1; a < entry[0].entryInfo.field.length; a++) {
-            $("#entry-info-quote").append('<p>' + entry[0].entryInfo.field[a] + '</p>');
-        };
+        if (elmnt[0] == "s") {
+            $("#entry-info-quote").append('<h2>' + entry[0].entryInfo.field[0] + '</h2>');
 
-        if ((window.location.href).includes("/es/")) {
-            $("#entry-info-quote").append('<p>Abrir en: <a href="profile?s=' + entry[0].entryInfo.code + '"> Perfil</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">Vestidor</a></p>');
+            for (a = 1; a < entry[0].entryInfo.field.length; a++) {
+                $("#entry-info-quote").append('<p>' + entry[0].entryInfo.field[a] + '</p>');
+            };
         } else {
-            $("#entry-info-quote").append('<p>' + guardian_info_open + ' <a href="profile?s=' + entry[0].entryInfo.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">' + guardian_info_open_wardrobe + '</a></p>');
-        }
+            if (entry[0].entryInfo.name == null) {
+                $("#entry-info-quote").append('<h2>' + entry[0].entry + '</h2>');
+            } else {
+                $("#entry-info-quote").append('<h2>' + entry[0].entryInfo.name + '</h2>');
+            }
+
+
+            // Estado e info de cuenta
+
+            if ((window.location.href).includes("/es/")) {
+                if (elmnt[0] == "d") {
+                    $("#entry-info-quote").append('<p>Enviada por: <i style="color: #ca3636;">' + entry[0].alias + '</i></p>');
+                } else {
+                    $("#entry-info-quote").append('<p>Enviada por: <a href="?u=' + entry[0].alias + '">' + entry[0].alias);
+                };
+
+                $("#entry-info-quote").append('<p>Fecha: ' + entry[0].entryInfo.date +'</p><p>Abrir en: <a href="profile?s=' + entry[0].entryInfo.code + '"> Perfil</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">Vestidor</a></p>');
+
+            } else {
+                if (elmnt[0] == "d") {
+                    $("#entry-info-quote").append('<p>' + guardian_info_author + ' <i style="color: #ca3636;">' + entry[0].alias + '</i></p>');
+                } else {
+                    $("#entry-info-quote").append('<p>' + guardian_info_author + ' <a href="?u=' + entry[0].alias + '">' + entry[0].alias + '</a></p>');
+                };
+
+                $("#entry-info-quote").append('<p>' + guardian_info_date + ' ' + entry[0].entryInfo.date + '</p><p>' + guardian_info_open + ' <a href="profile?s=' + entry[0].entryInfo.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">' + guardian_info_open_wardrobe + '</a></p>');
+            };
+        };
 
     } else {
         entry = entrys.filter(function(v) {return v.id == elmnt});
@@ -814,7 +680,6 @@ function abrirPopup(elmnt) {
         var user = users.filter(function(v) {return v.alias == entry[0].alias});
 
 
-
         var edited = "";
         var buscarEdit = entrys.filter(v => {return v.id == elmnt});
         if (buscarEdit[0].info.edited != undefined) {
@@ -823,9 +688,6 @@ function abrirPopup(elmnt) {
                 edited = edited.replace("Última edición", guardian_info_edited);
             };
         };
-
-
-
 
         if ((window.location.href).includes("/es/")) {
             var account_status = '<span class="s-verified" title="Cuenta verificada"></span>';
@@ -862,7 +724,17 @@ function abrirPopup(elmnt) {
                 $("#entry-info-featured").append('<p><i>' + featured_guardian_info_activity + " <a href='" + checkFeat[0].postInfo.enlace + "' target='_blank'>" + checkFeat[0].postInfo.actividad + "</a>.</i></p>");
                 $("#entry-info-featured").append('<p>' + guardian_info_date + ' ' + checkFeat[0].date + '</p>');
             }
-            
+        } else if (checkFeat[0].entry[0] == "d") {
+            var titulo = checkFeat[0].title;
+            if ((window.location.href).includes("/es/")) {
+                $("#entry-info-featured").append("<p><i>En portada durante la " + titulo.replace("Semana", "semana") + "</i></p>");
+                $("#entry-info-featured").append('<p>Fecha: ' + checkFeat[0].date + '</p>');
+            } else {
+                var num = titulo.replace("Semana", "");
+                $("#entry-info-featured").append("<p><i>" + featured_guardian_info.replace("$NUM0", num) + "</i></p>");
+                $("#entry-info-featured").append('<p>' + guardian_info_date + ' ' + checkFeat[0].date + '</p>');
+            };
+
         } else {
             var ft = feat.filter(function(v){return v.entry == entry[0].id});
             var titulo = ft[0].title;

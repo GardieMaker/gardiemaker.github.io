@@ -1,5 +1,6 @@
 // Variables globales
 var groupInfo = [], groupList = [], hayFondo = false;
+var alternativo = null; // Muestra prendas sin códigos
 const URL_CLOTHES = "item/player/", URL_SKIN = "player/skin/", URL_MOUTH = "player/mouth/",URL_EYES = "player/eyes/", URL_HAIR = "player/hair/";
 const URL_ICON = "icon/", URL_FULL ="web_full/", URL_PORTRAIT = "web_hd/";
 var localization = "";
@@ -634,16 +635,21 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
     $("#config-buttons-container").hide();
     var img, img2;
 
-    var imageName = groupList.filter(v => {return v.itemId == prenda});
-    imageName = imageName[0].itemURL;
+    if (alternativo == null) {
+        var imageName = groupList.filter(v => {return v.itemId == prenda});
+        imageName = imageName[0].itemURL;
 
-    switch (categoria) {
-        case "skin": img = URL_SRC + URL_SKIN + URL_FULL + imageName; break;
-        case "mouth": img = URL_SRC + URL_MOUTH + URL_FULL + imageName; break;
-        case "eye": img = URL_SRC + URL_EYES + URL_FULL + imageName; break;
-        case "hair": img = URL_SRC + URL_HAIR + URL_FULL + imageName; break;
-        default: img = URL_SRC + URL_CLOTHES + URL_FULL + imageName;
-    }
+        switch (categoria) {
+            case "skin": img = URL_SRC + URL_SKIN + URL_FULL + imageName; break;
+            case "mouth": img = URL_SRC + URL_MOUTH + URL_FULL + imageName; break;
+            case "eye": img = URL_SRC + URL_EYES + URL_FULL + imageName; break;
+            case "hair": img = URL_SRC + URL_HAIR + URL_FULL + imageName; break;
+            default: img = URL_SRC + URL_CLOTHES + URL_FULL + imageName;
+        };
+    } else {
+        img = alternativo.replace("icon", "web_full");
+    };
+
 
     if (tipo == "set") {
 
@@ -1291,9 +1297,11 @@ $(function() {
             if (!(clase.includes("selected"))) {
                 $(this).addClass("selected");
                 buttonsIMG();
+                (code.includes("--")) ? (alternativo = $(this).find(".abstract-icon").attr("src")) : (alternativo = null);
                 checkPrenda(code, grupo);
                 
             } else {
+                alternativo = null;
                 $("#marketplace-itemDetail").hide();
                 $("#edit-clothes").show();
                 $("#config-buttons-container").show();

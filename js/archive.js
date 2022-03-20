@@ -644,12 +644,12 @@ function abrirPopup(elmnt) {
 
             } else {
                 if (elmnt[0] == "d") {
-                    $("#entry-info-quote").append('<p>' + guardian_info_author + ' <i style="color: #ca3636;">' + entry[0].alias + '</i></p>');
+                    $("#entry-info-quote").append('<p>' + guardian_info_author + ': <i style="color: #ca3636;">' + entry[0].alias + '</i></p>');
                 } else {
-                    $("#entry-info-quote").append('<p>' + guardian_info_author + ' <a href="?u=' + entry[0].alias + '">' + entry[0].alias + '</a></p>');
+                    $("#entry-info-quote").append('<p>' + guardian_info_author + ': <a href="?u=' + entry[0].alias + '">' + entry[0].alias + '</a></p>');
                 };
 
-                $("#entry-info-quote").append('<p>' + guardian_info_date + ' ' + entry[0].entryInfo.date + '</p><p>' + guardian_info_open + ' <a href="profile?s=' + entry[0].entryInfo.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">' + guardian_info_open_wardrobe + '</a></p>');
+                $("#entry-info-quote").append('<p>' + guardian_info_date + ': ' + entry[0].entryInfo.date + '</p><p>' + guardian_info_open + ': <a href="profile?s=' + entry[0].entryInfo.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].entryInfo.code + '">' + guardian_info_open_wardrobe + '</a></p>');
             };
         };
 
@@ -700,8 +700,8 @@ function abrirPopup(elmnt) {
             var account_status = '<span class="s-verified" title="' + account_status_OK + '"></span>';
             if (!user[0].verified) account_status = '<span class="s-pending" title="' + account_status_bad + '"></span>';
 
-            $("#entry-info-quote").append('<p>' + guardian_info_author + ' <a href="?u=' + entry[0].alias + '">' + entry[0].alias + '</a>' + account_status + '</p>');
-            $("#entry-info-quote").append('<p>' + guardian_info_date + ' ' + entry[0].info.date + edited + '</p><p>' + guardian_info_open + ' <a href="profile?s=' + entry[0].info.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].info.code + '">' + guardian_info_open_wardrobe + '</a></p>');
+            $("#entry-info-quote").append('<p>' + guardian_info_author + ': <a href="?u=' + entry[0].alias + '">' + entry[0].alias + '</a>' + account_status + '</p>');
+            $("#entry-info-quote").append('<p>' + guardian_info_date + ': ' + entry[0].info.date + edited + '</p><p>' + guardian_info_open + ': <a href="profile?s=' + entry[0].info.code + '"> ' + guardian_info_open_profile + '</a> | <a href="wardrobe?s=' + entry[0].info.code + '">' + guardian_info_open_wardrobe + '</a></p>');
         };
     };
     
@@ -721,8 +721,8 @@ function abrirPopup(elmnt) {
                 $("#entry-info-featured").append("<p><i>Por actividad: <a href='" + checkFeat[0].postInfo.enlace + "' target='_blank'>" + checkFeat[0].postInfo.actividad + "</a>.</i></p>");
                 $("#entry-info-featured").append('<p>Fecha: ' + checkFeat[0].date + '</p>');
             } else {
-                $("#entry-info-featured").append('<p><i>' + featured_guardian_info_activity + " <a href='" + checkFeat[0].postInfo.enlace + "' target='_blank'>" + checkFeat[0].postInfo.actividad + "</a>.</i></p>");
-                $("#entry-info-featured").append('<p>' + guardian_info_date + ' ' + checkFeat[0].date + '</p>');
+                $("#entry-info-featured").append('<p><i>' + featured_guardian_info_activity + ": <a href='" + checkFeat[0].postInfo.enlace + "' target='_blank'>" + checkFeat[0].postInfo.actividad + "</a>.</i></p>");
+                $("#entry-info-featured").append('<p>' + guardian_info_date + ': ' + checkFeat[0].date + '</p>');
             }
         } else if (checkFeat[0].entry[0] == "d") {
             var titulo = checkFeat[0].title;
@@ -732,7 +732,7 @@ function abrirPopup(elmnt) {
             } else {
                 var num = titulo.replace("Semana", "");
                 $("#entry-info-featured").append("<p><i>" + featured_guardian_info.replace("$NUM0", num) + "</i></p>");
-                $("#entry-info-featured").append('<p>' + guardian_info_date + ' ' + checkFeat[0].date + '</p>');
+                $("#entry-info-featured").append('<p>' + guardian_info_date + ': ' + checkFeat[0].date + '</p>');
             };
 
         } else {
@@ -759,7 +759,7 @@ function abrirPopup(elmnt) {
             if ((window.location.href).includes("/es/")) {
                 $("#entry-info-featured").append('<p>Fecha: ' + ft[0].date + '</p>');
             } else {
-                $("#entry-info-featured").append('<p>' + guardian_info_date + ' ' + ft[0].date + '</p>');
+                $("#entry-info-featured").append('<p>' + guardian_info_date + ': ' + ft[0].date + '</p>');
             }
             //"entry-info-featured"
         }

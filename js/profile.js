@@ -99,7 +99,8 @@ function getCustom() {
         var gotoWardrobe = (window.location.href).replace("profile", "wardrobe");
         $("#edit-code").attr("href", gotoWardrobe);
 
-        $("#footer-info").html("Ningún item en uso.");
+        if ((window.location.href).includes("/es/")) { $("#footer-info").html("Ningún item en uso.");
+        } else { $("#footer-info").html(footer_info_null) };
         document.getElementById("player-display-draggable").style.display = "none";
         $("#reload").addClass("disabled");
         $("#submit-guardian").addClass("disabled");
@@ -161,7 +162,7 @@ function checkArray() {
                 return false;
 
             } else {
-                if (!(window.location.href).includes("/es/")) { alert(profile_alert_error);
+                if (!(window.location.href).includes("/es/")) { alert(profile_alert_error_two);
                 } else { alert("Se ha producido un error, la página se actualizará."); };
                 location.reload();
             };

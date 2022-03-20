@@ -37,6 +37,10 @@
 	padding: 0 38px;
 }
 
+#filter-orderOptions {
+	max-width: 130px;
+}
+
 .marketplace-search-list{
 	height: 600px;
 	margin: 10px 10px 0;

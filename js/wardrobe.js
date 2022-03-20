@@ -201,7 +201,7 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
                     } else if (localization == "en") {
                         info = info.filter(function(v){return (normalize(v.english).toLowerCase()).includes(nombre)});
                     } else if (localization == "fr") {
-                        // Pendiente
+                        info = info.filter(function(v){return (normalize(v.french).toLowerCase()).includes(nombre)});
                     } else if (localization == "pt_BR") {
                         info = info.filter(function(v){return (normalize(v.portuguese).toLowerCase()).includes(nombre)});
                     }
@@ -281,7 +281,7 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
     } else {
         // Cargar sublista
         info = groupInfo.filter(v => {return v.groupId == sub});
-        prenda = groupList.filter(v => {return v.groupId == sub});
+        prenda = groupList.filter(v => {return v.groupId == sub && v.display != "none"});
 
         if ((window.location.href).includes("/es/")) {
                 $("#footer-info").html("Mostrando " + prenda.length + " artículos de los " + groupList.length + " artículos disponibles.");
@@ -309,14 +309,14 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         items = 6; pages = Math.ceil(prenda.length / items);
         var txt = "", backText = "";
         if ((window.location.href).includes("/es/")) {
-            txt = "Mostrando todas las variaciones de colores de ";
+            txt = "Mostrando todas las variaciones de colores de $GROUP";
             backText = "Regresar";
         } else {
             txt = item_card_info;
             backText = item_card_back;
         };
 
-        var regresa = '<div id="marketplace-search-title">' + txt + sub + '</div><div data-page="' + pag 
+        var regresa = '<div id="marketplace-search-title">' + txt.replace("$GROUP", sub) + '</div><div data-page="' + pag 
         + '" class="marketplace-abstract marketplace-search-back"><span class="marketplace-search-back-arrow"></span><p>' + backText + '</p></div>';
         $("#marketplace-search-items").append(regresa);
 
@@ -427,6 +427,14 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
             } else { // Disponible en inglés
                 dibuja+= '<div class="abstract-name">' + currentGrupo[0].portuguese;
             }
+        } else if (localization == "fr_FR") {
+            var fr = currentGrupo[0].french;
+            if (fr.includes("(x)")) { // No tiene traducción o no es oficial
+                fr = fr.slice(3);
+                dibuja+= '<div class="abstract-name undefined">' + fr;
+            } else { // Disponible en inglés
+                dibuja+= '<div class="abstract-name">' + currentGrupo[0].french;
+            }
         }
 
         var grupoCat = currentGrupo[0].category;
@@ -450,7 +458,7 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         if (currentGrupo[0].tag == "incomplete") {dibuja += '<div class="abstract-tags incomplete">' + g_inc + '</div>'};
         
         if (subCheck(currentGrupo[0].groupId)) {
-            var cuenta = groupList.filter(v => {return v.groupId == currentGrupo[0].groupId});
+            var cuenta = groupList.filter(v => {return v.groupId == currentGrupo[0].groupId && v.display != "none"});
             cuenta = cuenta.length;
             var colores = "colores";
             if (!(window.location.href).includes("/es/")) {colores = card_tag_declinations;}
@@ -1134,6 +1142,14 @@ function obtenerListaPreview() {
                     $(".draggable-preview-info").eq(e).append('<div class="draggable-preview-name undefined">' + pt + '</div>');
                 } else { // Disponible en inglés
                     $(".draggable-preview-info").eq(e).append('<div class="draggable-preview-name">' + pt + '</div>');
+                }
+            } else if (localization == "fr_FR") {
+                var fr = grupo[0].french;
+                if (fr.includes("(x)")) { // No tiene traducción o no es oficial
+                    fr = fr.slice(3);
+                    $(".draggable-preview-info").eq(e).append('<div class="draggable-preview-name undefined">' + fr + '</div>');
+                } else { // Disponible en inglés
+                    $(".draggable-preview-info").eq(e).append('<div class="draggable-preview-name">' + fr + '</div>');
                 }
             };
 

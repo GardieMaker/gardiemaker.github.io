@@ -18,7 +18,7 @@ $(document).ready( function () {
 		$(".index-bio-description").text(main_card_desc);
 		$(".index-button a").text(main_card_button);
 
-		$("#index-generate .input-label").text(load_label);
+		$("#index-generate .input-label").text(load_label + ": ");
 		$("#input-code").attr("placeholder", load_input);
 		$("#load-code").attr("value", load_button);
 		$(".tile-title").text(updates_title);

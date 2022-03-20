@@ -97,6 +97,26 @@ function featured(feat, entries) {
             document.getElementById("index-featured-title").innerHTML = '<a href="archive?e=' + entry[0].id + '">' + entry[0].info.name + '</a></div>'
         };
 
+        var home_de = "De";
+        var home_abrir_en = "Abrir en";
+        var home_vestidor = "Vestidor";
+        var home_perfil = "Perfil";
+        var home_fullsize = "Ver en tamaño completo";
+
+        if (!(window.location.href).includes("/es/")) {
+            home_de = featured_from;
+            home_abrir_en = featured_open;
+            home_vestidor = featured_open_wardrobe;
+            home_perfil = featured_open_profile;
+            home_fullsize = featured_open_full;
+        };
+
+        $("#index-featured-info").append('<p>' + home_de + ': <a href="archive?u=' + entry[0].alias + '">' + entry[0].alias + '</a></p>');
+        $("#index-featured-info").append('<p>' + home_abrir_en + ':<br><a href="wardrobe?s=' + entry[0].info.code + '">' + home_vestidor + '</a> | <a href="profile?s=' + entry[0].info.code + '">' + home_perfil + '</a></p>');
+        $("#index-featured-info").append('<p><a href="https://docs.zoho.com/docs/orig/' + entry[0].info.png + '" target="_blank">' + home_fullsize + '</a></p>');
+
+
+        /*
         if ((window.location.href).includes("/es/")) {
             document.getElementById("index-featured-info").innerHTML = 'De: <a href="archive?u=' + entry[0].alias + '">'
             + entry[0].alias + '</a><br><br>Abrir en: <a href="wardrobe?s='
@@ -109,7 +129,7 @@ function featured(feat, entries) {
             + entry[0].info.code + '">' + featured_open_wardrobe + '</a> | <a href="profile?s='
             + entry[0].info.code + '">' + featured_open_profile + '</a><br><br><a href="https://docs.zoho.com/docs/orig/'
             + entry[0].info.png + '" target="_blank">' + featured_open_full + '</a>';
-        };
+        };*/
 
     } else {
 

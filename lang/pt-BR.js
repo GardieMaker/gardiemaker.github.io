@@ -12,13 +12,23 @@
 	var load_button = "Gerar";
 	var change_server = "Mudar servidor";
 
+	// code format error message
+	var onload_formatMsg_one = "Olá! Atualizamos o nosso sistema de carregamento de guardiãs.";
+	var onload_formatMsg_two = "Se estiver lendo esta mensagem, é provável que você tenha utilizado um código de carregamento antigo. Esses códigos podem falhar, é aconselhável deixar de usar.";
+	var onload_formatMsg_three = "Será feita uma tentativa de atualizar o código e a página será recarregada. Se tudo der certo, use o botão \"Copiar código\" para obter o código atualizado. Se tiver algum problema, tente carregar o código do PERFIL ou do HOME.";
+	var onload_formatMsg_four = "Obrigado pela compreesão e desculpe o incoveniente.";
+	var formatMsg_button = "ACEITAR";
+
+	var load_formatMsg = 'Esse código está desatualizado e é recomendado deixar de o utilizar. Utilize o botão \"Copiar código\" para obter o código atualizado.';
+	var load_buttonOK = "CONTINUAR";
+
 
 // home variables
 	var home_page_title = "GardieMaker - Crie sua própria Guardiã";
 	var main_card_title = "Crie sua própria Guardiã!";
 	var main_card_desc = "Escolha as roupas e trajes que você mais gosta para criar a guardiã dos seus sonhos. Mais de 20 mil peças disponíveis para personalizar seus próprios personagens.";
 	var main_card_button = "IR AO VESTIÁRIO";
-	var load_label = "Carregar guardiã: ";
+	var load_label = "Carregar guardiã";
 	var updates_title = "Novidades";
 	var featured_title = "GUARDIÄ EM DESTAQUE";
 	var featured_from = "De";
@@ -119,11 +129,11 @@
 	var card_info_shop = "Loja";
 	var card_info_exp = "Exploração";
 	var card_info_exclusive_exp = "Exploração exclusiva";
-	var card_info_bindle = "Sacolas"
-	var card_info_episode = "Episódio"
-	var card_info_antique = "Loja Ancestral"
-	var card_info_alchemy = "Alquimia"
-	var card_info_spinoff = "Spin-off"
+	var card_info_bindle = "Sacolas";
+	var card_info_episode = "Episódio";
+	var card_info_antique = "Loja Ancestral";
+	var card_info_alchemy = "Alquimia";
+	var card_info_spinoff = "Spin-off";
 	var card_info_beta = "Prêmio testador BETA";
 	var card_info_month = "Prêmio do mês";
 	var card_tag_declinations = "cores";
@@ -131,7 +141,7 @@
 
 	var item_null = "Não há nenhum objeto disponível para esta categoria.";
 	var item_card_back = "Retornar";
-	var item_card_info = "Mostrando todas as variações de ";
+	var item_card_info = "Mostrando todas as variações de $GROUP";
 	var item_counter = "Mostrando $NUM0 itens dos $NUM1 disponíveis.";
 
 	var edit_panel_empty = "Não há nenhum item fixo.";
@@ -187,18 +197,9 @@
 
 	var footer_error = "Ocorreu um erro.";
 
-	// dynamic profile
-	var onload_formatMsg_one = "Olá! Atualizamos o nosso sistema de carregamento de guardiãs.";
-	var onload_formatMsg_two = "Se estiver lendo esta mensagem, é provável que você tenha utilizado um código de carregamento antigo. Esses códigos podem falhar, é aconselhável deixar de usar.";
-	var onload_formatMsg_three = "Será feita uma tentativa de atualizar o código e a página será recarregada. Se tudo der certo, use o botão \"Copiar código\" para obter o código atualizado. Se tiver algum problema, tente carregar o código do PERFIL ou do HOME.";
-	var onload_formatMsg_four = "Obrigado pela compreesão e desculpe o incoveniente.";
-	var formatMsg_button = "ACEITAR";
-
-	var load_formatMsg = 'Esse código está desatualizado e é recomendado deixar de o utilizar. Utilize o botão \"Copiar código\" para obter o código atualizado.';
-	var load_buttonOK = "CONTINUAR";
-
+	// error messages
 	var profile_alert_error = "O código colocado não está correto ou está corrompido.";
-	var profile_alert_error = "Ocorreu um erro, a página irá atualizar.";
+	var profile_alert_error_two = "Ocorreu um erro, a página irá atualizar.";
 	var profile_alert_code = "O código foi copiado.";
 
 
@@ -223,17 +224,17 @@
 	var icon_special_title = "Especial";
 	var icon_cosplay_title = "Cosplay";
 
-	var guardian_info_author = "Enviado por:";
-	var account_status_OK = "Conta verificada"
-	var account_status_bad = "Conta sem verificar"
-	var guardian_info_date = "Data:";
-	var guardian_info_open = "Abrir em:";
+	var guardian_info_author = "Enviado por";
+	var account_status_OK = "Conta verificada";
+	var account_status_bad = "Conta sem verificar";
+	var guardian_info_date = "Data";
+	var guardian_info_open = "Abrir em";
 	var guardian_info_open_profile = "Perfil";
 	var guardian_info_open_wardrobe = "Vestiário";
 	var featured_guardian_title = "Guardiã em Destaque";
 	var featured_guardian_info = "Ganhou destaque durante a semana $NUM0";
 	var featured_guardian_info_special = "Destaque especial";
-	var featured_guardian_info_activity = "Por atividade: ";
+	var featured_guardian_info_activity = "Por atividade";
 	var cosplay_report = "Notificar cosplay";
 	var filter_user_info = "Mostrando todas as contribuições de $NICKNAME";
 

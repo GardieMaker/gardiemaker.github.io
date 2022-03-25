@@ -85,7 +85,10 @@ function getCustom() {
                 $("#get-portrait").addClass("disabled");
             }
             if (checkArray()) cargarCanvas();
-            $("#footer-info").html(customArray.length + " items en uso.");
+            var items_uso = "$NUM0 items en uso.";
+            if (!(window.location.href).includes("/es/")) { items_uso = footer_info; };
+            items_uso = items_uso.replace("$NUM0", customArray.length);
+            $("#footer-info").html(items_uso);
 
             if (customArray.length > 1) {
                 var submitLink = (window.location.search).replace("?s=", "");

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr_FR">
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173992141-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-173992141-1');
+		</script>
+
+		<meta charset="utf-8">
+		<link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
+		<link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
+
+	    <meta property="og:image" content="../assets/meta/gm-home.png" />
+    	<meta property="og:description" content="Choisis les vêtements et les éléments qui te plaisent le plus pour créer la gardienne de tes rêves ! Plus de 20.000 vêtements disponibles pour personnaliser tes personnages." />
+
+		<link href="https://fonts.googleapis.com/css?family=Rubik:400&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+		<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.15.4/css/all.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="server/const.js"></script>
+		<script type="text/javascript" src="../js/home.js"></script>
+		<script type="text/javascript" src="../js/date.js"></script>
+		<script src="https://gardiemaker.blogspot.com/feeds/posts/default?alt=json&callback=get"></script>
+
+		<!-- Script traductor -->
+		<script type="text/javascript" src="../lang/fr-FR.js"></script>
+        <script type="text/javascript" src="../js/translator.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../styles/base.css">
+		<link rel="stylesheet" type="text/css" href="../styles/home.css">
+
+
+		<title></title>
+	</head>
+	<body>
+		<div id="header">
+			<div id="header-in">
+				<a id="logo" title="GardieMaker" href=""><img src="../assets/img/logo.png"></a>
+				<!-- NOVEDADES -->
+				<div id="header-news">
+					<div id="news-infos">
+						<div class="news-latest">
+							<!-- cargar status -->
+						</div>
+					</div>
+				</div>
+				<!-- FIN NOVEDADES -->
+			</div>
+			<div id="header-top">
+				<div id="header-top-in">
+					<ul id="header-menu">
+						<li>
+							<a href="https://gardiemaker.blogspot.com"></a>
+						</li>
+						<li>
+							<a href="wardrobe"></a>
+						</li>
+						<li>
+							<a href="profile"></a>
+						</li>
+						<li>
+							<a href="archive"></a>
+						</li>
+						<li>
+							<a href="support?general"></a>
+						</li>
+					</ul>
+					<div id="fb-icon"><a title="" href="https://www.facebook.com/gardiemaker" target="_blank"><span class="fab fa-facebook-square"></span></a></div>
+					<a href="../" id="change-server" title=""><span class="fas fa-globe"></span></a>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<div id="container">
+				<div class="page-main-container">
+					<div id="portrait-container">
+						<div id="portrait-header"></div>
+						<img id="portrait" src="">
+					</div>
+					<div id="index-info">
+						<div id="index-bio">
+							<div class="index-image"></div>
+							<div class="index-side">
+								<div class="index-bio-title"></div>
+								<div class="index-bio-description"></div>
+								<div class="index-button">
+									<a class="button" href="wardrobe"></a>
+								</div>
+							</div>
+						</div>
+
+						<div id="index-generate">
+							<form onsubmit="return false;">
+								<span class="input-label"></span>
+								<input id="input-code" value="" placeholder="" >
+								<input id="load-code" type="submit" value="" >
+							</form>
+						</div>
+
+						<div id="index-news">
+		                	<div class="tile-title"></div>
+
+			                <div id="news-list">
+	                        </div>
+		                </div>
+
+						<div id="index-featured">
+							<div id="index-featured-title"></div>
+							<div id="index-featured-info"></div>
+						</div>
+					</div>
+
+					<div class="clearer"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--footer-->
+		<div id="footer" itemscope="" itemtype="https://schema.org/WPFooter">
+			<div id="footer-in">
+                <ul id="footer-links">
+                    <li></li>
+                    <li><a href="https://gardiemaker.blogspot.com/p/reportar-un-problema.html" style="color: #fff;"></a></li>
+                  </ul>
+				<span id="footer-info"></span>
+			</div>
+		</div>
+
+	</body>
+</html>

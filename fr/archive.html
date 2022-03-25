@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr_FR">
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173992141-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-173992141-1');
+		</script>
+
+		<meta charset="utf-8">
+		<link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
+		<link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
+
+		<meta property="og:image" content="../assets/meta/gm-home.png" />
+		<meta property="og:description" content="Choisis les vêtements et les éléments qui te plaisent le plus pour créer la gardienne de tes rêves ! Plus de 20.000 vêtements disponibles pour personnaliser tes personnages." />
+	
+		<link href="https://fonts.googleapis.com/css?family=Rubik:400&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet"> 
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+		<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.15.4/css/all.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="server/const.js"></script>
+		<script type="text/javascript" src="../js/archive.js"></script>
+		<script type="text/javascript" src="../js/date.js"></script>
+
+		<title></title>
+
+		<!-- Script traductor -->
+        <script type="text/javascript" src="../lang/fr-FR.js"></script>
+        <script type="text/javascript" src="../js/translator.js"></script>
+
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;1,300&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="../styles/base.css">
+		<link rel="stylesheet" type="text/css" href="../styles/archive.css?v=1">
+	</head>
+	<body>
+		<div id="header">
+			<div id="header-in">
+				<a id="logo" title="GardieMaker" href="/br/home"><img src="../assets/img/logo.png"></a>
+				<!-- NOVEDADES -->
+				<div id="header-news">
+					<div id="news-infos">
+						<div class="news-latest">
+							<!-- cargar status -->
+						</div>
+					</div>
+				</div>
+				<!-- FIN NOVEDADES -->
+			</div>
+			<div id="header-top">
+				<div id="header-top-in">
+					<ul id="header-menu">
+						<li>
+							<a href="https://gardiemaker.blogspot.com"></a>
+						</li>
+						<li>
+							<a href="wardrobe"></a>
+						</li>
+						<li>
+							<a href="profile"></a>
+						</li>
+						<li>
+							<a href="archive"></a>
+						</li>
+						<li>
+							<a href="support?contests"></a>
+						</li>
+					</ul>
+					<div id="fb-icon"><a title="" href="https://www.facebook.com/gardiemaker" target="_blank"><span class="fab fa-facebook-square"></span></a></div>
+					<a href="../" id="change-server" title=""><span class="fas fa-globe"></span></a>
+				</div>
+			</div>
+		</div>
+		<!--content-->
+		<div id="content">
+			<div id="container">
+				<div class="page-main-container">
+					<h1><span class="title-end"></span></h1>
+					<a href="https://docs.google.com/forms/d/e/1FAIpQLSfycgchQuYlHzH74toiYmGlWR-x5jP5B680ilWMHs7w7qSJrA/viewform" target="_blank"><div id="new-post" class="button"></div></a>
+                    <div class="clearer"></div>
+                    <div id="archive-container">
+
+						<div id="archive-menu-container">
+							<ul id="archive-menu">
+
+								<div id="menu-featured"><li></li></div>
+								<div id="menu-all"><li></li></div>
+								<hr style="width:70%; color:#7479b3">
+								<div id="menu-guardians"><li></li></div>
+								<div id="menu-cosplay"><li></li></div>
+								<br>
+								<select id="menu-user"></select>
+		
+							</ul>
+
+							<div id="form-container"><form onsubmit="return false">
+	                    		<input id="filter-search" placeholder="" value="" >
+	                    	</form></div>
+	                    	<div id="account-menu" class="menu-section">
+	                    		<h2></h2>
+	                    		<div class="account-buttons-container">
+		                    		<a href="https://docs.google.com/forms/d/10QZJOIhp5m1suz3GUI5OZqAWBToBqNhaunBHKRkkTKg/viewform" target="_blank"><div class="button"></div></a>
+		                    		<a href="https://docs.google.com/forms/d/1erz_lqXDJzMVbMEEru31SraZcDuWOM2J5qIHrkHFp1A/viewform" target="_blank"><div class="button"></div></a>
+	                    		</div>
+	                    	</div>
+						</div>
+
+                        <div id="archive-thumbnail-content"></div>
+                        
+                    </div>
+                    <div class="clearer"></div>
+                </div>
+                <div class="clearer"></div>
+                                <div class="page-main-container ranking">
+                	<h1><span class="title-end"></span></h1>
+                	<div id="ranking-container"> 
+	                	<div id="ranking-total" class="menu-section">
+							<h2></h2>
+							<p class="rt top1"></p>
+							<p class="rt top2"></p>
+							<p class="rt top3"></p>
+						</div>
+
+						<div id="ranking-guardian" class="menu-section">
+							<h2></h2>
+							<p class="rg top1"></p>
+							<p class="rg top2"></p>
+							<p class="rg top3"></p>
+						</div>
+
+						<div id="ranking-cosplay" class="menu-section">
+							<h2></h2>
+							<p class="rc top1"></p>
+							<p class="rc top2"></p>
+							<p class="rc top3"></p>
+						</div>
+					</div>
+                </div>
+                <div class="clearer"></div>
+			</div>
+		</div>
+
+
+
+		<!--footer-->
+		<div id="footer" itemscope="" itemtype="https://schema.org/WPFooter">
+			<div id="footer-in">
+                <ul id="footer-links">
+                    <li></li>
+                    <li><a href="https://gardiemaker.blogspot.com/p/reportar-un-problema.html" style="color: #fff;"></a></li>
+                  </ul>
+				<span id="footer-info"></span>
+			</div>
+		</div>
+
+	</body>
+</html>

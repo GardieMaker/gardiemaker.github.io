@@ -200,7 +200,7 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
                         info = info.filter(function(v){return (normalize(v.spanish).toLowerCase()).includes(nombre)});
                     } else if (localization == "en") {
                         info = info.filter(function(v){return (normalize(v.english).toLowerCase()).includes(nombre)});
-                    } else if (localization == "fr") {
+                    } else if (localization == "fr_FR") {
                         info = info.filter(function(v){return (normalize(v.french).toLowerCase()).includes(nombre)});
                     } else if (localization == "pt_BR") {
                         info = info.filter(function(v){return (normalize(v.portuguese).toLowerCase()).includes(nombre)});
@@ -215,7 +215,9 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
                     var lang = window.location.href;
                 
                     if (!lang.includes("/es/")) {
-                        if (lang.includes("/br/")) {
+
+                        // Portugués a español
+                        if (lang.includes("/br/")) {                            
                             switch (busca[0]) {
                                 case "a": busca[0] = "a"; break;
                                 case "dn": busca[0] = "sv"; break;
@@ -224,6 +226,22 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
                                 case "je": busca[0] = "je"; break;
                                 case "mo": busca[0] = "pm"; break;
                                 case "v": busca[0] = "v"; break;
+                                case "bf": busca[0] = "bf"; break;
+                                case "h": busca[0] = "h"; break;
+                                case "n": busca[0] = "n"; break;
+                            };
+                        };
+
+                        // Francés a español
+                        if (lang.includes("/fr/")) {
+                            switch (busca[0]) {
+                                case "a": busca[0] = "a"; break;
+                                case "sv": busca[0] = "sv"; break;
+                                case "p": busca[0] = "p"; break;
+                                case "fm": busca[0] = "m"; break;
+                                case "je": busca[0] = "je"; break;
+                                case "pm": busca[0] = "pm"; break;
+                                case "fe": busca[0] = "v"; break;
                                 case "bf": busca[0] = "bf"; break;
                                 case "h": busca[0] = "h"; break;
                                 case "n": busca[0] = "n"; break;

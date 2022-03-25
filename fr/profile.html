@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr_FR">
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173992141-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-173992141-1');
+		</script>
+
+		<meta charset="utf-8">
+		<link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
+		<link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
+
+		<meta property="og:image" content="../assets/meta/gm-home.png" />
+    	<meta property="og:description" content="Choisis les vêtements et les éléments qui te plaisent le plus pour créer la gardienne de tes rêves ! Plus de 20.000 vêtements disponibles pour personnaliser tes personnages." />
+
+		<link href="https://fonts.googleapis.com/css?family=Rubik:400&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet"> 
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+		<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.15.4/css/all.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="server/const.js"></script>
+		<script type="text/javascript" src="../js/profile.js"></script>
+		<script type="text/javascript" src="../js/date.js"></script>
+
+		<title></title>
+
+		<!-- Script traductor -->
+        <script type="text/javascript" src="../lang/fr-FR.js"></script>
+        <script type="text/javascript" src="../js/translator.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../styles/base.css">
+		<link rel="stylesheet" type="text/css" href="../styles/profile.css">
+	</head>
+	<body>
+		<div id="header">
+			<div id="header-in">
+				<a id="logo" title="GardieMaker" href="/br/home"><img src="../assets/img/logo.png"></a>
+				<!-- NOVEDADES -->
+				<div id="header-news">
+					<div id="news-infos">
+						<div class="news-latest">
+							<!-- cargar status -->
+						</div>
+					</div>
+				</div>
+				<!-- FIN NOVEDADES -->
+			</div>
+			<div id="header-top">
+				<div id="header-top-in">
+					<ul id="header-menu">
+						<li>
+							<a href="https://gardiemaker.blogspot.com"></a>
+						</li>
+						<li>
+							<a href="wardrobe"></a>
+						</li>
+						<li>
+							<a href="profile"></a>
+						</li>
+						<li>
+							<a href="archive"></a>
+						</li>
+						<li>
+							<a href="support?profile"></a>
+						</li>
+					</ul>
+					<div id="fb-icon"><a title="" href="https://www.facebook.com/gardiemaker" target="_blank"><span class="fab fa-facebook-square"></span></a></div>
+					<a href="../" id="change-server" title=""><span class="fas fa-globe"></span></a>
+				</div>
+			</div>
+		</div>
+		<!--content-->
+		<div id="content">
+			<div id="container">
+				<div class="page-main-container player-main-container">
+					<h1><span class="title-end"></span></h1>
+
+					<div id="player-display" class="isDraggable">
+						<div class="player-element background-element" style="background: url('https://www.eldarya.com.br/assets/img/item/player/web_full/ebe3cacec9acff9a1ae9d9554a3192c0.jpg')"></div>
+						<div id="player-pet-containment" style="width: 1164.8px; height: 864px; left: -182.4px; top: -132px;"></div>
+
+						<!-- friend-pet -->
+						<div id="friend-display-pet" class="dragEnabled ui-draggable ui-draggable-handle" onmousedown="dragPet('friend-display-pet')" style="position: absolute; inset: 100px auto auto 100px; width: auto; height: auto; z-index: 1">
+							<img id="img-friend-pet" src="">
+						</div>
+						<!-- friend -->
+						<div id="friend-display-draggable" class ="dragEnabled ui-draggable" style="position: absolute; left: 250px; display: none; z-index: 2" onmousedown="dragGardienne('friend-display-draggable')">
+							<img id="img-friend" src="" style="position: absolute; bottom: 0">
+							<div id="friend-display-draggable-handler" class="ui-draggable-handle"></div>
+						</div>
+
+						<!-- player-pet -->
+						<div id="player-display-pet" class="dragEnabled ui-draggable ui-draggable-handle" onmousedown="dragPet('player-display-pet')" style="position: absolute; inset: 100px auto auto 100px; width: auto; height: auto; z-index: 3">
+							<img id="img-player-pet" src="">
+						</div>
+						<!-- player -->
+						<div id="player-display-draggable" class ="dragEnabled ui-draggable" style="position: absolute; z-index: 4;" onmousedown="dragGardienne('player-display-draggable')">
+							<div class="playerProfileAvatar">
+								<canvas width="420" height="594"></canvas>
+							</div>
+							<div id="player-display-draggable-handler" class="ui-draggable-handle"></div>
+						</div>
+					</div>
+
+					<ul id="player-actions-tab">
+						<li>
+							<a id="edit-code" class="button"></a>
+						</li>
+						<li>
+							<div id="reload" class="button"></div>
+						</li>
+						<li>
+							<a id="submit-guardian-link" target="_blank"><div id="submit-guardian" class="button"></div></a>
+						</li>
+						<li>
+							<div id="get-code" class="button"></div>
+						</li>
+						<li>
+							<div id="get-portrait" class="button"></div>
+						</li>
+					</ul>
+					<div id="player-left-tab">
+						<div id="left-info-tab">
+							<h3></h3>
+							<br>
+
+							<div class="bonus-container">
+								<form onsubmit="return false;">
+									<select id="select-player-pet" style="width:160px"></select>
+									<span style="display: none" id="check-player-span"><input type="checkbox" id="check-player-pet" class="chkVb" ></span>
+								</form>
+							</div>
+
+							<div class="bonus-container">
+								<form onsubmit="return false">
+									<select id="select-friend" style="max-width:120px; min-width:100px;"></select>
+									<select id="select-version" style="display:none"></select>
+									<input id="button-centrar" type="submit" value="" style="display: none;padding: 1px 8px;">
+								</form>
+								
+								<div id="otro-container" style="display: none; text-align: center;">
+									<br>
+									<form onsubmit="return false;">
+										<input id="input-url" value="" placeholder="" style="width: 150px">
+										<input id="input-height" value="594" style="width: 30px">
+										px&nbsp;&nbsp;
+										<input id="load-url" type="submit" value="" style="padding: 1px 8px;">
+									</form>
+								</div>
+								<br>
+								<form onsubmit="return false;">
+									<select id="select-friend-pet" style="width:160px"></select>
+									<span style="display: none" id="check-friend-span"><input type="checkbox" id="check-friend-pet" class="chkVb"></span>
+								</form>
+							</div>
+
+							<div class="bonus-container" style="display: none;">
+								<span style="text-align: center; display: block; margin-bottom: 10px;"></span>
+								<form onsubmit="return false;">
+									<select id="position-player" style="max-width: 92px;"></select>
+									<input id="position-bajar" type="submit" value="" style="padding: 1px 8px;">
+									<input id="position-subir" type="submit" value="" style="padding: 1px 8px;">
+								</form>
+							</div>
+
+							<div class="bonus-container">
+								<form onsubmit="return false">
+									<select id="select-corner-style" style="max-width:140px; min-width:100px;">
+										<option value="rounded"></option>
+										<option value="straight"></option>
+									</select>
+								</form>
+							</div>
+
+							<h3></h3>
+							<br>
+							<div class="bonus-container">
+								<div style="margin: 3px 8px; font-size: 13px; text-align: justify;"></div><br>
+								<form onsubmit="return false;" style="text-align: center;">
+									<input id="input-code" placeholder="" value="" style="width: 195px">
+									<input id="load-code" type="submit" value="" style="padding: 1px 8px;">
+								</form>
+							</div>
+
+						</div>
+					</div>
+					<div id="right-profile-tab">
+						<div id="profile" style="text-align: center;">
+							<span><b></b><br><br></span>
+						</div>
+					</div>
+					<div class="clearer"></div>
+				</div>
+			</div>
+		</div>
+	
+		<!--footer-->
+		<div id="footer" itemscope="" itemtype="https://schema.org/WPFooter">
+			<div id="footer-in">
+                <ul id="footer-links">
+                    <li></li>
+                    <li><a href="https://gardiemaker.blogspot.com/p/reportar-un-problema.html" style="color: #fff;"></a></li>
+                  </ul>
+				<span id="footer-info"></span>
+			</div>
+		</div>
+
+	</body>
+</html>

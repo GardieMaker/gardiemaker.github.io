@@ -154,7 +154,7 @@
 	var profile_page_title = "Profil - GardieMaker";
 	var profile_content_title = "Mon personnage";
 	var profile_button_edit = "Éditer";
-	var profile_button_reload = "Recharger";
+	var profile_button_reload = "Actualiser";
 	var profile_button_submit = "Envoyer la tenue";
 	var profile_button_get_code = "Copier le code";
 	var profile_button_save = "Enregistrer";
@@ -183,7 +183,7 @@
 
 	var panel_left_position_button_back = "Reculer";
 	var panel_left_position_button_front = "Avancer";
-	var panel_left_title_two = "Charger la gardienne";
+	var panel_left_title_two = "Charger une tenue";
 	var panel_left_load_info = "<u>Avertissement:</u> Le chargement d'une nouvelle tenue entraînera la perte de toutes les modifications de la session en cours.";
 	var panel_right_title = "INFORMATIONS";
 	var panel_right_p_one = "1) Vous pouvez enregistrer un rendu de votre tenue à partir de la fenêtre \"Enregistrer\" en sélectionnant la résolution que vous préférez. Si vous êtes sur un appareil mobile vous ne pourrez pas la sauvegarder.";						
@@ -213,8 +213,8 @@
 	var menu_left_cosplay = "Cosplay / Gijinka";
 
 	var ranking_section_title = "Classement des contributions";
-	var ranking_total_title = "Totaux";
-	var ranking_guardian_title = "Originaux";
+	var ranking_total_title = "Général";
+	var ranking_guardian_title = "OCs";
 	var ranking_cosplay_title = "Cosplays";
 
 	// dynamic archive
@@ -297,7 +297,7 @@
 	    {'question':'Comment puis-je sauvegarder ma Gardienne?',
 	    'answer':'Pour afficher et enregistrer un rendu de votre Gardienne, vous devez cliquer sur "Enregistrer". Cela ouvrira une fenêtre qui vous permettra d\'enregistrer l\'image dans la résolution que vous préférez. Cela ne fonctionne pas sur les appareils mobiles. Vous ne pourrez l\'enregistrer qu\'à partir d\'un ordinateur.'},	    		 
 	    {'question':'A quoi sert le code?',
-	    'answer':'Si vous avez aimé votre gardienne et que vous souhaitez la partager (ou simplement l\'enregistrer), vous pouvez enregistrer ce code pour la générer à nouveau plus tard. Vous collez ce code sous le profil, où il est écrit "Charger la gardienne".'}
+	    'answer':'Si vous avez aimé votre gardienne et que vous souhaitez la partager (ou simplement l\'enregistrer), vous pouvez enregistrer ce code pour la générer à nouveau plus tard. Vous collez ce code sous le profil, où il est écrit "Charger une tenue".'}
 	];
 
 	var infoContestsT = [

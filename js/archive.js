@@ -367,8 +367,17 @@ function dibujaTabla(entry, uVAL, pag) {
                     if (entrada.name != null) { tabla += "' title='" + entrada.name };
                     tabla += "' class='abstract-thumbnail";
 
+                    var preview_title = feat[suma].title;
+
+                    if (!(window.location.href).includes("/es/")) {
+                        if (preview_title.includes("Semana")) {
+                            var num_week = (feat[suma].title).replace("Semana ", "");
+                            preview_title = icon_featured_title.replace("$NUM0", num_week);
+                        }
+                    };
+
                     tabla += "' class='abstract-thumbnail feat-page'"
-                    + " style='background-image:url(" + bg + ")'><span class='feat-title'>" + feat[suma].title + 
+                    + " style='background-image:url(" + bg + ")'><span class='feat-title'>" + preview_title + 
                     "</span><img src='https://docs.zoho.com/docs/orig/" + entrada.png + "'></div></td>";
                     
                 } else {

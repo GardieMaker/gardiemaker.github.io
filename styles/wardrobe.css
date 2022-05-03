@@ -1,3 +1,29 @@
+@font-face {
+    font-family: "Temp Menu";
+    src: url("https://www.eldarya.es/static/fonts/temp_menu_icons.woff") format("woff"), url("https://www.eldarya.es/static/fonts/temp_menu_icons.ttf") format("truetype");
+}
+
+.tradable-mark {
+	font-family: "Temp Menu", serif;
+}
+
+.tradable-mark, .premium-mark {
+	/*font-family: "Temp Menu", serif;*/
+	position: absolute;
+	bottom: 3px;
+	left: 55px;
+	color: #FFFFFF;
+	border: 1px solid #B9B9B9;
+	border-radius: 25px;
+	background-color: #666;
+	font-size: 13px;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	cursor: default;
+}
+
 #container .page-main-container{
 	background-color: rgba(73, 79, 154, 0.87);
 	border-radius: 8px;

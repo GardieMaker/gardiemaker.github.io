@@ -188,7 +188,13 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
             for (g = 0; g < groupInfo.length; g++) {info.push(groupInfo[g])};
 
             if (categoria != "") {info = info.filter(v => {return v.category == categoria})};
-            if (especial != "") {info = info.filter(v => {return v.especial == especial})};
+            if (especial != "") {
+                if (especial != "tradable") {
+                    info = info.filter(v => {return v.especial == especial});
+                } else {
+                    info = info.filter(v => {return v.tradable == true});
+                }
+            };
             if (rareza != "") {info = info.filter(v => {return v.rarity == rareza})};
             if (orden == "newest") info.reverse();
 
@@ -418,7 +424,8 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         var dibuja = '<li class="marketplace-abstract marketplace-search-item" data-groupid="' 
         + currentGrupo[0].groupId + '" data-itemid="' + currentPrenda[looper].itemId 
         + '"><div class="img-container"><img class="abstract-icon" src="' + img + '"/>' + rarity 
-        + '</div><div class="abstract-container">'; 
+        + ((currentGrupo[0].mark == "none") ? '' : (currentGrupo[0].mark == "tradable") ? '<div class="tradable-mark"></div>' : '<span class="premium-mark fas fa-dollar-sign"></span>')
+        + '</div><div class="abstract-container">';
 
         if (localization == "es") {
             var esp = currentGrupo[0].spanish;
@@ -472,16 +479,16 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         };
         var g_inc = "GRUPO INCOMPLETO";
         if (!(window.location.href).includes("/es/")) g_inc = card_tag_inclomplete;
-
-        if (currentGrupo[0].tag == "incomplete") {dibuja += '<div class="abstract-tags incomplete">' + g_inc + '</div>'};
         
         if (subCheck(currentGrupo[0].groupId)) {
+            if (currentGrupo[0].tag == "incomplete") {dibuja += '<div class="abstract-tags incomplete">' + g_inc + '</div>'};
+
             var cuenta = groupList.filter(v => {return v.groupId == currentGrupo[0].groupId && v.display != "none"});
             cuenta = cuenta.length;
             var colores = "colores";
             if (!(window.location.href).includes("/es/")) {colores = card_tag_declinations;}
 
-            dibuja += '<div class="abstract-tags">' + cuenta + ' ' + colores + '</div>';  
+            dibuja += '<div class="abstract-tags">' + cuenta + ' ' + colores + '</div>';
         };
         
         dibuja += '</div></li>';

@@ -479,10 +479,12 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         };
         var g_inc = "GRUPO INCOMPLETO";
         if (!(window.location.href).includes("/es/")) g_inc = card_tag_inclomplete;
-        
-        if (subCheck(currentGrupo[0].groupId)) {
-            if (currentGrupo[0].tag == "incomplete") {dibuja += '<div class="abstract-tags incomplete">' + g_inc + '</div>'};
 
+        if (currentGrupo[0].tag == "incomplete") {
+            if ($(".marketplace-search-back").length == 0) {dibuja += '<div class="abstract-tags incomplete">' + g_inc + '</div>' }
+        };
+
+        if (subCheck(currentGrupo[0].groupId)) {
             var cuenta = groupList.filter(v => {return v.groupId == currentGrupo[0].groupId && v.display != "none"});
             cuenta = cuenta.length;
             var colores = "colores";

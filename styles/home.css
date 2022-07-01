@@ -179,7 +179,7 @@ input[type="submit"]:hover {
 
 #index-featured-title {
 	font-size: 16px;
-	margin-bottom: 6px;
+	margin-bottom: 10px;
 	font-family: Merriweather, serif;
 	height: 20px;
 	white-space: nowrap;
@@ -190,14 +190,14 @@ input[type="submit"]:hover {
 
 #index-featured-info {
 	border-top: 1px solid;
-	/*padding-top: 15px;*/
+	padding-top: 6px;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 }
 
 #index-featured-info p {
-  margin: 10px 0px;
+  margin: 12px 0px;
 }
 
 #index-news {

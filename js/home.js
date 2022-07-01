@@ -87,9 +87,12 @@ function featured(feat, entries) {
         var entry = entries.filter(function(v){return v.id == feat[0].entry});
         var fondo = buscaFondo(entry[0].info.code);
 
+        // Reemplazar ZOHO por canvas
         document.getElementById("portrait").src = "https://docs.zoho.com/docs/orig/" + entry[0].info.png;
+        document.getElementById("portrait-container").style.background = "url('" + fondo +  "') bottom center";
 
-        document.getElementById("portrait").style.background = "url('" + fondo +  "') top center";
+        // drawPortrait(entry[0].info.code); // no usa foto
+
 
         if (entry[0].info.name == null) {
             document.getElementById("index-featured-title").innerHTML = 'ID : <a href="archive?e=' + entry[0].id + '">' + entry[0].id + '</a></div>'
@@ -113,23 +116,7 @@ function featured(feat, entries) {
 
         $("#index-featured-info").append('<p>' + home_de + ': <a href="archive?u=' + entry[0].alias + '">' + entry[0].alias + '</a></p>');
         $("#index-featured-info").append('<p>' + home_abrir_en + ':<br><a href="wardrobe?s=' + entry[0].info.code + '">' + home_vestidor + '</a> | <a href="profile?s=' + entry[0].info.code + '">' + home_perfil + '</a></p>');
-        $("#index-featured-info").append('<p><a href="https://docs.zoho.com/docs/orig/' + entry[0].info.png + '" target="_blank">' + home_fullsize + '</a></p>');
-
-
-        /*
-        if ((window.location.href).includes("/es/")) {
-            document.getElementById("index-featured-info").innerHTML = 'De: <a href="archive?u=' + entry[0].alias + '">'
-            + entry[0].alias + '</a><br><br>Abrir en: <a href="wardrobe?s='
-            + entry[0].info.code + '">Vestidor</a> | <a href="profile?s='
-            + entry[0].info.code + '">Perfil</a><br><br><a href="https://docs.zoho.com/docs/orig/'
-            + entry[0].info.png + '" target="_blank">Ver en tamaño completo</a>';
-        } else {
-            document.getElementById("index-featured-info").innerHTML = featured_from + ': <a href="archive?u=' + entry[0].alias + '">'
-            + entry[0].alias + '</a><br><br>' + featured_open + ': <a href="wardrobe?s='
-            + entry[0].info.code + '">' + featured_open_wardrobe + '</a> | <a href="profile?s='
-            + entry[0].info.code + '">' + featured_open_profile + '</a><br><br><a href="https://docs.zoho.com/docs/orig/'
-            + entry[0].info.png + '" target="_blank">' + featured_open_full + '</a>';
-        };*/
+        // $("#index-featured-info").append('<p><a href="https://docs.zoho.com/docs/orig/' + entry[0].info.png + '" target="_blank">' + home_fullsize + '</a></p>'); 
 
     } else {
 
@@ -145,6 +132,53 @@ function featured(feat, entries) {
         + feat[0].entryInfo.png + '" target="_blank">Ver en tamaño completo</a>');
         
     };
+};
+
+//=======================================
+function preloadIMG(src) {
+    return new Promise(resolve => {
+        var img = new Image();
+        img.src = src;
+        img.onload = () => {resolve(img)}; 
+    });
+};
+//=======================================
+
+async function drawPortrait(code) {
+        var fondo = buscaFondo(code);
+
+        var codes = (code).split("i");
+
+        for (i = 0; i < codes.length; i++) {
+            var item = groupList.filter(v => {return v.itemId == codes[i]});
+            var categoria = groupInfo.filter(v => {return v.groupId == item[0].groupId});
+            categoria = categoria[0].category;
+            var url = getFullLink("web_hd/", categoria, item[0].itemURL);
+
+            if (categoria != "background") {
+                var canvas = document.getElementById("c-portrait");
+                var ctx = canvas.getContext("2d");
+                //var img = new Image();
+
+                var ready = await preloadIMG(url);
+                ctx.drawImage(ready, -180, -130);
+            };
+        };
+};
+
+function getFullLink(size, category, item) {
+    var img = "";
+
+    switch (category) {
+        case "background": img = URL_SRC + "item/player/" + size + item; break;
+        case "skin": img = URL_SRC + "player/skin/" + size + item; break;
+        case "mouth": img = URL_SRC + "player/mouth/" + size + item; break;
+        case "eye": img = URL_SRC + "player/eyes/" + size + item; break;
+        case "hair": img = URL_SRC + "player/hair/" + size + item; break;
+        default: img = URL_SRC + "item/player/" + size + item;
+    };
+
+    return img;
 };
 
 function newFormatCode() {

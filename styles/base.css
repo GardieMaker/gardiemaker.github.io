@@ -116,6 +116,7 @@ html, body{
     top: 0px;
     font-size: 24px;
     color: #fff;
+    display: none;
 }
 
 #fb-icon span {

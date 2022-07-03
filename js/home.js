@@ -88,7 +88,9 @@ function featured(feat, entries) {
         var fondo = buscaFondo(entry[0].info.code);
 
         // Reemplazar ZOHO por canvas
-        document.getElementById("portrait").src = "https://docs.zoho.com/docs/orig/" + entry[0].info.png;
+        // document.getElementById("portrait").src = "https://docs.zoho.com/docs/orig/" + entry[0].info.png;
+        // REEMPLAZO TEMPORAL !!!!!!!!
+        document.getElementById("portrait").src = "../assets/img/temp.png";
         document.getElementById("portrait-container").style.background = "url('" + fondo +  "') bottom center";
 
         // drawPortrait(entry[0].info.code); // no usa foto
@@ -114,8 +116,8 @@ function featured(feat, entries) {
             home_fullsize = featured_open_full;
         };
 
-        $("#index-featured-info").append('<p>' + home_de + ': <a href="archive?u=' + entry[0].alias + '">' + entry[0].alias + '</a></p>');
-        $("#index-featured-info").append('<p>' + home_abrir_en + ':<br><a href="wardrobe?s=' + entry[0].info.code + '">' + home_vestidor + '</a> | <a href="profile?s=' + entry[0].info.code + '">' + home_perfil + '</a></p>');
+        $("#index-featured").append('<p>' + home_de + ': <a href="archive?u=' + entry[0].alias + '">' + entry[0].alias + '</a></p>');
+        //$("#index-featured-info").append('<p>' + home_abrir_en + ':<br><a href="wardrobe?s=' + entry[0].info.code + '">' + home_vestidor + '</a> | <a href="profile?s=' + entry[0].info.code + '">' + home_perfil + '</a></p>');
         // $("#index-featured-info").append('<p><a href="https://docs.zoho.com/docs/orig/' + entry[0].info.png + '" target="_blank">' + home_fullsize + '</a></p>'); 
 
     } else {

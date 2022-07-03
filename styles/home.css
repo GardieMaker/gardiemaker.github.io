@@ -16,6 +16,9 @@ input[type="submit"]:hover {
 }
 
 /*-------------------------------------------------------*/
+#container div, #container img {
+	box-sizing: border-box;
+}
 
 #portrait-container {
 	float: right;
@@ -27,6 +30,11 @@ input[type="submit"]:hover {
 	background: rgba(255,255,255,.2);
 	border-radius: 30px;
 	border-bottom-left-radius: 0;
+
+	height: 532px;
+	overflow: hidden;
+	width: 400px;
+	border: 2px solid #fff;
 }
 
 #portrait-header {
@@ -39,63 +47,73 @@ input[type="submit"]:hover {
 }
 
 #portrait {
-	position: relative;
+	/*position: relative;
 	width: 630px;
 	left: -180px;
-	top: -130px;
+	top: -130px;*/
+
+	position: absolute;
+	height: 574px;
+	left: -4px;
+	bottom: 0;
 }
 
 
 #index-info {
 	margin: 0;
+	/*position: relative;
+	width: 695px;*/
+
 	position: relative;
-	width: 695px;
+	width: 550px;
 }
 
 #index-bio, #index-generate, #index-featured {
-	background-color: #fff;
+	/*background-color: #fff;
 	width: 655px;
 	border-radius: 10px;
 	padding: 20px;
+	margin-bottom: 20px;*/
+
+	background-color: #fff;
+	width: 100%;
+	border-radius: 10px;
+	padding: 20px;
 	margin-bottom: 20px;
+	position: relative;
+
+
 }
 
 #index-bio {
-	height: 215px;
+	height: 285px;
 }
 
 .index-image {
 	background-image: url("../assets/img/z-home.png");
-	background-position-y: -253%;
-	background-position-x: -205%;
-	background-size: 453%;
 	width: 120px;
 	height: 215px;
 	position: relative;
-	float: left;
 
 	/* VER 2 */
-	/*background-image: url("https://docs.zohopublic.com/docs/orig/9eiqybf92fccdd7cd4577a9db42c28f0ff7aa");*/
 	background-position-y: -160px;
 	background-position-x: -245px;
-	width: 655px;
-	height: 215px;
-	position: absolute;
 	float: left;
 	background-size: 630px;
 	background-repeat: no-repeat;
+
+	width: 100%;
+	height: 100%;
 	/* */
 }
 
 .index-side {
-	position: relative;
-	width: 80%;
+	position: absolute;
 	float: right;
-	height: 100%;
-
-	/* VER 2 */
-	width: 70%;
-	/* */
+	bottom: 20px;
+	width: 65%;
+	right: 10px;
+	top: 20px;
 }
 
 .index-bio-title {
@@ -104,8 +122,7 @@ input[type="submit"]:hover {
     line-height: 30px;
     font-weight: 400;
     color: #34386f;
-    text-align: left;
-    margin-left: 15%;
+    text-align: center;
 }
 
 .index-bio-description {
@@ -121,7 +138,7 @@ input[type="submit"]:hover {
 
 .index-button {
 	position: absolute;
-	bottom: 10px;
+	bottom: 0;
 	width: 100%;
 	text-align: center;
 }
@@ -168,18 +185,29 @@ input[type="submit"]:hover {
 }
 
 #index-featured {
-	margin-bottom: 0;
+	/*margin-bottom: 0;
 	width: 180px;
 	float: right;
 	margin-right: -21px;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
-	height: 107px;
+	height: 107px;*/
+
+	margin-bottom: 0;
+	width: auto;
+	max-width: 365px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	display: inline-block;
+	position: absolute;
+	bottom: 20px;
+	padding: 14px 14px 14px 10px;
+
 }
 
 #index-featured-title {
-	font-size: 16px;
-	margin-bottom: 10px;
+	font-size: 15px;
+	margin-bottom: 5px;
 	font-family: Merriweather, serif;
 	height: 20px;
 	white-space: nowrap;
@@ -188,26 +216,23 @@ input[type="submit"]:hover {
 	
 }
 
-#index-featured-info {
-	border-top: 1px solid;
-	padding-top: 6px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-#index-featured-info p {
-  margin: 12px 0px;
-}
-
 #index-news {
-	display: inline-block;
+	/*display: inline-block;
 	vertical-align: top;
 	width: 475px;
 	background-color: #437ae1;
 	border-radius: 10px;
 	border: 2px solid rgba(77, 168, 253, 0.37);
+	overflow: hidden;*/
+
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	background-color: #437ae1;
+	border-radius: 10px;
+	border: 2px solid rgba(77, 168, 253, 0.37);
 	overflow: hidden;
+	position: relative;
 }
 
 #index-news .tile-title {

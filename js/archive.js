@@ -2,6 +2,15 @@
 var users, entrys, feat;
 var groupInfo = "", groupList = "";
 
+alert("Cerrado temporalmente.");
+var tempClose = window.location.href;
+if (tempClose.includes("?")) {
+    tempClose = tempClose.split("?");
+    tempClose = tempClose[0];
+};
+
+window.location.href = tempClose.replace("archive", "home");
+
 $(document).ready(function () {
     // Cargar status
     $.get("https://raw.githubusercontent.com/GardieMaker/data/master/status/activities", function(estado, success, xhr) {

@@ -88,9 +88,7 @@ function featured(feat, entries) {
         var fondo = buscaFondo(entry[0].info.code);
 
         // Reemplazar ZOHO por canvas
-        // document.getElementById("portrait").src = "https://docs.zoho.com/docs/orig/" + entry[0].info.png;
-        // REEMPLAZO TEMPORAL !!!!!!!!
-        document.getElementById("portrait").src = "../assets/img/temp.png";
+        document.getElementById("portrait").src = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + entry[0].info.png + "?orig=true";
         document.getElementById("portrait-container").style.background = "url('" + fondo +  "') bottom center";
 
         // drawPortrait(entry[0].info.code); // no usa foto

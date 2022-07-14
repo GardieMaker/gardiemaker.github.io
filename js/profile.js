@@ -4,6 +4,8 @@ var REMOTE = "https://gardiemaker.github.io";
 
 var groupInfo, groupList, groupPet, groupFriend;
 var str, portraitMin = false;
+if ((window.location.href).includes("127.0.0.1")) portraitMin = true;
+
 var imgurl, galor;
 
 //================================================================
@@ -37,6 +39,7 @@ $(document).ready(function () {
                     groupFriend = requestFriend.response;
 
                     getCustom(); optPet(); optFriend();
+                    if ((window.location.href).includes("127.0.0.1")) {$("#player-display").hide()};
                 };
             };
         };
@@ -84,7 +87,7 @@ function getCustom() {
                 $("#get-code").addClass("disabled");
                 $("#get-portrait").addClass("disabled");
             }
-            if (checkArray()) cargarCanvas();
+            if (checkArray() && !(window.location.href).includes("127.0.0.1")) cargarCanvas();
             var items_uso = "$NUM0 items en uso.";
             if (!(window.location.href).includes("/es/")) { items_uso = footer_info; };
             items_uso = items_uso.replace("$NUM0", customArray.length);

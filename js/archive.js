@@ -2,15 +2,6 @@
 var users, entrys, feat;
 var groupInfo = "", groupList = "";
 
-alert("Cerrado temporalmente.");
-var tempClose = window.location.href;
-if (tempClose.includes("?")) {
-    tempClose = tempClose.split("?");
-    tempClose = tempClose[0];
-};
-
-window.location.href = tempClose.replace("archive", "home");
-
 $(document).ready(function () {
     // Cargar status
     $.get("https://raw.githubusercontent.com/GardieMaker/data/master/status/activities", function(estado, success, xhr) {
@@ -348,7 +339,7 @@ function dibujaTabla(entry, uVAL, pag) {
                     } else if (entry[suma].type == "cosplay") {
                         tabla += " cosplay'><span class='cplay'>COSPLAY</span>";
                     } else {tabla += "'>";};
-                    tabla += "<img src='https://docs.zoho.com/docs/orig/" + entry[suma].info.png + "'></div></td>"
+                    tabla += "<img src='https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + entry[suma].info.png + "?orig=true'></div></td>";
                 } else {
                     tabla += "<td></td>";
                 }
@@ -387,7 +378,7 @@ function dibujaTabla(entry, uVAL, pag) {
 
                     tabla += "' class='abstract-thumbnail feat-page'"
                     + " style='background-image:url(" + bg + ")'><span class='feat-title'>" + preview_title + 
-                    "</span><img src='https://docs.zoho.com/docs/orig/" + entrada.png + "'></div></td>";
+                    "</span><img src='https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + entrada.png + "?orig=true'></div></td>";
                     
                 } else {
                     tabla += "<td></td>";
@@ -630,7 +621,7 @@ function abrirPopup(elmnt) {
         $("#popupW").append('<div id="entry-info-container" entry-dataid="' + entry[0].entry + '" style="background-image: url(' + fondo + ')"></div>');
 
         // Gardienne + nombre || id
-        $("#entry-info-container").append('<img src="https://docs.zoho.com/docs/orig/' + entry[0].entryInfo.png + '">');
+        $("#entry-info-container").append('<img src="https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/' + entry[0].entryInfo.png + '?orig=true">');
         $("#entry-info-container").append('<div id="entry-info-menu"></div>');
         $("#entry-info-menu").append('<div id="entry-info-quote"></div>');
 
@@ -679,7 +670,7 @@ function abrirPopup(elmnt) {
         $("#popupW").append('<div id="entry-info-container" entry-dataid="' + entry[0].id + '" style="background-image: url(' + fondo + ')"></div>');
 
         // Gardienne + nombre || id
-        $("#entry-info-container").append('<img src="https://docs.zoho.com/docs/orig/' + entry[0].info.png + '">');
+        $("#entry-info-container").append('<img src="https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/' + entry[0].info.png + '?orig=true">');
         $("#entry-info-container").append('<div id="entry-info-menu"></div>');
         $("#entry-info-menu").append('<div id="entry-info-quote"></div>');
 

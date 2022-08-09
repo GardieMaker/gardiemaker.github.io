@@ -81,10 +81,15 @@ function get(blogger) {
 function featured(feat, entries) {
 
     // Buscar fondo en el código
-    
 
-    if (feat[0].entry[0] != "s") {
-        var entry = entries.filter(function(v){return v.id == feat[0].entry});
+    // Comprobar fecha
+    var a = 0;
+    for (a; a < feat.length; a++) {
+        if (Date.parse(currentDate()) >= Date.parse(feat[a].date) ) { break };
+    }
+
+    if (feat[a].entry[0] != "s") {
+        var entry = entries.filter(function(v){return v.id == feat[a].entry});
         var fondo = buscaFondo(entry[0].info.code);
 
         // Reemplazar ZOHO por canvas

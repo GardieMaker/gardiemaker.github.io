@@ -9,6 +9,7 @@ $(document).ready(function () {
             estado = estado.replace("No hay nuevas actividades", nav_notification);
         }
         document.getElementsByClassName("news-latest")[0].innerHTML = estado;
+
     });
 
     // Cargar afiliados
@@ -38,10 +39,12 @@ $(document).ready(function () {
                     f.responseType = "json";f.send();f.onload = function() {
 
                         users = u.response; entrys = e.response; feat = f.response;
+
                         normalizeURL();
                         cargarSelect(users);
                         cargarRanking();
                         cargarListas(0);
+
                     };
                 };
             };
@@ -221,7 +224,11 @@ function cargarListas(pag, busca = null) {
                 if (uVAL == "featured") {
                     uVAL = toBoolean(uVAL);
                     //entry = entrys.filter(function(v){return v.featured === uVAL});
-                    entry = feat; // Cargar post desde featuredDB
+                    //entry = feat; // Cargar post desde featuredDB
+
+                    console.log(feat.length)
+                    entry = feat.filter(v => {return Date.parse(v.date) <= Date.parse(currentDate())})
+                    console.log(entry.length)
                 } else {
                     if (uVAL == "guardians") {
                         entry = entrys.filter(function(v){return v.type != "cosplay"});
@@ -251,7 +258,11 @@ function cargarListas(pag, busca = null) {
             entry = entrys.filter(v => {return v.type == "guardian"});
 
         } else if (categ.includes("featured")) {
-            entry = entrys.filter(v => {return v.featured == true});
+            // Comprobar fechas!!!
+            //entry = feat;
+            console.log(feat.length)
+            entry = feat.filter(v => {return Date.parse(v.date) <= Date.parse(currentDate())})
+            console.log(entry.length)
 
         } else if (categ.includes("cosplay")) {
             entry = entrys.filter(v => {return v.type == "cosplay"});
@@ -333,7 +344,9 @@ function dibujaTabla(entry, uVAL, pag) {
                     if (entry[suma].info.name != null) { tabla += "' title='" + entry[suma].info.name };
                     tabla += "' class='abstract-thumbnail";
 
-                    if (entry[suma].featured === true) {
+                    var searchFeatured = feat.filter(v => {return v.entry == entry[suma].id});
+                    // COMPROBAR FECHA
+                    if (searchFeatured.length == 1 && (Date.parse(currentDate()) >= Date.parse(searchFeatured[0].date))) {
                         tabla += " featured' style='background-image:url(" + bg 
                         + ")'><span class='feat'>DESTACADA</span>";
                     } else if (entry[suma].type == "cosplay") {
@@ -346,15 +359,17 @@ function dibujaTabla(entry, uVAL, pag) {
                     
             } else {
 
-                if (feat[c + startPage]) {
+                //if (feat[c + startPage]) {
+                if (entry[c + startPage]) {
+                    // DESTACADAS
 
                     var entrada = "";
                     
-                    if ((feat[suma].entry[0]) == "s" || (feat[suma].entry[0]) == "d") { // Entradas por actividad / especiales
-                        entrada = feat[suma].entryInfo;
+                    if ((entry[suma].entry[0]) == "s" || (entry[suma].entry[0]) == "d") { // Entradas por actividad / especiales
+                        entrada = entry[suma].entryInfo;
 
                     } else { // Entradas normales
-                        entrada = entrys.filter(function(v){return v.id == feat[c + startPage].entry});
+                        entrada = entrys.filter(function(v){return v.id == entry[c + startPage].entry});
                         entrada = entrada[0].info;
                     };
 
@@ -363,15 +378,15 @@ function dibujaTabla(entry, uVAL, pag) {
                     bg = bg.replace("web_full", "icon");
 
                     // Mostrar lista de featured
-                    tabla += "<td><div id='" + feat[suma].entry;
+                    tabla += "<td><div id='" + entry[suma].entry;
                     if (entrada.name != null) { tabla += "' title='" + entrada.name };
                     tabla += "' class='abstract-thumbnail";
 
-                    var preview_title = feat[suma].title;
+                    var preview_title = entry[suma].title;
 
                     if (!(window.location.href).includes("/es/")) {
                         if (preview_title.includes("Semana")) {
-                            var num_week = (feat[suma].title).replace("Semana ", "");
+                            var num_week = (entry[suma].title).replace("Semana ", "");
                             preview_title = icon_featured_title.replace("$NUM0", num_week);
                         }
                     };

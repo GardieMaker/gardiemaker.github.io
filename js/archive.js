@@ -730,10 +730,10 @@ function abrirPopup(elmnt) {
     };
     
 
-    // Destacada ?
+    // Destacada ? comprobar fecha
     var checkFeat = feat.filter(v => {return v.entry == elmnt});
 
-    if (checkFeat.length == 1) {
+    if (checkFeat.length == 1 && (Date.parse(currentDate()) >= Date.parse(checkFeat[0].date))) {
         $("#entry-info-menu").append('<div id="entry-info-featured"></div>');
 
         if ((window.location.href).includes("/es/")) { $("#entry-info-featured").append('<h2>★ Guardiana Destacada ★</h2>');
@@ -760,6 +760,7 @@ function abrirPopup(elmnt) {
             };
 
         } else {
+
             var ft = feat.filter(function(v){return v.entry == entry[0].id});
             var titulo = ft[0].title;
             if ((titulo).includes("Semana")) {

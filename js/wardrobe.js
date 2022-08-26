@@ -189,10 +189,10 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
 
             if (categoria != "") {info = info.filter(v => {return v.category == categoria})};
             if (especial != "") {
-                if (especial != "tradable") {
-                    info = info.filter(v => {return v.especial == especial});
-                } else {
-                    info = info.filter(v => {return v.tradable == true});
+                switch (especial) {
+                    case "exploracion": info = info.filter(v => {return v.mark == "tradable"}); break;
+                    case "recarga": info = info.filter(v => {return v.mark == "premium"}); break;
+                    default: info = info.filter(v => {return v.especial == especial}); break;
                 }
             };
             if (rareza != "") {info = info.filter(v => {return v.rarity == rareza})};
@@ -424,8 +424,11 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         var dibuja = '<li class="marketplace-abstract marketplace-search-item" data-groupid="' 
         + currentGrupo[0].groupId + '" data-itemid="' + currentPrenda[looper].itemId 
         + '"><div class="img-container"><img class="abstract-icon" src="' + img + '"/>' + rarity 
-        + ((currentGrupo[0].mark == "none") ? '' : (currentGrupo[0].mark == "tradable") ? '<div class="tradable-mark"></div>' : '<span class="premium-mark fas fa-dollar-sign"></span>')
+        + ((currentGrupo[0].mark == "none") ? '' : (currentGrupo[0].mark == "tradable") ? '<div class="tradable-mark"></div>' : ""/*'<span class="premium-mark fas fa-dollar-sign"></span>'*/)
         + '</div><div class="abstract-container">';
+        // none = sin clasificar
+        // tradable = martillo/mercado
+        // premium = $/recarga
 
         if (localization == "es") {
             var esp = currentGrupo[0].spanish;

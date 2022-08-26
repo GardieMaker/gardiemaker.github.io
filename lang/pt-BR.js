@@ -76,6 +76,8 @@
 	var filter_special_other_prize = "Recompensas";
 	var filter_special_other_alchemy = "Alquimia";
 	var filter_special_other_bindle = "Sacolas";
+	var filter_special_other_exploration = "Exploração";
+	var filter_special_other_recharge = "Recarga";
 	var filter_special_other_antique = "Loja Ancestral";
 	var filter_rarity_default = "Todas as raridades";
 	var filter_rarity_common = "Comum";

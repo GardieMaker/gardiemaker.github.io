@@ -65,7 +65,9 @@ $(document).ready( function () {
 		$("#filter-guardOptions option").eq(6).text(filter_special_other_prize);
 		$("#filter-guardOptions option").eq(7).text(filter_special_other_alchemy);
 		$("#filter-guardOptions option").eq(8).text(filter_special_other_bindle);
-		$("#filter-guardOptions option").eq(9).text(filter_special_other_antique);
+		$("#filter-guardOptions option").eq(9).text(filter_special_other_exploration);
+		$("#filter-guardOptions option").eq(10).text(filter_special_other_recharge);
+		$("#filter-guardOptions option").eq(11).text(filter_special_other_antique);
 
 		$("#filter-rarityOptions option").eq(0).text(filter_rarity_default);
 		$("#filter-rarityOptions option").eq(1).text(filter_rarity_common);

@@ -76,6 +76,8 @@
 	var filter_special_other_prize = "Récompenses";
 	var filter_special_other_alchemy = "Alchimie";
 	var filter_special_other_bindle = "Baluchons";
+	var filter_special_other_exploration = "Exploration";
+	var filter_special_other_recharge = "Recharge";
 	var filter_special_other_antique = "Boutique antique";
 	var filter_rarity_default = "Toutes les raretés";
 	var filter_rarity_common = "Commun";

@@ -24,6 +24,11 @@
 	cursor: default;
 }
 
+.fa-dollar-sign::before {
+	left: 0.5px;
+	position: relative;
+}
+
 #container .page-main-container{
 	background-color: rgba(73, 79, 154, 0.87);
 	border-radius: 8px;
@@ -310,6 +315,41 @@ canvas {
 	height: 75px;
 	margin: 5px;
 }
+
+/* private only */
+#marketplace-search-items .empty {
+	color: white;
+	text-align: center;
+	width: 500px;
+	display: block;
+	margin: 10px;
+	padding-top: 80px;
+
+}
+
+#marketplace-buttons-container > div {
+  /*width: 300px;*/
+  margin: 10px auto;
+}
+
+#marketplace-buttons-container textarea {
+	resize: none;
+	width: 400px;
+	height: 230px;
+}
+
+#marketplace-buttons-container > div .button {
+  margin: 5px;
+  position: inherit;
+}
+
+#edit-wardrobe {
+	position: absolute;
+	z-index: 1;
+	top: 30px;
+	right: 60px;
+}
+/* end private only */
 
 .marketplace-search-item.selected {
 	background: #fff;

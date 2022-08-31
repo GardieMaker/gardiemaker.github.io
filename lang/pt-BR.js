@@ -131,6 +131,7 @@
 	var card_info_shop = "Loja";
 	var card_info_exp = "Exploração";
 	var card_info_exclusive_exp = "Exploração exclusiva";
+	var card_info_exclusive_recharge = "Recarga";
 	var card_info_bindle = "Sacolas";
 	var card_info_episode = "Episódio";
 	var card_info_antique = "Loja Ancestral";

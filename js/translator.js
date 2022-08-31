@@ -221,6 +221,7 @@ function esToLang(name) {
 		case "Spin-off": return card_info_spinoff;
 		case "Premio BETA tester": return card_info_beta;
 		case "Premio del mes": return card_info_month;
+		case "Recarga": return card_info_exclusive_recharge;
 	};
 
 	if (name.includes("1 de Abril")) return name.replace("1 de Abril", card_event_aprils_fool);

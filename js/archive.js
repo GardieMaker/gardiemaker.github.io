@@ -13,12 +13,7 @@ $(document).ready(function () {
     });
 
     // Cargar afiliados
-    $.get("https://raw.githubusercontent.com/GardieMaker/data/master/status/affiliates", function(afiliados, success, xhr) {
-        if (!(window.location.href).includes("/es/")) {
-            afiliados = afiliados.replace("Páginas amigas", nav_affiliates);
-        }
-        document.getElementById("footer-info").innerHTML = afiliados;
-    });
+    loadAffiliates();
 
     var dir = "../";
     if ((window.location.href).includes("127") || (window.location.href).includes("192")) { dir = "../../"; }; // local

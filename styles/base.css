@@ -377,15 +377,28 @@ body a{
 
 #footer #footer-info {
     position: absolute;
+    display: inline-flex;
     right: 0;
+    overflow: hidden;
+}
 
+#affiliate-list {
+    margin: 0 8px;
+}
+
+.affiliate-img {
+    float: left;
+    height: 30px;
+}
+
+.affiliate-img + .affiliate-img {
+    margin-left: 7px;
 }
 
 #footer-info a img {
+    float: left;
     height: 28px;
-    float: right;
-    padding: 7px 7px 7px 0;
-    position: relative;
+    padding: 7px 0;
 }
 
 #change-server {

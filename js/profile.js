@@ -98,6 +98,8 @@ function getCustom() {
                 submitLink = "https://docs.google.com/forms/d/e/1FAIpQLSfycgchQuYlHzH74toiYmGlWR-x5jP5B680ilWMHs7w7qSJrA/viewform?usp=pp_url&entry.953998871=" + submitLink;
                 $("#submit-guardian-link").attr("href", submitLink);
             }
+
+            if ((window.location.href).includes("127.0.0.1")) {cargarPopUp(); minSize()}
         };
 
     } else {

@@ -9,12 +9,8 @@ $(document).ready(function(){
         document.getElementsByClassName("news-latest")[0].innerHTML = estado;
 	});
 
-    $.get("https://raw.githubusercontent.com/GardieMaker/data/master/status/affiliates", function(afiliados, success, xhr) {
-        if (!(window.location.href).includes("/es/")) {
-            afiliados = afiliados.replace("Páginas amigas", nav_affiliates);
-        }
-        document.getElementById("footer-info").innerHTML = afiliados;
-    });
+	// Cargar afiliados
+    loadAffiliates();
 
 	str = window.location.search;
 

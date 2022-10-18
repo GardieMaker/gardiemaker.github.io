@@ -9,6 +9,9 @@ $(document).ready(function iniciaTodo() {
         document.getElementsByClassName("news-latest")[0].innerHTML = estado;
     });
 
+    // Cargar afiliados
+    loadAffiliates();
+
     var dir = "../";
     if ((window.location.href).includes("127") || (window.location.href).includes("192")) { dir = "../../"; }; // local
 
@@ -24,13 +27,6 @@ $(document).ready(function iniciaTodo() {
             };
         };
     };
-
-    $.get("https://raw.githubusercontent.com/GardieMaker/data/master/status/affiliates", function(afiliados, success, xhr) {
-        if (!(window.location.href).includes("/es/")) {
-            afiliados = afiliados.replace("Páginas amigas", nav_affiliates);
-        }
-        document.getElementById("footer-info").innerHTML = afiliados;
-    });
 
 });
 

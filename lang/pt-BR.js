@@ -234,6 +234,8 @@
 	var guardian_info_open = "Abrir em";
 	var guardian_info_open_profile = "Perfil";
 	var guardian_info_open_wardrobe = "Vestiário";
+	var guardian_info_share_link = "Link de cópia";
+	var guardian_info_copied_link = "Link copiado";
 	var featured_guardian_title = "Guardiã em Destaque";
 	var featured_guardian_info = "Ganhou destaque durante a semana $NUM0";
 	var featured_guardian_info_special = "Destaque especial";

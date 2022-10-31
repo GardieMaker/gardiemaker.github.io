@@ -234,6 +234,8 @@
 	var guardian_info_open = "Ouvrir dans";
 	var guardian_info_open_profile = "Profil";
 	var guardian_info_open_wardrobe = "Garde-Robe";
+	var guardian_info_share_link = "Copier le lien";
+	var guardian_info_copied_link = "Lien copié";
 	var featured_guardian_title = "Gardienne en vedette";
 	var featured_guardian_info = "En couverture la semaine $NUM0";
 	var featured_guardian_info_special = "Couverture spéciale";

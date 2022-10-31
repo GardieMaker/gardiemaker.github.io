@@ -588,6 +588,32 @@ $(function() {
             cargarListas(0);
         };
     });
+
+    $("body").on("click", ".share-link", function() {
+
+        // Copiar el URL
+        var copyURL = (window.location.href).split("?");
+        copyURL = copyURL[0] + "?e=" + $("#entry-info-container").attr("entry-dataid");
+        navigator.clipboard.writeText(copyURL);
+
+        
+        var shareLink = "Enlace copiado";
+        if (!(window.location.href).includes("/es/")) {
+                shareLink = guardian_info_copied_link;
+        };
+        $("#myTooltip").html(shareLink);
+
+    });
+
+    $("body").on("mouseenter", ".share-link", function() {
+
+        var shareLink = "Copiar enlace";
+        if (!(window.location.href).includes("/es/")) {
+                shareLink = guardian_info_share_link;
+        };
+        $("#myTooltip").html(shareLink);
+
+    })
 });
 
 function buscaFondo(code) {
@@ -683,6 +709,14 @@ function abrirPopup(elmnt) {
         $("#entry-info-container").append('<img src="https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/' + entry[0].info.png + '?orig=true">');
         $("#entry-info-container").append('<div id="entry-info-menu"></div>');
         $("#entry-info-menu").append('<div id="entry-info-quote"></div>');
+
+        var shareLink = "Copiar enlace";
+        if (!(window.location.href).includes("/es/")) {
+                shareLink = guardian_info_share_link;
+        };
+
+        $("#entry-info-menu").append('<div class="tooltip"><span class="far fa-copy share-link"><span class="tooltiptext" id="myTooltip">' + shareLink + '</span></span></div>');
+        
 
         if (entry[0].type == "cosplay") {
             if ((window.location.href).includes("/es/")) {

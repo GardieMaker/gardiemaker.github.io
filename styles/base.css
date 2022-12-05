@@ -389,6 +389,8 @@ body a{
 .affiliate-img {
     float: left;
     height: 30px;
+    position: relative;
+    z-index: 2;
 }
 
 .affiliate-img + .affiliate-img {

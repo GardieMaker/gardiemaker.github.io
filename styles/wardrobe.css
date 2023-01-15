@@ -153,7 +153,7 @@ canvas {
 	border-radius: 5px;
 }
 
-#edit-clothes-layout {
+#edit-clothes-layout, #saved-outfits-layout {
 	background: #000000a3;
 	position: absolute;
 	top: 0;
@@ -164,7 +164,7 @@ canvas {
 	border-radius: 6px;
 }
 
-#edit-clothes-popup {
+#edit-clothes-popup, #saved-outfits-popup {
 	width: 800px;
 	height: 600px;
 	left: 105px;
@@ -177,7 +177,7 @@ canvas {
 	background-color: #f2e9e9;
 }
 
-#edit-menu-container {
+#edit-menu-container, #outfit-list-container {
     background-color: #fff;
     width: 320px;
     position: absolute;
@@ -189,7 +189,7 @@ canvas {
     box-shadow: 0px 0px 10px #bbb;
 }
 
-#edit-menu-list {
+#edit-menu-list, #outfit-list {
     height: 420px;
     overflow: auto;
     scrollbar-width: thin;
@@ -677,4 +677,58 @@ li.marketplace-search-item, li.marketplace-sales-item, li.marketplace-auctions-i
 #config-buttons-container .button:hover {
     background-color: #fff;
     color: #ea3838;
+}
+
+/* SAVED OUTFIT */
+#outfit-left-panel, #outfit-right-panel {
+	width: 50%;
+	position: relative;
+	height: 100%;
+	float: left;
+}
+
+#outfit-info {
+  text-align: center;
+  background-color: #fdef9f91;
+  border: 1px dashed #d7c97c;
+  color: #7d7027;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#outfit-list {
+	height: 360px;
+}
+
+#outfit-list .draggable-preview {
+	height: auto;
+	cursor: pointer;
+}
+
+#outfit-list .draggable-preview:hover {
+  	background-color: #fbf6f4;
+}
+
+#outfit-list .draggable-preview-name:hover, #outfit-list .draggable-preview-buttons:hover {
+	background-color: #f7ece8e3;
+}
+
+#outfit-list .draggable-preview.selected {
+	background-color: #f2e9e9;
+}
+
+#outfit-list .draggable-preview-name {
+	margin: 0;
+	padding: 10px;
+	width: 82%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+#outfit-list .draggable-preview-buttons {
+	border-left: 1px dashed #d5bbaf;
+	width: 6%;
+	padding: 10px;
+	text-align: center;
 }

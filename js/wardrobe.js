@@ -7,6 +7,15 @@ var localization = "";
 
 // --------------------------------------------------
 
+var exampleList = [
+    {"name":"Default", "code":"691i692i5161i323i693"},
+    {"name":"BASE", "code":"1249i12007i10966i24827i18986i7296i15296i18716i17285i5268i27240i27260"},
+    {"name":"Beauty from Winter", "code":"1249i18916i12007i10966i18158i24827i7296i15296i17285i5235i18272i31393i32874i30161i6501i18986i10707i6509i27260i21274i32118i29915i11670i30118i6450i25641"},
+    {"name":"Newcomer to Eldarya", "code":"17285i1249i12007i10966i18158i24827i18986i1575i28343i22238i18272i18716i24815i7296i1768i15296i28323i14262i14020i27260i28397i25215"}
+]
+
+// --------------------------------------------------
+
 $(document).ready(function () {
     //localization = $("#change-lang").attr("current-lang");
     localization = $("html").attr("lang");
@@ -117,6 +126,9 @@ function reloadNewCode(code = "") {
 };
 
 function cargarGuardiana(p = 0, edit = false) {
+
+    // drawLocation = normal, edit, saved
+    
     var img, img2; 
     var str = window.location.search;
     str = str.slice(3);
@@ -1284,6 +1296,41 @@ function editarPreview(tipo, index) {
     };
 };
 
+// Conjuntos guardados LOCALMENTE -- SAVED OUTFIT
+function loadSavedOutfits () {
+    $(".marketplace-container").eq(0).append('<div id="saved-outfits-layout"><div id="saved-outfits-popup"></div></div>');
+    $("#saved-outfits-popup").append('<div id="outfit-left-panel"></div>'); // Contenedor de canvas
+    $("#saved-outfits-popup").append('<div id="outfit-right-panel"></div>'); // Contenedor de lista
+
+    $("#outfit-left-panel").append('<div id="canvas-container"></div>');
+    $("#outfit-right-panel").append('<div id="outfit-list-container"></div>');
+    $("#outfit-list-container").append('<div id="outfit-info"><p>Estos conjuntos solo están guardados en este dispositivo.</p></div>'); // TRADUCIR
+    $("#outfit-list-container").append('<div id="outfit-list"></div>');
+    $("#outfit-list-container").append('<div id="outfit-button-list"></div>');
+
+    $("#outfit-list-container").append('<div id="edit-menu-buttons"></div>');
+    $("#edit-menu-buttons").append('<div class="button">IMPORTAR</div>'); // TRADUCIR
+    $("#edit-menu-buttons").append('<div class="button">EXPORTAR</div>'); // TRADUCIR
+    $("#edit-menu-buttons").append('<div id="outfit-close" class="button">SALIR</div>'); // TRADUCIR
+
+    // Rellenar la lista
+    for (a = 0; a < exampleList.length; a++) {
+        $("#outfit-list").append('<div class="draggable-preview"></div>');
+        if (exampleList[a].name != "") {
+            $(".draggable-preview").eq(a).append('<div class="draggable-preview-name" data-index="' + a + '">' + exampleList[a].name + '</div>');
+        } else {
+            var untitled = "(Sin título)"; // TRADUCIR
+            $(".draggable-preview").eq(a).append('<div class="draggable-preview-name" data-index="' + a + '">' + untitled + '</div>');
+        }
+        $(".draggable-preview").eq(a).append('<div class="draggable-preview-buttons" data-index="' + a + '" title="Renombrar"><i class="fas fa-pen"></i></div>');  // TRADUCIR
+        $(".draggable-preview").eq(a).append('<div class="draggable-preview-buttons" data-index="' + a + '" title="Eliminar"><i class="fas fa-trash"></i></div>');  // TRADUCIR
+        $(".draggable-preview").eq(a).append('<div class="draggable-preview-buttons" data-index="' + a + '" title="Cargar"><i class="fas fa-arrow-right"></i></div>');  // TRADUCIR
+
+    }
+
+
+}
+
 $(function() {
     $("#change-lang").click(function() {
         var lang = $(this).attr("current-lang");
@@ -1422,7 +1469,6 @@ $(function() {
         editarPreview("quitar", index);
     });
 
-
     $(".marketplace-container").on("click", "#editNO", function() {
         // Cancelar cambios
         $("#edit-clothes-layout").remove();
@@ -1463,7 +1509,6 @@ $(function() {
         $("#link-profile").attr("href", gotoProfile);
     });
 
-
     $("#config-load-base").click(function() {
         $("canvas").remove();
         var toDelete = window.location.search;
@@ -1490,6 +1535,24 @@ $(function() {
 
         var changelink = (window.location.href).replace("wardrobe", "profile");
         $("#link-profile").attr("href", changelink);
+    });
+
+
+
+    // POPUPOUTFIT
+    $("#saved-outfit").click(function() {
+        loadSavedOutfits();
+    });
+
+    $("body").on("click","#outfit-close", function() {
+        $("#saved-outfits-layout").remove();
+    })
+
+
+    $("body").on("click","#outfit-list .draggable-preview-name", function() {
+        var a = $(this).attr("data-index");
+        $(".draggable-preview").removeClass("selected");
+        $(".draggable-preview").eq(a).addClass("selected");
     });
 });
 

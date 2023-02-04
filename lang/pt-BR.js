@@ -1,272 +1,292 @@
 // common variables
-	var nav_button_blog = "BLOG";
-	var nav_button_wardrobe = "VESTIÁRIO";
-	var nav_button_profile = "PERFIL";
-	var nav_button_archive = "CATÁLOGO";
-	var nav_button_support = "AJUDA";
-	var nav_fb_title = "GardieMaker está no Facebook!";
-	var nav_notification = "Não há novas atividades";
-	var nav_report = "Relatar um erro";
-	var nav_affiliates = "Páginas parceiras";
-	var load_input = "Código...";
-	var load_button = "Gerar";
-	var change_server = "Mudar servidor";
+	const nav_button_blog = "BLOG";
+	const nav_button_wardrobe = "VESTIÁRIO";
+	const nav_button_profile = "PERFIL";
+	const nav_button_archive = "CATÁLOGO";
+	const nav_button_support = "AJUDA";
+	const nav_fb_title = "GardieMaker está no Facebook!";
+	const nav_notification = "Não há novas atividades";
+	const nav_report = "Relatar um erro";
+	const nav_affiliates = "Páginas parceiras";
+	const load_input = "Código...";
+	const load_button = "Gerar";
+	const change_server = "Mudar servidor";
 
 	// code format error message
-	var onload_formatMsg_one = "Olá! Atualizamos o nosso sistema de carregamento de guardiãs.";
-	var onload_formatMsg_two = "Se estiver lendo esta mensagem, é provável que você tenha utilizado um código de carregamento antigo. Esses códigos podem falhar, é aconselhável deixar de usar.";
-	var onload_formatMsg_three = "Será feita uma tentativa de atualizar o código e a página será recarregada. Se tudo der certo, use o botão \"Copiar código\" para obter o código atualizado. Se tiver algum problema, tente carregar o código do PERFIL ou do HOME.";
-	var onload_formatMsg_four = "Obrigado pela compreesão e desculpe o incoveniente.";
-	var formatMsg_button = "ACEITAR";
+	const onload_formatMsg_one = "Olá! Atualizamos o nosso sistema de carregamento de guardiãs.";
+	const onload_formatMsg_two = "Se estiver lendo esta mensagem, é provável que você tenha utilizado um código de carregamento antigo. Esses códigos podem falhar, é aconselhável deixar de usar.";
+	const onload_formatMsg_three = "Será feita uma tentativa de atualizar o código e a página será recarregada. Se tudo der certo, use o botão \"Copiar código\" para obter o código atualizado. Se tiver algum problema, tente carregar o código do PERFIL ou do HOME.";
+	const onload_formatMsg_four = "Obrigado pela compreesão e desculpe o incoveniente.";
+	const formatMsg_button = "ACEITAR";
 
-	var load_formatMsg = 'Esse código está desatualizado e é recomendado deixar de o utilizar. Utilize o botão \"Copiar código\" para obter o código atualizado.';
-	var load_buttonOK = "CONTINUAR";
+	const load_formatMsg = 'Esse código está desatualizado e é recomendado deixar de o utilizar. Utilize o botão \"Copiar código\" para obter o código atualizado.';
+	const load_buttonOK = "CONTINUAR";
 
 
 // home variables
-	var home_page_title = "GardieMaker - Crie sua própria Guardiã";
-	var main_card_title = "Crie sua própria Guardiã!";
-	var main_card_desc = "Escolha as roupas e trajes que você mais gosta para criar a guardiã dos seus sonhos. Mais de 20 mil peças disponíveis para personalizar seus próprios personagens.";
-	var main_card_button = "IR AO VESTIÁRIO";
-	var load_label = "Carregar guardiã";
-	var updates_title = "Novidades";
-	var featured_title = "GUARDIÄ EM DESTAQUE";
-	var featured_from = "De";
-	var featured_open = "Abrir em";
-	var featured_open_wardrobe = "Vestiário";
-	var featured_open_profile = "Perfil";
-	var featured_open_full = "Ver em tamanho completo";
+	const home_page_title = "GardieMaker - Crie sua própria Guardiã";
+	const main_card_title = "Crie sua própria Guardiã!";
+	const main_card_desc = "Escolha as roupas e trajes que você mais gosta para criar a guardiã dos seus sonhos. Mais de 20 mil peças disponíveis para personalizar seus próprios personagens.";
+	const main_card_button = "IR AO VESTIÁRIO";
+	const load_label = "Carregar guardiã";
+	const updates_title = "Novidades";
+	const featured_title = "GUARDIÄ EM DESTAQUE";
+	const featured_from = "De";
+	const featured_open = "Abrir em";
+	const featured_open_wardrobe = "Vestiário";
+	const featured_open_profile = "Perfil";
+	const featured_open_full = "Ver em tamanho completo";
 
 
 // wardrobe variables
-	var wardrobe_page_title = "Vestiário - GardieMaker";
-	var wardrobe_content_title = "Buscar";
-	var title_change_lang_default = "Nomes em inglês";
-	var title_change_lang_active = "Nomes em espanhol";
-	var filter_category_default = "Todas as categorias";
-	var filter_category_underwear = "Roupa interior";
-	var filter_category_skin = "Pele";
-	var filter_category_tatoo = "Tatuagens";
-	var filter_category_mouth = "Bocas";
-	var filter_category_eyes = "Olhos";
-	var filter_category_hair = "Cabelos";
-	var filter_category_socks = "Meias";
-	var filter_category_shoes = "Sapatos";
-	var filter_category_pants = "Calças";
-	var filter_category_handAccessory = "Acessórios mãos";
-	var filter_category_top = "Blusas";
-	var filter_category_coat = "Casacos";
-	var filter_category_glove = "Luvas";
-	var filter_category_necklace = "Colares";
-	var filter_category_dress = "Vestidos";
-	var filter_category_hat = "Chapéus";
-	var filter_category_faceAccessory = "Acessórios rosto";
-	var filter_category_background = "Cenários";
-	var filter_category_belt = "Cintos";
-	var filter_category_ambient = "Ambientes";
-	var filter_special_default = "Sem filtro especial";
-	var filter_special_guards_title = "Guardas";
-	var filter_special_guard_obsidiana = "Obsidiana";
-	var filter_special_guard_absenta = "Absinto";
-	var filter_special_guard_sombra = "Sombra";
-	var filter_special_unlock_title = "Desbloqueáveis";
-	var filter_special_unlock_episode = "Episódios";
-	var filter_special_unlock_spinoff = "Spin-off";
-	var filter_special_other_title = "Outros";
-	var filter_special_other_prize = "Recompensas";
-	var filter_special_other_alchemy = "Alquimia";
-	var filter_special_other_bindle = "Sacolas";
-	var filter_special_other_exploration = "Exploração";
-	var filter_special_other_recharge = "Recarga";
-	var filter_special_other_antique = "Loja Ancestral";
-	var filter_rarity_default = "Todas as raridades";
-	var filter_rarity_common = "Comum";
-	var filter_rarity_rare = "Raro";
-	var filter_rarity_epic = "Épico";
-	var filter_rarity_legendary = "Legendário";
-	var filter_rarity_event = "Evento";
-	var filter_order_default = "Mais recentes";
-	var filter_order_oldest = "Mais antigos";
-	var filter_button = "Filtrar";
+	const wardrobe_page_title = "Vestiário - GardieMaker";
+	const wardrobe_content_title = "Buscar";
+	const title_change_lang_default = "Nomes em inglês";
+	const title_change_lang_active = "Nomes em espanhol";
+	const filter_category_default = "Todas as categorias";
+	const filter_category_underwear = "Roupa interior";
+	const filter_category_skin = "Pele";
+	const filter_category_tatoo = "Tatuagens";
+	const filter_category_mouth = "Bocas";
+	const filter_category_eyes = "Olhos";
+	const filter_category_hair = "Cabelos";
+	const filter_category_socks = "Meias";
+	const filter_category_shoes = "Sapatos";
+	const filter_category_pants = "Calças";
+	const filter_category_handAccessory = "Acessórios mãos";
+	const filter_category_top = "Blusas";
+	const filter_category_coat = "Casacos";
+	const filter_category_glove = "Luvas";
+	const filter_category_necklace = "Colares";
+	const filter_category_dress = "Vestidos";
+	const filter_category_hat = "Chapéus";
+	const filter_category_faceAccessory = "Acessórios rosto";
+	const filter_category_background = "Cenários";
+	const filter_category_belt = "Cintos";
+	const filter_category_ambient = "Ambientes";
+	const filter_special_default = "Sem filtro especial";
+	const filter_special_guards_title = "Guardas";
+	const filter_special_guard_obsidiana = "Obsidiana";
+	const filter_special_guard_absenta = "Absinto";
+	const filter_special_guard_sombra = "Sombra";
+	const filter_special_unlock_title = "Desbloqueáveis";
+	const filter_special_unlock_episode = "Episódios";
+	const filter_special_unlock_spinoff = "Spin-off";
+	const filter_special_other_title = "Outros";
+	const filter_special_other_prize = "Recompensas";
+	const filter_special_other_alchemy = "Alquimia";
+	const filter_special_other_bindle = "Sacolas";
+	const filter_special_other_exploration = "Exploração";
+	const filter_special_other_recharge = "Recarga";
+	const filter_special_other_antique = "Loja Ancestral";
+	const filter_rarity_default = "Todas as raridades";
+	const filter_rarity_common = "Comum";
+	const filter_rarity_rare = "Raro";
+	const filter_rarity_epic = "Épico";
+	const filter_rarity_legendary = "Legendário";
+	const filter_rarity_event = "Evento";
+	const filter_order_default = "Mais recentes";
+	const filter_order_oldest = "Mais antigos";
+	const filter_button = "Filtrar";
 
-	var canvas_button_back = "PARA TRÁS";
-	var canvas_button_front = "PARA FRENTE";
-	var canvas_button_set = "FIXAR";
-	var canvas_button_remove = "REMOVER";
-	var canvas_button_replace = "SUBSTITUIR";
-	var error_alert_set = "Este elemento não pode ser adicionado.";
-	var error_alert_load = "O código não é válido.\nO vestiário irá reiniciar.";
+	const canvas_button_back = "PARA TRÁS";
+	const canvas_button_front = "PARA FRENTE";
+	const canvas_button_set = "FIXAR";
+	const canvas_button_remove = "REMOVER";
+	const canvas_button_replace = "SUBSTITUIR";
+	const error_alert_set = "Este elemento não pode ser adicionado.";
+	const error_alert_load = "O código não é válido.\nO vestiário irá reiniciar.";
 
-	var config_load_base = "Carregar base de guardiã";
-	var config_clean_all = "Deletar todos os itens";
+	const config_load_base = "Carregar base de guardiã";
+	const config_clean_all = "Deletar todos os itens";
 
-	var button_generate = "Gerar Perfil";
-	var footer_loading = "Carregando...";
+	const button_generate = "Gerar Perfil";
+	const footer_loading = "Carregando...";
 
-	var button_help_title = "Filtros Manuais";
-	var help_panel_p = "Para mais opções de filtragem, o vestiário conta com filtros manuais. Para usar qualquer um desses, é só escrever o respectivo comando na barra de pesquisa do vestiário. Os filtros disponíveis são esses:";
-	var help_panel_code_title = "CÓDIGOS";
-	var help_panel_code_info = "As roupas e acessórios podem ser buscados através de seus códigos.";
-	var help_panel_rainbow_title = "ARCO-ÍRIS";
-	var help_panel_rainbow_info = "Os cabelos arco-íris podem ser filtrados escrevendo <span class=\"filter-body-markup\">#rainbow</span> na barra de pesquisa.";
-	var help_panel_opal_title = "PEROLADOS";
-	var help_panel_opal_info = "Escreva <span class=\"filter-body-markup\">#shiny</span> para filtrar cabelos e vestimentas peroladas.";
-	var help_panel_event_title = "EVENTOS";
-	var help_panel_event_info = "Você pode filtrar as vestimentas por eventos específicos, por ano ou por ambos. Para fazer isso, deve seguir a fórmula <span class=\"filter-body-markup\">SIGLAS:ANO</span>. Por exemplo, para filtrar os trajes do Dia dos Namorados 2018, você pode digitar <span class=\"filter-body-markup\">DN:2018</span>. Removendo a sigla ou o ano, pode filtrar todas as vestimentas que foram lançadas do evento específico ou todas as vestimentas lançadas naquele ano.";
-	var help_panel_event_extra = "<u>Siglas disponíveis</u>: A = 1 de Abril, DN = Dia dos Namorados, P = Páscoa, M = Música, JE = Japan Expo, MO = Mês do Orgulho, V = Verão, BF = Black Friday, H = Halloween, N = Natal";
+	const button_help_title = "Filtros Manuais";
+	const help_panel_p = "Para mais opções de filtragem, o vestiário conta com filtros manuais. Para usar qualquer um desses, é só escrever o respectivo comando na barra de pesquisa do vestiário. Os filtros disponíveis são esses:";
+	const help_panel_code_title = "CÓDIGOS";
+	const help_panel_code_info = "As roupas e acessórios podem ser buscados através de seus códigos.";
+	const help_panel_rainbow_title = "ARCO-ÍRIS";
+	const help_panel_rainbow_info = "Os cabelos arco-íris podem ser filtrados escrevendo <span class=\"filter-body-markup\">#rainbow</span> na barra de pesquisa.";
+	const help_panel_opal_title = "PEROLADOS";
+	const help_panel_opal_info = "Escreva <span class=\"filter-body-markup\">#shiny</span> para filtrar cabelos e vestimentas peroladas.";
+	const help_panel_event_title = "EVENTOS";
+	const help_panel_event_info = "Você pode filtrar as vestimentas por eventos específicos, por ano ou por ambos. Para fazer isso, deve seguir a fórmula <span class=\"filter-body-markup\">SIGLAS:ANO</span>. Por exemplo, para filtrar os trajes do Dia dos Namorados 2018, você pode digitar <span class=\"filter-body-markup\">DN:2018</span>. Removendo a sigla ou o ano, pode filtrar todas as vestimentas que foram lançadas do evento específico ou todas as vestimentas lançadas naquele ano.";
+	const help_panel_event_extra = "<u>Siglas disponíveis</u>: A = 1 de Abril, DN = Dia dos Namorados, P = Páscoa, M = Música, JE = Japan Expo, MO = Mês do Orgulho, V = Verão, BF = Black Friday, H = Halloween, N = Natal";
 
 	// Dinámicos
-	var card_event_aprils_fool = "1 de Abril";
-	var card_event_may = "1 de Maio";
-	var card_event_valentine = "Dia dos Namorados";
-	var card_event_easter = "Páscoa";
-	var card_event_music = "Música";
-	var card_event_japan = "Japan Expo";
-	var card_event_pride = "Mês do Orgulho";
-	var card_event_summer = "Verão";
-	var card_event_halloween = "Halloween";
-	var card_event_bf = "Black Friday";
-	var card_event_christmas = "Natal";
-	var card_info_default = "Padrão";
-	var card_info_shop = "Loja";
-	var card_info_exp = "Exploração";
-	var card_info_exclusive_exp = "Exploração exclusiva";
-	var card_info_exclusive_recharge = "Recarga";
-	var card_info_bindle = "Sacolas";
-	var card_info_episode = "Episódio";
-	var card_info_antique = "Loja Ancestral";
-	var card_info_alchemy = "Alquimia";
-	var card_info_spinoff = "Spin-off";
-	var card_info_beta = "Prêmio testador BETA";
-	var card_info_month = "Prêmio do mês";
-	var card_tag_declinations = "cores";
-	var card_tag_inclomplete = "GRUPO INCOMPLETO";
+	const card_event_aprils_fool = "1 de Abril";
+	const card_event_may = "1 de Maio";
+	const card_event_valentine = "Dia dos Namorados";
+	const card_event_easter = "Páscoa";
+	const card_event_music = "Música";
+	const card_event_japan = "Japan Expo";
+	const card_event_pride = "Mês do Orgulho";
+	const card_event_summer = "Verão";
+	const card_event_halloween = "Halloween";
+	const card_event_bf = "Black Friday";
+	const card_event_christmas = "Natal";
+	const card_info_default = "Padrão";
+	const card_info_shop = "Loja";
+	const card_info_exp = "Exploração";
+	const card_info_exclusive_exp = "Exploração exclusiva";
+	const card_info_exclusive_recharge = "Recarga";
+	const card_info_bindle = "Sacolas";
+	const card_info_episode = "Episódio";
+	const card_info_antique = "Loja Ancestral";
+	const card_info_alchemy = "Alquimia";
+	const card_info_spinoff = "Spin-off";
+	const card_info_beta = "Prêmio testador BETA";
+	const card_info_month = "Prêmio do mês";
+	const card_tag_declinations = "cores";
+	const card_tag_inclomplete = "GRUPO INCOMPLETO";
 
-	var item_null = "Não há nenhum objeto disponível para esta categoria.";
-	var item_card_back = "Retornar";
-	var item_card_info = "Mostrando todas as variações de $GROUP";
-	var item_counter = "Mostrando $NUM0 itens dos $NUM1 disponíveis.";
+	const item_null = "Não há nenhum objeto disponível para esta categoria.";
+	const item_card_back = "Retornar";
+	const item_card_info = "Mostrando todas as variações de $GROUP";
+	const item_counter = "Mostrando $NUM0 itens dos $NUM1 disponíveis.";
 
-	var edit_panel_empty = "Não há nenhum item fixo.";
-	var edit_panel_removed = "Todas as roupas e acessórios foram retirados.";
-	var edit_panel_button_confirm = "CONCLUIR";
-	var edit_panel_button_cancel = "CANCELAR";
+	const edit_panel_empty = "Não há nenhum item fixo.";
+	const edit_panel_removed = "Todas as roupas e acessórios foram retirados.";
+	const edit_panel_button_confirm = "CONCLUIR";
+	const edit_panel_button_cancel = "CANCELAR";
+
+	const delete_items_confirm_dialog = "Deseja retirar todas as peças de vestuário?";
+	const delete_items_empty_error = "Nenhuma peça de vestuário fixada.";
+	const button_save_outfit = "Salvar esse traje";
+	const button_outfit_list = "Meus trajes";
+	const save_duplicate_outfit = "Esse traje já existe.";
+	const save_empty_error = "É necessário acrescentar pelo menos um elemento para salvar este traje.";
+	const save_input_name = "Nome do traje:";
+	const save_input_rename = "Renomear traje:";
+	const outfit_panel_warning = "Estes trajes estão armazenados temporariamente neste dispositivo.";
+	const outfit_panel_empty_list = "Não há trajes guardados.";
+	const outfit_panel_unnamed_outfit = "(Sem nome)";
+	const outfit_panel_rename_button = "Renomear";
+	const outfit_panel_delete_button = "Deletar";
+	const outfit_panel_load_button = "Carregar";
+	const outfit_panel_import_button = "Importar";
+	const outfit_panel_export_button = "Exportar";
+	const outfit_panel_close_button = "Sair";
+	const outfit_panel_delete_warning = "Deseja eliminar o conjunto $outfit_name permanente?";
+	const outfit_panel_export_error = "A lista está vazia.";
 
 
 // profile variables
-	var profile_page_title = "Perfil - GardieMaker";
-	var profile_content_title = "Meu Personagem";
-	var profile_button_edit = "Editar";
-	var profile_button_reload = "Recarregar";
-	var profile_button_submit = "Enviar guardiã";
-	var profile_button_get_code = "Copiar código";
-	var profile_button_save = "Salvar";
-	var panel_left_title_one = "Opções";
-	var panel_left_input_defaults = "Ninguém";
-	var panel_left_pet_label = "Mascote";
-	var panel_left_pet_check = "Adulto";
-	var panel_left_friend_label = "Companheiro";
+	const profile_page_title = "Perfil - GardieMaker";
+	const profile_content_title = "Meu Personagem";
+	const profile_button_edit = "Editar";
+	const profile_button_reload = "Recarregar";
+	const profile_button_submit = "Enviar guardiã";
+	const profile_button_get_code = "Copiar código";
+	const profile_button_save = "Salvar";
+	const panel_left_title_one = "Opções";
+	const panel_left_input_defaults = "Ninguém";
+	const panel_left_pet_label = "Mascote";
+	const panel_left_pet_check = "Adulto";
+	const panel_left_friend_label = "Companheiro";
 
-	var panel_left_friend_other = "Outro...";
-	var panel_left_friend_link = "Link...";
+	const panel_left_friend_other = "Outro...";
+	const panel_left_friend_link = "Link...";
 
-	var panel_left_friend_button = "Centrar";
-	var panel_left_load_url = "Carregar";
-	var panel_left_friend_pet_label = "Mascote";
-	var panel_left_position_title = "POSIÇÃO";
-	var panel_left_position_label = "Selecione";
+	const panel_left_friend_button = "Centrar";
+	const panel_left_load_url = "Carregar";
+	const panel_left_friend_pet_label = "Mascote";
+	const panel_left_position_title = "POSIÇÃO";
+	const panel_left_position_label = "Selecione";
 
-	var panel_left_position_gardienne = "Guardiã";
-	var panel_left_position_friend = "Companheiro";
-	var panel_left_position_pet = "Mascote";
+	const panel_left_position_gardienne = "Guardiã";
+	const panel_left_position_friend = "Companheiro";
+	const panel_left_position_pet = "Mascote";
 
-	var profile_corners_label = "Mudar cantos";
-	var profile_corners_default = "Arredondado";
-	var profile_corners_straight = "Reto";
+	const profile_corners_label = "Mudar cantos";
+	const profile_corners_default = "Arredondado";
+	const profile_corners_straight = "Reto";
 
-	var panel_left_position_button_back = "Para trás";
-	var panel_left_position_button_front = "Para frente";
-	var panel_left_title_two = "Carregar a guardiã";
-	var panel_left_load_info = "<u>Aviso:</u> Ao carregar uma nova guardiã, você perderá todo o processo da sessão atual.";
-	var panel_right_title = "INFORMAÇÕES";
-	var panel_right_p_one = "1) Para salvar um png da guardiã, clique no popup de \"Salvar\" e você pode selecionar a resolução que preferir. Se você está em um dispositivo móvel, talvez você não consiga salvar, por mais que consiga visualizar.";
-	var panel_right_p_two = "2) Decore seu perfil com as opções do painel esquerdo: Você pode criar uma linda cena com dois mascotes e um paquera/companheiro. Se a imagem do companheiro demorar um tempo para carregar, é provável que não centralize muito bem. Se você notar esse problema, use o botão \"Centrar\" para centralizá-lo.";
-	var panel_right_p_three = "3) Utilize o \"Posição\" para colocar os elementos para frente e para trás dentro do perfil.";
-	var panel_right_p_four = "4) Você não precisa de uma guardiã! Você pode usar as opções caso não queira ter uma e, se você não quiser o cenário padrão, você pode mudar no vestiário.";
-	var panel_right_p_five = "5) Tanto o companheiro como os mascotes são apenas mera decoração para captura de tela. Se você compartilhar o link ou código da sua guardiã, só carregará ela com a posição padrão.";
-	var panel_right_p_six = "6) Você sempre pode usar o \"código\" para carregar sua guardiã novamente. Lembre-se que se você tiver outra guardiã caregada, tanto ela quanto a \"decoração\" serão perdidas.";
-	var footer_info = "$NUM0 itens em uso.";
-	var footer_info_null = "Nenhum item em uso.";
+	const panel_left_position_button_back = "Para trás";
+	const panel_left_position_button_front = "Para frente";
+	const panel_left_title_two = "Carregar a guardiã";
+	const panel_left_load_info = "<u>Aviso:</u> Ao carregar uma nova guardiã, você perderá todo o processo da sessão atual.";
+	const panel_right_title = "INFORMAÇÕES";
+	const panel_right_p_one = "1) Para salvar um png da guardiã, clique no popup de \"Salvar\" e você pode selecionar a resolução que preferir. Se você está em um dispositivo móvel, talvez você não consiga salvar, por mais que consiga visualizar.";
+	const panel_right_p_two = "2) Decore seu perfil com as opções do painel esquerdo: Você pode criar uma linda cena com dois mascotes e um paquera/companheiro. Se a imagem do companheiro demorar um tempo para carregar, é provável que não centralize muito bem. Se você notar esse problema, use o botão \"Centrar\" para centralizá-lo.";
+	const panel_right_p_three = "3) Utilize o \"Posição\" para colocar os elementos para frente e para trás dentro do perfil.";
+	const panel_right_p_four = "4) Você não precisa de uma guardiã! Você pode usar as opções caso não queira ter uma e, se você não quiser o cenário padrão, você pode mudar no vestiário.";
+	const panel_right_p_five = "5) Tanto o companheiro como os mascotes são apenas mera decoração para captura de tela. Se você compartilhar o link ou código da sua guardiã, só carregará ela com a posição padrão.";
+	const panel_right_p_six = "6) Você sempre pode usar o \"código\" para carregar sua guardiã novamente. Lembre-se que se você tiver outra guardiã caregada, tanto ela quanto a \"decoração\" serão perdidas.";
+	const footer_info = "$NUM0 itens em uso.";
+	const footer_info_null = "Nenhum item em uso.";
 
-	var footer_error = "Ocorreu um erro.";
+	const footer_error = "Ocorreu um erro.";
 
 	// error messages
-	var profile_alert_error = "O código colocado não está correto ou está corrompido.";
-	var profile_alert_error_two = "Ocorreu um erro, a página irá atualizar.";
-	var profile_alert_code = "O código foi copiado.";
+	const profile_alert_error = "O código colocado não está correto ou está corrompido.";
+	const profile_alert_error_two = "Ocorreu um erro, a página irá atualizar.";
+	const profile_alert_code = "O código foi copiado.";
 
 
 // archive variables
-	var archive_page_title = "Catálogo das Guardiãs - GardieMaker";
-	var archive_content_title = "Catálogo das Guardiãs";
-	var submit_button = "Enviar guardiã";
-	var menu_left_featured = "Guardiãs Destacadas";
-	var menu_left_all = "Todas as contribuições";
-	var menu_left_guardians = "Guardiãs e OCs";
-	var menu_left_cosplay = "Cosplays / Gijinka";
+	const archive_page_title = "Catálogo das Guardiãs - GardieMaker";
+	const archive_content_title = "Catálogo das Guardiãs";
+	const submit_button = "Enviar guardiã";
+	const menu_left_featured = "Guardiãs Destacadas";
+	const menu_left_all = "Todas as contribuições";
+	const menu_left_guardians = "Guardiãs e OCs";
+	const menu_left_cosplay = "Cosplays / Gijinka";
 
-	var ranking_section_title = "Ranking de contribuições";
-	var ranking_total_title = "Total";
-	var ranking_guardian_title = "Originais";
-	var ranking_cosplay_title = "Cosplays";
+	const ranking_section_title = "Ranking de contribuições";
+	const ranking_total_title = "Total";
+	const ranking_guardian_title = "Originais";
+	const ranking_cosplay_title = "Cosplays";
 
 	// dynamic archive
-	var menu_left_filter_default = "Filtrar por usuário...";
-	var icon_featured_title = "Semana $NUM0";
-	var icon_activity_title = "Novidades";
-	var icon_special_title = "Especial";
-	var icon_cosplay_title = "Cosplay";
+	const menu_left_filter_default = "Filtrar por usuário...";
+	const icon_featured_title = "Semana $NUM0";
+	const icon_activity_title = "Novidades";
+	const icon_special_title = "Especial";
+	const icon_cosplay_title = "Cosplay";
 
-	var guardian_info_author = "Enviado por";
-	var account_status_OK = "Conta verificada";
-	var account_status_bad = "Conta sem verificar";
-	var guardian_info_date = "Data";
-	var guardian_info_open = "Abrir em";
-	var guardian_info_open_profile = "Perfil";
-	var guardian_info_open_wardrobe = "Vestiário";
-	var guardian_info_share_link = "Link de cópia";
-	var guardian_info_copied_link = "Link copiado";
-	var featured_guardian_title = "Guardiã em Destaque";
-	var featured_guardian_info = "Ganhou destaque durante a semana $NUM0";
-	var featured_guardian_info_special = "Destaque especial";
-	var featured_guardian_info_activity = "Por atividade";
-	var cosplay_report = "Notificar cosplay";
-	var filter_user_info = "Mostrando todas as contribuições de $NICKNAME";
+	const guardian_info_author = "Enviado por";
+	const account_status_OK = "Conta verificada";
+	const account_status_bad = "Conta sem verificar";
+	const guardian_info_date = "Data";
+	const guardian_info_open = "Abrir em";
+	const guardian_info_open_profile = "Perfil";
+	const guardian_info_open_wardrobe = "Vestiário";
+	const guardian_info_share_link = "Link de cópia";
+	const guardian_info_copied_link = "Link copiado";
+	const featured_guardian_title = "Guardiã em Destaque";
+	const featured_guardian_info = "Ganhou destaque durante a semana $NUM0";
+	const featured_guardian_info_special = "Destaque especial";
+	const featured_guardian_info_activity = "Por atividade";
+	const cosplay_report = "Notificar cosplay";
+	const filter_user_info = "Mostrando todas as contribuições de $NICKNAME";
 
-	var archive_searchbar = "Buscar...";
-	var search_preview_null = "Nenhuma contribuição corresponde à busca";
+	const archive_searchbar = "Buscar...";
+	const search_preview_null = "Nenhuma contribuição corresponde à busca";
 
-	var account_menu_title = "Minha conta";
-	var account_edit_nickname = "Editar apelido";
-	var account_edit_email = "Editar email";
+	const account_menu_title = "Minha conta";
+	const account_edit_nickname = "Editar apelido";
+	const account_edit_email = "Editar email";
 
-	var config_guardian = "Opções";
-	var guardian_config_edit = "Solicitar mudanças";
-	var guardian_config_delete = "Solicitar exclusão";
-	var guardian_info_edited = "Última edição";
-	var guardian_config_cancel = "Cancelar";
+	const config_guardian = "Opções";
+	const guardian_config_edit = "Solicitar mudanças";
+	const guardian_config_delete = "Solicitar exclusão";
+	const guardian_info_edited = "Última edição";
+	const guardian_config_cancel = "Cancelar";
 
 
 // support variables
-	var support_page_title = "Ajuda - GardieMaker";
-	var support_content_title = "Ajuda";
-	var menu_left_general = "Geral";
-	var menu_left_wardrobe = "Vestiário";
-	var menu_left_profile = "Perfil";
-	var menu_left_activities = "Atividades";
+	const support_page_title = "Ajuda - GardieMaker";
+	const support_content_title = "Ajuda";
+	const menu_left_general = "Geral";
+	const menu_left_wardrobe = "Vestiário";
+	const menu_left_profile = "Perfil";
+	const menu_left_activities = "Atividades";
 
 	// questions!
-	var infoGeneralT = [
+	const infoGeneralT = [
 	    {'question':'O que é GardieMaker?',
 	    'answer':'GardieMaker é um site que tem a finalidade de juntar a maior quantidade de vestimentas possíveis que estão disponíveis em Eldarya. Meu objetivo era criar um guarda-roupa gigante, sem limitações, que você possa criar e vestir sua guardiã como você sempre quis; e também, ter acesso a itens exclusivos de eventos passados e do servidor francês. Isso é um projeto ambicioso, eu trabalho dia a dia com a intenção de me aperfeiçoar e melhorar tudo isso pouco a pouco.<br><br>Esse projeto foi feito por mim para fins de aprendizagem, sem fins lucrativos e com mera intenção de entreter. As imagens e desenhos usados são de propriedade de Beemoov e em nenhum momento pretendo apropriá-los.'},
 	    {'question':'Como relatar?',
@@ -279,7 +299,7 @@
 	    'answer':'Qualquer dúvida, ideia ou sugestão que você tenha sobre qualquer coisa, você pode deixar sua mensagem <a href="https://znfaq.tumblr.com/" target="_blank">NESTE BLOG</a>, ou você pode  enviar um e-mail para <a href="mailto:gardiemaker@gmail.com">gardiemaker@gmail.com.</a>'}
 	];
 
-	var infoWardrobeT = [
+	const infoWardrobeT = [
 	    {'question':'Não tem nenhuma Guardiã para vestir.',
 	    'answer':'Você tem que criar ela! A ideia de não colocar uma Guardiã de base é para que você crie ela do zero, como quiser.'},
 	    {'question':'Não consigo escolher nenhuma roupa.',
@@ -298,14 +318,14 @@
 	    'answer':'Você pode salvar uma imagem da sua guardiã no perfil. Depois de terminar sua guardiã, para acessar o perfil, clique em "Gerar Perfil"'}
 	];
 
-	var infoProfileT = [
+	const infoProfileT = [
 	    {'question':'Como eu salvo a minha Guardiã?',
 	    'answer':'Para ver e salvar um png da sua guardiã, você tem que clicar em "Salvar". Então abrirá um pop-up que permitirá que você salve a imagem na resolução que você preferir. Esteja ciente que isso não funciona em dispositivos móveis, e que você só pode salvar em um computador.'},
 	    {'question':'Para quê serve o código?',
 	    'answer':'Se você gostou da sua guardiã e quer compartilhar (ou só salvar), você pode salvar o código dela para regenerá-la para modificar mais tarde. Esse código é para ser colocaduo debaixo do perfil, onde tem "Carregar guardiã".'}
 	];
 
-	var infoContestsT = [
+	const infoContestsT = [
 	    {'question':'O que é Catálogo das Guardiãs?',
 	    'answer':'O catálago funciona como um "arquivo" em que as pessoas podem enviar e "armazenar" suas criações ou trajes com a intenção de compartilhar com a comunidade. E também, todas as guardiãs recebidas participarão dos sorteios para ser a Guardiã em Destaque.'},
 	    {'question':'Sobre a Guardiã em Destaque.',

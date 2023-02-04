@@ -104,6 +104,9 @@ $(document).ready( function () {
 		$("#popup-container h4").eq(3).text(help_panel_event_title);
 		$("#popup-container p").eq(4).html(help_panel_event_info);
 		$("#popup-container p").eq(5).html(help_panel_event_extra);
+
+		$("#save-this").attr("title", button_save_outfit);
+		$("#saved-outfit").attr("title", button_outfit_list);
 	};
 
 	// profile translations

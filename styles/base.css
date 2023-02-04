@@ -46,8 +46,7 @@ strong, em, i, u, span, b, sub, sup, a, label, tt, var {
 
 body{
 	/*background: #34386f url("https://www.eldarya.com/assets/img/item/player/web_hd/db28c830f7176d59b26856ba831ec0fb.jpg");*/
-    /*background: #34386f url("https://www.eldarya.com/assets/img/item/player/web_hd/8ff0e65dbdb21d7c4d0aa0cf9b881082.jpg");*/
-    background: #34386f url("https://www.eldarya.es/assets/img/item/player/web_hd/1cb101403ebd68f0eb46336f5c8160cd.jpg");
+    background: #34386f url(https://www.eldarya.es/assets/img/item/player/web_hd/c88a19e81dcf9b4ad133ac9bd743d20a.jpg);
     background-attachment: fixed;
     background-position: top center;
     background-size: cover;

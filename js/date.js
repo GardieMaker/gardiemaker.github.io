@@ -10,8 +10,12 @@ function currentDate() {
     var fecha = new Date().toISOString();
     var currentHour = (new Date().getUTCHours());
 
-    if (currentHour >= 23) {
-        // Cambia dia si son más de las 22UTC
+    // Cambio horario español
+    var horaVerano = 22;
+    var horaInvierno = 23;
+
+    if (currentHour >= horaVerano) {
+        // Cambia dia si son más de las 22/23 UTC
         var dia = fecha;
         dia = dia.split("T");
         dia = dia[0].split("-");

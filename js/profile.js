@@ -204,14 +204,19 @@ async function cargarCanvas() {
 
             var newimg;
 
-            switch (getInfo[0].category) {
-                case "background": newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL; break;
-                case "skin": newimg = URL_SRC + URL_SKIN + URL_FULL + getLista[0].itemURL; break;
-                case "mouth": newimg = URL_SRC + URL_MOUTH + URL_FULL + getLista[0].itemURL; break;
-                case "eye": newimg = URL_SRC + URL_EYES + URL_FULL + getLista[0].itemURL; break;
-                case "hair": newimg = URL_SRC + URL_HAIR + URL_FULL + getLista[0].itemURL; break;
-                default: newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL;
-            };
+            if ((getLista[0].itemURL).includes(".")) {
+                switch (getInfo[0].category) {
+                    case "background": newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL; break;
+                    case "skin": newimg = URL_SRC + URL_SKIN + URL_FULL + getLista[0].itemURL; break;
+                    case "mouth": newimg = URL_SRC + URL_MOUTH + URL_FULL + getLista[0].itemURL; break;
+                    case "eye": newimg = URL_SRC + URL_EYES + URL_FULL + getLista[0].itemURL; break;
+                    case "hair": newimg = URL_SRC + URL_HAIR + URL_FULL + getLista[0].itemURL; break;
+                    default: newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL;
+                };
+            } else {
+                newimg = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + getLista[0].itemURL + "?orig=true";
+            }
+
 
             //*------------------
             var canvas = document.getElementsByTagName("canvas")[0];
@@ -219,7 +224,7 @@ async function cargarCanvas() {
             //var img = new Image();
 
             var ready = await preloadIMG(newimg);
-            ctx.drawImage(ready, 0, 0);
+            ctx.drawImage(ready, 0, 0, 420, 594);
 
         };
     };
@@ -285,37 +290,42 @@ async function cargarPortrait() {
         if (getInfo[0].category != "background") {
             var newimg;
 
-            if (portraitMin == false) {
+            if ((getLista[0].itemURL).includes(".")) {
 
-                switch (getInfo[0].category) {
-                    case "background": newimg = URL_SRC + URL_CLOTHES + URL_HD + getLista[0].itemURL; break;
-                    case "skin": newimg = URL_SRC + URL_SKIN + URL_HD + getLista[0].itemURL; break;
-                    case "mouth": newimg = URL_SRC + URL_MOUTH + URL_HD + getLista[0].itemURL; break;
-                    case "eye": newimg = URL_SRC + URL_EYES + URL_HD + getLista[0].itemURL; break;
-                    case "hair": newimg = URL_SRC + URL_HAIR + URL_HD + getLista[0].itemURL; break;
-                    default: newimg = URL_SRC + URL_CLOTHES + URL_HD + getLista[0].itemURL;
-                };
+                if (portraitMin == false) {
 
+                    switch (getInfo[0].category) {
+                        case "background": newimg = URL_SRC + URL_CLOTHES + URL_HD + getLista[0].itemURL; break;
+                        case "skin": newimg = URL_SRC + URL_SKIN + URL_HD + getLista[0].itemURL; break;
+                        case "mouth": newimg = URL_SRC + URL_MOUTH + URL_HD + getLista[0].itemURL; break;
+                        case "eye": newimg = URL_SRC + URL_EYES + URL_HD + getLista[0].itemURL; break;
+                        case "hair": newimg = URL_SRC + URL_HAIR + URL_HD + getLista[0].itemURL; break;
+                        default: newimg = URL_SRC + URL_CLOTHES + URL_HD + getLista[0].itemURL;
+                    };
+
+                } else {
+
+                    switch (getInfo[0].category) {
+                        case "background": newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL; break;
+                        case "skin": newimg = URL_SRC + URL_SKIN + URL_FULL + getLista[0].itemURL; break;
+                        case "mouth": newimg = URL_SRC + URL_MOUTH + URL_FULL + getLista[0].itemURL; break;
+                        case "eye": newimg = URL_SRC + URL_EYES + URL_FULL + getLista[0].itemURL; break;
+                        case "hair": newimg = URL_SRC + URL_HAIR + URL_FULL + getLista[0].itemURL; break;
+                        default: newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL;
+                    };
+
+                }
             } else {
-
-                switch (getInfo[0].category) {
-                    case "background": newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL; break;
-                    case "skin": newimg = URL_SRC + URL_SKIN + URL_FULL + getLista[0].itemURL; break;
-                    case "mouth": newimg = URL_SRC + URL_MOUTH + URL_FULL + getLista[0].itemURL; break;
-                    case "eye": newimg = URL_SRC + URL_EYES + URL_FULL + getLista[0].itemURL; break;
-                    case "hair": newimg = URL_SRC + URL_HAIR + URL_FULL + getLista[0].itemURL; break;
-                    default: newimg = URL_SRC + URL_CLOTHES + URL_FULL + getLista[0].itemURL;
-                };
-
+                newimg = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + getLista[0].itemURL + "?orig=true"
             }
+
 
             var canvas = document.getElementById("portrait");
             var ctx = canvas.getContext("2d");
             var img = new Image();
 
             var ready = await preloadIMG(newimg);
-            ctx.drawImage(ready, 0, 0);
-
+            portraitMin ? ctx.drawImage(ready, 0, 0, 420, 594) : ctx.drawImage(ready, 0, 0, 630, 891);
         };
     };
 

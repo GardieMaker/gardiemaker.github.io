@@ -85,6 +85,7 @@
 	const filter_rarity_epic = "Épique";
 	const filter_rarity_legendary = "Légendaire";
 	const filter_rarity_event = "Event";
+	const filter_rarity_unofficial = "Custom";
 	const filter_order_default = "Du plus récent au plus ancien";
 	const filter_order_oldest = "Du plus ancien au plus récent";
 	const filter_button = "Filtrer";

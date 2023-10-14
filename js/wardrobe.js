@@ -89,7 +89,7 @@ function checkURL() {
                 checkN = checkN[0].slice(3);
                 checkN = checkN.split("i");
 
-                checkN.forEach((element, i) => {checkN[i] = parseInt(element)});
+                checkN.forEach((element, i) => {checkN[i] = element});
 
                 for (e = 0; e < checkN.length; e++) {
                     var existe = groupList.filter(v => {return v.itemId == checkN[e]});
@@ -125,8 +125,6 @@ function reloadNewCode(code = "") {
 function cargarGuardiana(p = 0, drawLocation = "normal", localSave = null) {
 
     // drawLocation = normal, edit, saved
-
-
     var img, img2; 
     var str = window.location.search;
     if (drawLocation != "saved") {
@@ -140,13 +138,18 @@ function cargarGuardiana(p = 0, drawLocation = "normal", localSave = null) {
     var prenda = groupList.filter(function(v){return v.itemId == customArray[p]});
     var grupo = groupInfo.filter(function(v){return v.groupId == prenda[0].groupId});
 
-    switch (grupo[0].category) {
-        case "skin": img = URL_SRC + URL_SKIN + URL_FULL + prenda[0].itemURL; break;
-        case "mouth": img = URL_SRC + URL_MOUTH + URL_FULL + prenda[0].itemURL; break;
-        case "eye": img = URL_SRC + URL_EYES + URL_FULL + prenda[0].itemURL; break;
-        case "hair": img = URL_SRC + URL_HAIR + URL_FULL + prenda[0].itemURL; break;
-        default: img = URL_SRC + URL_CLOTHES + URL_FULL + prenda[0].itemURL;
-    };
+    if ((prenda[0].itemURL).includes(".")) {
+        switch (grupo[0].category) {
+            case "skin": img = URL_SRC + URL_SKIN + URL_FULL + prenda[0].itemURL; break;
+            case "mouth": img = URL_SRC + URL_MOUTH + URL_FULL + prenda[0].itemURL; break;
+            case "eye": img = URL_SRC + URL_EYES + URL_FULL + prenda[0].itemURL; break;
+            case "hair": img = URL_SRC + URL_HAIR + URL_FULL + prenda[0].itemURL; break;
+            default: img = URL_SRC + URL_CLOTHES + URL_FULL + prenda[0].itemURL;
+        };
+    } else {
+        img = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + prenda[0].itemURL + "?orig=true";
+    }
+
 
     if (grupo[0].category == "background") {
         if (drawLocation == "normal") { 
@@ -183,7 +186,7 @@ function cargarGuardiana(p = 0, drawLocation = "normal", localSave = null) {
 
         img2 = new Image();
         img2.onload = function() {
-            ctx.drawImage(img2, 0, 0);
+            ctx.drawImage(img2, 0, 0, 420, 594);
         };img2.src = img;
     };
     
@@ -228,7 +231,7 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
             if (orden == "newest") info.reverse();
 
             if (buscador != "") {
-                if (!buscador.includes(":")) {
+                if (!buscador.includes(":") && !buscador.includes("@")) {
                     var nombre = normalize(buscador).toLowerCase();
 
                     if (localization == "es") {
@@ -240,8 +243,11 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
                     } else if (localization == "pt_BR") {
                         info = info.filter(function(v){return (normalize(v.portuguese).toLowerCase()).includes(nombre)});
                     }
+                } else if (buscador.includes("@")) {
+                    info = info.filter(function(v){return (normalize(v.note).toLowerCase() == normalize(buscador).toLowerCase())})
 
-                } else {
+
+                } else if (buscador.includes(":")){
                     // Búqueda por evento
                     var busca = buscador.split(":");
                     busca[0] = busca[0].toLowerCase();
@@ -414,13 +420,18 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
 
         var img, rarity = currentGrupo[0].rarity;
         var looper = (sub == 0) ? 0 : elementoInicial;
-        switch (currentGrupo[0].category) {
-            case "skin": img = URL_SRC + URL_SKIN + URL_ICON + currentPrenda[looper].itemURL; break;
-            case "mouth": img = URL_SRC + URL_MOUTH + URL_ICON + currentPrenda[looper].itemURL; break;
-            case "eye": img = URL_SRC + URL_EYES + URL_ICON + currentPrenda[looper].itemURL; break;
-            case "hair": img = URL_SRC + URL_HAIR + URL_ICON + currentPrenda[looper].itemURL; break;
-            default: img = URL_SRC + URL_CLOTHES + URL_ICON + currentPrenda[looper].itemURL;
-        };
+
+        if ((currentPrenda[looper].itemURL).includes(".")) {
+            switch (currentGrupo[0].category) {
+                case "skin": img = URL_SRC + URL_SKIN + URL_ICON + currentPrenda[looper].itemURL; break;
+                case "mouth": img = URL_SRC + URL_MOUTH + URL_ICON + currentPrenda[looper].itemURL; break;
+                case "eye": img = URL_SRC + URL_EYES + URL_ICON + currentPrenda[looper].itemURL; break;
+                case "hair": img = URL_SRC + URL_HAIR + URL_ICON + currentPrenda[looper].itemURL; break;
+                default: img = URL_SRC + URL_CLOTHES + URL_ICON + currentPrenda[looper].itemURL;
+            };
+        } else {
+            img = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + currentPrenda[looper].icon + "?orig=true";
+        }
 
         if (currentPrenda[looper].rarity) rarity = currentPrenda[looper].rarity;
 
@@ -431,7 +442,8 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
             case "Legendario": 
                 if (currentGrupo[0].especial == "premios") {rarity = '<div class="anim-marker"></div>'} 
                 else {rarity = '<div class="rarity-marker-legendary"></div>'} break;
-            case "Evento": rarity = '<div class="rarity-marker-event"></div>';
+            case "Evento": rarity = '<div class="rarity-marker-event"></div>'; break;
+            case "unofficial": rarity = '<div class="rarity-marker-unofficial"></div>';
         };
 
         if (currentGrupo[0].especial) {
@@ -446,7 +458,7 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         var leyenda = currentGrupo[0].note;
         if (currentPrenda[looper].note) leyenda = currentPrenda[looper].note;
 
-        if (!(window.location.href).includes("/es/")) {
+        if (!(window.location.href).includes("/es/") && !leyenda.includes("@")) {
             leyenda = esToLang(leyenda);
         };
 
@@ -706,13 +718,18 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
         var imageName = groupList.filter(v => {return v.itemId == prenda});
         imageName = imageName[0].itemURL;
 
-        switch (categoria) {
-            case "skin": img = URL_SRC + URL_SKIN + URL_FULL + imageName; break;
-            case "mouth": img = URL_SRC + URL_MOUTH + URL_FULL + imageName; break;
-            case "eye": img = URL_SRC + URL_EYES + URL_FULL + imageName; break;
-            case "hair": img = URL_SRC + URL_HAIR + URL_FULL + imageName; break;
-            default: img = URL_SRC + URL_CLOTHES + URL_FULL + imageName;
+        if (imageName.includes(".")) {
+            switch (categoria) {
+                case "skin": img = URL_SRC + URL_SKIN + URL_FULL + imageName; break;
+                case "mouth": img = URL_SRC + URL_MOUTH + URL_FULL + imageName; break;
+                case "eye": img = URL_SRC + URL_EYES + URL_FULL + imageName; break;
+                case "hair": img = URL_SRC + URL_HAIR + URL_FULL + imageName; break;
+                default: img = URL_SRC + URL_CLOTHES + URL_FULL + imageName;
+            };
+        } else {
+            img = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + imageName + "?orig=true";
         };
+
     } else {
         img = alternativo.replace("icon", "web_full");
     };
@@ -744,7 +761,7 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
                 ctx.clearRect(0, 0, 420, 594);
 
                 img2 = new Image(); img2.onload = function() {
-                    ctx.drawImage(img2, 0, 0);
+                    ctx.drawImage(img2, 0, 0, 420, 594);
                 };img2.src = img;
 
             } else {
@@ -758,7 +775,7 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
                 hayFondo ? ctx = canvas[c-1].getContext("2d") : ctx = canvas[c].getContext("2d");
     
                 img2 = new Image(); img2.onload = function() {
-                    ctx.drawImage(img2, 0, 0);
+                    ctx.drawImage(img2, 0, 0, 420, 594);
                 };img2.src = img;
             };
 
@@ -814,7 +831,7 @@ function mostrarPrenda(tipo, prenda, categoria, c, cambio = null) {
             };
 
             img2 = new Image(); img2.onload = function() {
-                ctx.drawImage(img2, 0, 0);
+                ctx.drawImage(img2, 0, 0, 420, 594);
             };img2.src = img;
 
         }; 
@@ -923,20 +940,24 @@ function recuperaPrenda(elmnt) {
         categoria = groupInfo.filter(v => {return v.groupId == categoria[0].groupId});
         categoria = categoria[0].category;
 
-        switch (categoria) {
-            case "skin": image = URL_SRC + URL_SKIN + URL_FULL + image; break;
-            case "mouth": image = URL_SRC + URL_MOUTH + URL_FULL + image; break;
-            case "eye": image = URL_SRC + URL_EYES + URL_FULL + image; break;
-            case "hair": image = URL_SRC + URL_HAIR + URL_FULL + image; break;
-            default: image = URL_SRC + URL_CLOTHES + URL_FULL + image;
-        }
+        if (image.includes(".")) {
+            switch (categoria) {
+                case "skin": image = URL_SRC + URL_SKIN + URL_FULL + image; break;
+                case "mouth": image = URL_SRC + URL_MOUTH + URL_FULL + image; break;
+                case "eye": image = URL_SRC + URL_EYES + URL_FULL + image; break;
+                case "hair": image = URL_SRC + URL_HAIR + URL_FULL + image; break;
+                default: image = URL_SRC + URL_CLOTHES + URL_FULL + image;
+            };
+        } else {
+            image = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + image + "?orig=true";
+        };
         
         var ctx = canvas[0].getContext("2d");
         ctx.clearRect(0, 0, 420, 594);
 
         var img2 = new Image(); 
         img2.onload = function() {
-            ctx.drawImage(img2, 0, 0);
+            ctx.drawImage(img2, 0, 0, 420, 594);
         };img2.src = image;
     };
 };
@@ -944,10 +965,25 @@ function recuperaPrenda(elmnt) {
 function buttonsIMG() {
     var link = $(".marketplace-abstract.marketplace-search-item.selected img").attr("src");
     $("#img-s").attr("href", link);
-    link = link.replace("icon", "web_full");
-    $("#img-m").attr("href", link);
-    link = link.replace("web_full", "web_hd");
-    $("#img-l").attr("href", link);
+
+    if (link.includes("eldarya")) {
+        link = link.replace("icon", "web_full");
+        $("#img-m .button").removeClass("disabled");
+        $("#img-m").attr("href", link);
+        link = link.replace("web_full", "web_hd");
+        $("#img-l").attr("href", link);
+    } else {
+        $("#img-m .button").addClass("disabled");
+        $("#img-m").removeAttr("href");
+
+        link = link.replace("https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/", "");
+        link = link.replace("?orig=true","");
+        var bigLink = groupList.filter(v => {return v.icon == link})
+
+        bigLink = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + bigLink[0].itemURL + "?orig=true";
+        $("#img-l").attr("href", bigLink);
+
+    }
     $("#button-img-link-container").css("display", "block");
 }
 
@@ -1153,7 +1189,9 @@ function obtenerListaPreview() {
     if (canvas.length != 0) {
 
         for (c = 0; c < canvas.length; c++) {
-            arrayPreview.push(parseInt(canvas.eq(c).attr("data-previewid")));
+            var previewID = canvas.eq(c).attr("data-previewid");
+            !previewID.includes("U") ? previewID = parseInt(previewID) : "";
+            arrayPreview.push(previewID);
         };
 
         arrayPreview.reverse();   
@@ -1165,14 +1203,17 @@ function obtenerListaPreview() {
             // Obtener imagen 
             var url = groupList.filter(v => {return v.itemId == arrayPreview[e]});
             var grupo = groupInfo.filter(v => {return v.groupId == url[0].groupId});
-            url = url[0].itemURL;
 
-            switch (grupo[0].category) {
-                case "skin": url = URL_SRC + URL_SKIN + URL_ICON + url; break;
-                case "mouth": url = URL_SRC + URL_MOUTH + URL_ICON + url; break;
-                case "eye": url = URL_SRC + URL_EYES + URL_ICON + url; break;
-                case "hair": url = URL_SRC + URL_HAIR + URL_ICON + url; break;
-                default: url = URL_SRC + URL_CLOTHES + URL_ICON + url;
+            if((url[0].itemURL).includes(".")) {
+                switch (grupo[0].category) {
+                    case "skin": url = URL_SRC + URL_SKIN + URL_ICON + url[0].itemURL; break;
+                    case "mouth": url = URL_SRC + URL_MOUTH + URL_ICON + url[0].itemURL; break;
+                    case "eye": url = URL_SRC + URL_EYES + URL_ICON + url[0].itemURL; break;
+                    case "hair": url = URL_SRC + URL_HAIR + URL_ICON + url[0].itemURL; break;
+                    default: url = URL_SRC + URL_CLOTHES + URL_ICON + url[0].itemURL;
+                };
+            } else {
+                url = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + url[0].icon + "?orig=true";
             };
 
             $(".draggable-preview").eq(e).append('<img class="draggable-preview-icon"><div class="draggable-preview-info"></div>');
@@ -1661,7 +1702,9 @@ $(function() {
         var newArray = [];
         // Obtener CODES
         for (c = 0; c < $(".canvas-preview").length; c++) {
-            newArray.push(parseInt($(".canvas-preview").eq(c).attr("data-previewid")));
+            var previewID = $(".canvas-preview").eq(c).attr("data-previewid");
+            !previewID.includes("U") ? previewID = parseInt(previewID) : "";
+            newArray.push(previewID);
         };
 
         var cadena = "";
@@ -1817,6 +1860,7 @@ function getFiltros() {
         case "epic": c = "Épico"; break;
         case "legendary": c = "Legendario"; break;
         case "event": c = "Evento"; break;
+        case "unofficial": c = "unofficial"; break;
         default: c = "";
     };
     var d = $("#filter-orderOptions").val();

@@ -380,7 +380,7 @@ li.marketplace-search-item, li.marketplace-sales-item, li.marketplace-auctions-i
 }
 
 /* Marcadores de rareza */
-.rarity-marker-common, .rarity-marker-rare, .rarity-marker-epic, .rarity-marker-legendary, .rarity-marker-event, .anim-marker {
+.rarity-marker-common, .rarity-marker-rare, .rarity-marker-epic, .rarity-marker-legendary, .rarity-marker-event, .anim-marker, .rarity-marker-unofficial {
     border-width: 18px 18px 0px 0px;
 	border-style: solid;
 	position: absolute;
@@ -411,6 +411,10 @@ li.marketplace-search-item, li.marketplace-sales-item, li.marketplace-auctions-i
 
 .rarity-marker-event {
     border-color: #58d700 transparent transparent transparent;
+}
+
+.rarity-marker-unofficial {
+	border-color: #ffaccf transparent transparent transparent;
 }
 
 .guard-gem.guard-1{

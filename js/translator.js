@@ -75,8 +75,7 @@ $(document).ready( function () {
 		$("#filter-rarityOptions option").eq(3).text(filter_rarity_epic);
 		$("#filter-rarityOptions option").eq(4).text(filter_rarity_legendary);
 		$("#filter-rarityOptions option").eq(5).text(filter_rarity_event);
-		$("#filter-rarityOptions option").eq(6).text(filter_order_default);
-		$("#filter-rarityOptions option").eq(7).text(filter_order_oldest);
+		$("#filter-rarityOptions option").eq(6).text(filter_rarity_unofficial);
 
 		$("#filter-orderOptions option").eq(0).text(filter_order_default);
 		$("#filter-orderOptions option").eq(1).text(filter_order_oldest);

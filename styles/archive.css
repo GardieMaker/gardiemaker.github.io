@@ -210,6 +210,20 @@ span.feat-title {
     background: goldenrod;
 }
 
+span.ctom {
+    position: relative;
+    top: 194px;
+    left: -60px;
+    background-color: #ffaccf;
+    padding: 10px 10px;
+    height: 15px;
+    font-size: 10px;
+    display: block;
+    clear: both;
+    border-radius: 10px 0 0 0;
+    box-shadow: -1px -1px 5px #aaa;
+}
+
 /* Info popup */
 #popupBG {
     background-color: rgba(0, 0, 0, 0.8);

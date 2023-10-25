@@ -347,7 +347,13 @@ function dibujaTabla(entry, uVAL, pag) {
                     } else if (entry[suma].type == "cosplay") {
                         tabla += " cosplay'><span class='cplay'>COSPLAY</span>";
                     } else {tabla += "'>";};
-                    tabla += "<img src='https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + entry[suma].info.png + "?orig=true'></div></td>";
+
+                    tabla += "<img src='https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + entry[suma].info.png + "?orig=true'>";
+
+                    // Marcar custom
+                    if ((entry[suma].info.code).includes("U")) {tabla += "<span class='ctom'>CUSTOM</span>"};
+                    tabla += '</div></td>'
+
                 } else {
                     tabla += "<td></td>";
                 }

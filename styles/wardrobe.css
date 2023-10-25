@@ -37,6 +37,25 @@
 
 /* --------------------------------------------- */
 
+#custom-toggle {
+	position: absolute;
+	z-index: 1;
+	top: 30px;
+	left: 140px;
+	color: #000;
+	font-size: 12px;	
+}
+
+#custom-toggle.on {
+	background-color: #ffaccf;
+	border-color: #ffaccf;
+}
+
+#custom-toggle.off {
+	background-color: #bbb;
+	border-color: #bbb;
+}
+
 #change-lang {
 	right: 60px;
 	position: absolute;

@@ -244,6 +244,7 @@ function cargarLista(pag = 0, sub = 0, pagSub = null) {
         if (!esNumero(buscador) && !buscador.includes("#")) {
             // Filtrar desde groupInfo 
             for (g = 0; g < groupInfo.length; g++) {info.push(groupInfo[g])};
+            info = info.filter(v => {return v.display != "none"});
 
             // Ocultar prendas custom si es necesario!
             if (!($.parseJSON(customToggle))) {

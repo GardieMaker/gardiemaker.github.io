@@ -14,7 +14,7 @@ function currentDate() {
     var horaVerano = 22;
     var horaInvierno = 23;
 
-    if (currentHour >= horaVerano) {
+    if (currentHour >= horaInvierno) {
         // Cambia dia si son más de las 22/23 UTC
         var dia = fecha;
         dia = dia.split("T");

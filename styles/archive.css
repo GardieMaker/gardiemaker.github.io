@@ -374,12 +374,13 @@ span.ctom {
     width: 800px;
     height: 600px;
     border-radius: 10px;
+    background-size: cover;
 }
 
 #entry-info-container img {
     height: 594px;
     position: absolute;
-    left: 10px;     
+    left: 10px;
 }
 
 #entry-info-menu {

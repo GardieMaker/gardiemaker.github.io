@@ -34,7 +34,7 @@ select, input {
 	width: 800px;
 	left: 0;
 	height: 600px;
-	background-size: cover;
+	background-size: 800px !important;
 }
 
 #player-pet-containment {

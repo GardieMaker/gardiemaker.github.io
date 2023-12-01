@@ -193,7 +193,7 @@ async function cargarCanvas() {
             if ((item[0].itemURL).includes(".")) {
                 fondo.style.background = "url('" + URL_SRC + URL_CLOTHES + URL_FULL + item[0].itemURL + "')";    
             } else {
-                fondo.style.background = "url('https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + item[0].itemURL + "?orig=true)";
+                fondo.style.background = "url('https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + item[0].itemURL + "?orig=true')";
             }
             
             iBG = f;

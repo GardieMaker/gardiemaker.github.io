@@ -190,7 +190,12 @@ async function cargarCanvas() {
 
         if (grupo[0].category == "background") {
             var fondo = document.getElementsByClassName("player-element background-element")[0];
-            fondo.style.background = "url('" + URL_SRC + URL_CLOTHES + URL_FULL + item[0].itemURL + "')";
+            if ((item[0].itemURL).includes(".")) {
+                fondo.style.background = "url('" + URL_SRC + URL_CLOTHES + URL_FULL + item[0].itemURL + "')";    
+            } else {
+                fondo.style.background = "url('https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + item[0].itemURL + "?orig=true)";
+            }
+            
             iBG = f;
         };
     };

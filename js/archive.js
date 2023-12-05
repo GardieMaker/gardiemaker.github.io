@@ -630,7 +630,12 @@ function buscaFondo(code) {
         if (check.length == 1) {
             if (check[0].category == "background") {
                 check = groupList.filter(v => {return v.itemId == code[a]});
-                enlace = URL_BGFULL + check[0].itemURL;
+                if ((check[0].itemURL).includes(".")) {
+                    enlace = URL_BGFULL + check[0].itemURL;    
+                } else {
+                    enlace = 'https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/' + check[0].itemURL + '?orig=true'
+                };
+                
                 break;
             };
         };

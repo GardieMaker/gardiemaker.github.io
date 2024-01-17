@@ -76,63 +76,33 @@ function get(blogger) {
 
 function featured(feat, entries) {
 
-    // Buscar fondo en el código
+    var guardian = getGuardian(entries);    
+    var fondo = buscaFondo(guardian.info.code);
 
-    // Comprobar fecha
-    var a = 0;
-    for (a; a < feat.length; a++) {
-        if (Date.parse(currentDate()) >= Date.parse(feat[a].date) ) { break };
-    }
+    document.getElementById("portrait").src = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + guardian.info.png + "?orig=true";
+    document.getElementById("portrait-container").style.background = "url('" + fondo +  "') bottom center";
 
-    if (feat[a].entry[0] != "s") {
-        var entry = entries.filter(function(v){return v.id == feat[a].entry});
-        var fondo = buscaFondo(entry[0].info.code);
-
-        // Reemplazar ZOHO por canvas
-        document.getElementById("portrait").src = "https://files-accl.zohoexternal.com/public/workdrive-external/previewdata/" + entry[0].info.png + "?orig=true";
-        document.getElementById("portrait-container").style.background = "url('" + fondo +  "') bottom center";
-
-        // drawPortrait(entry[0].info.code); // no usa foto
-
-
-        if (entry[0].info.name == null) {
-            document.getElementById("index-featured-title").innerHTML = 'ID : <a href="archive?e=' + entry[0].id + '">' + entry[0].id + '</a></div>'
-        } else {
-            document.getElementById("index-featured-title").innerHTML = '<a href="archive?e=' + entry[0].id + '">' + entry[0].info.name + '</a></div>'
-        };
-
-        var home_de = "De";
-        var home_abrir_en = "Abrir en";
-        var home_vestidor = "Vestidor";
-        var home_perfil = "Perfil";
-        var home_fullsize = "Ver en tamaño completo";
-
-        if (!(window.location.href).includes("/es/")) {
-            home_de = featured_from;
-            home_abrir_en = featured_open;
-            home_vestidor = featured_open_wardrobe;
-            home_perfil = featured_open_profile;
-            home_fullsize = featured_open_full;
-        };
-
-        $("#index-featured").append('<p>' + home_de + ': <a href="archive?u=' + entry[0].alias + '">' + entry[0].alias + '</a></p>');
-        //$("#index-featured-info").append('<p>' + home_abrir_en + ':<br><a href="wardrobe?s=' + entry[0].info.code + '">' + home_vestidor + '</a> | <a href="profile?s=' + entry[0].info.code + '">' + home_perfil + '</a></p>');
-        // $("#index-featured-info").append('<p><a href="https://docs.zoho.com/docs/orig/' + entry[0].info.png + '" target="_blank">' + home_fullsize + '</a></p>'); 
-
+    if (guardian.info.name == null) {
+        document.getElementById("index-featured-title").innerHTML = 'ID : <a href="archive?e=' + guardian.id + '">' + guardian.id + '</a></div>'
     } else {
-
-        var fondo = buscaFondo(feat[0].entryInfo.code);
-        $("#portrait").attr("src", "https://docs.zoho.com/docs/orig/" + feat[0].entryInfo.png);
-        $("#portrait").css("background", "url(" + fondo + ")");
-        $("#index-featured-title").html('<a href="archive?e=' + feat[0].entry + '">' + feat[0].entryInfo.field[0] + '</a></div>');
-
-        $("#index-featured-info").html('Actividad: <a href="' + feat[0].postInfo.enlace + '" target="_blank">'
-        + feat[0].postInfo.actividad + '</a><br><br>Abrir en: <a href="wardrobe?s='
-        + feat[0].entryInfo.code + '">Vestidor</a> | <a href="profile?s='
-        + feat[0].entryInfo.code + '">Perfil</a><br><br><a href="https://docs.zoho.com/docs/orig/'
-        + feat[0].entryInfo.png + '" target="_blank">Ver en tamaño completo</a>');
-        
+        document.getElementById("index-featured-title").innerHTML = '<a href="archive?e=' + guardian.id + '">' + guardian.info.name + '</a></div>'
     };
+
+    var home_de = "De";
+    var home_abrir_en = "Abrir en";
+    var home_vestidor = "Vestidor";
+    var home_perfil = "Perfil";
+    var home_fullsize = "Ver en tamaño completo";
+
+    if (!(window.location.href).includes("/es/")) {
+        home_de = featured_from;
+        home_abrir_en = featured_open;
+        home_vestidor = featured_open_wardrobe;
+        home_perfil = featured_open_profile;
+        home_fullsize = featured_open_full;
+    };
+
+    $("#index-featured").append('<p>' + home_de + ': <a href="archive?u=' + guardian.alias + '">' + guardian.alias + '</a></p>');
 };
 
 //=======================================
@@ -209,6 +179,11 @@ function buscaFondo(code) {
     return enlace;
 };
 
+function getGuardian(db) {
+    var i = getRandomInt(1, db.length);
+    return db[i];
+}
+
 $(function() { 
     $("#load-code").click(function() {
         var input = $("#input-code").val();
@@ -228,3 +203,8 @@ $(function() {
         };
     });
 });
+
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}

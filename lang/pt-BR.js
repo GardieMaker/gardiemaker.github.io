@@ -30,7 +30,8 @@
 	const main_card_button = "IR AO VESTIÁRIO";
 	const load_label = "Carregar guardiã";
 	const updates_title = "Novidades";
-	const featured_title = "GUARDIÄ EM DESTAQUE";
+	//const featured_title = "GUARDIÄ EM DESTAQUE";
+	const featured_title = "GUARDIÄ ALEATÓRIA";
 	const featured_from = "De";
 	const featured_open = "Abrir em";
 	const featured_open_wardrobe = "Vestiário";
